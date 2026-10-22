@@ -19,6 +19,14 @@ export const metadata: Metadata = {
   title: "E-Art Gallery of Emergency — Pertolongan Pertama untuk Pengemudi Ojek Online",
   description:
     "Ruang edukasi visual bagi mitra pengemudi ojek online untuk memahami pertolongan pertama di jalan raya: penanganan perdarahan kecelakaan, kejang, dan Bantuan Hidup Dasar (BHD).",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+  },
 };
 
 export default function RootLayout({
