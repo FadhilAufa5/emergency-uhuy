@@ -3,144 +3,216 @@
 import { useState } from "react";
 import Link from "next/link";
 import {
-  ClipboardCheck,
   CheckCircle2,
+  XCircle,
   HelpCircle,
-  BookCheck,
+  RotateCcw,
+  Award,
+  Sparkles,
   ArrowRight,
-  ShieldCheck,
+  BookOpen,
   Bike,
+  ShieldCheck,
+  Check,
+  X,
+  AlertCircle,
+  Printer,
+  ChevronRight,
+  Clock,
+  HeartPulse,
+  Activity,
+  Flame,
 } from "lucide-react";
 import SmoothScroll from "@/components/animations/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 
-interface EvaluasiRubric {
-  id: string;
-  topic: string;
-  title: string;
-  badgeColor: string;
-  description: string;
-  scenarios: {
-    question: string;
-    keyPoints: string[];
-    criticalSafety: string;
-  }[];
+interface QuestionOption {
+  key: "A" | "B" | "C" | "D";
+  text: string;
 }
 
-const evaluasiData: EvaluasiRubric[] = [
+interface QuestionItem {
+  id: number;
+  category: string;
+  categoryBadge: string;
+  categoryColor: string;
+  question: string;
+  options: QuestionOption[];
+  correctAnswer: "A" | "B" | "C" | "D";
+  explanation: string;
+}
+
+const quizQuestions: QuestionItem[] = [
   {
-    id: "eval-perdarahan",
-    topic: "Perdarahan",
-    title: "Evaluasi Kasus: Respon Perdarahan Akibat Kecelakaan Lalu Lintas",
-    badgeColor: "bg-red/10 text-red border-red/20",
-    description:
-      "Uji pemahaman mitra pengemudi ojol mengenai teknik balut tekan luka robek di aspal, proteksi penolong dari patogen darah, dan pencegahan syok hipovolemik.",
-    scenarios: [
-      {
-        question:
-          "Skenario 1: Saat melintas, Anda melihat pengendara sepeda motor terjatuh di aspal dengan luka robek besar di tungkai bawah dan darah mengalir deras. Apa urutan tindakan Anda sebagai driver pertama di lokasi?",
-        keyPoints: [
-          "1. Aman Diri & Lalu Lintas: Parkir motor di bahu jalan yang aman, nyalakan hazard, pasang tanda agar kendaraan lain melambat.",
-          "2. Gunakan sarung tangan medis atau plastik bersih dari kantong P3K motor sebelum menyentuh luka.",
-          "3. Ambil kain kasa steril atau kain bersih tebal, letakkan tepat di atas luka, dan tekan secara kuat dan mantap (Direct Pressure).",
-          "4. Jika tidak ada kecurigaan patah tulang terbuka, posisikan tungkai sedikit lebih tinggi dari dada korban.",
-          "5. Jangan mencabut kain kasa pertama bila darah tembus; tambahkan lapisan baru di atasnya dan pertahankan tekanan.",
-        ],
-        criticalSafety:
-          "Dilarang membersihkan luka dalam dengan bensin/alkohol keras, dan jangan pasang torniket sembarangan tanpa indikasi medis resmi.",
-      },
-      {
-        question:
-          "Skenario 2: Setelah luka ditekan beberapa menit, korban kecelakaan mulai mengeluh pusing berat, pandangan berkunang-kunang, dan kulitnya teraba dingin serta pucat di trotoar. Apa langkah mitigasi Anda?",
-        keyPoints: [
-          "Kenali ini sebagai tanda awal Syok Hipovolemik akibat kehilangan darah.",
-          "Baringkan korban telentang di permukaan rata dan tinggikan kedua kakinya 20–30 cm bila tidak ada patah tulang punggung/kaki.",
-          "Gunakan jaket driver Anda untuk menyelimuti korban agar suhu tubuh tetap terjaga hangat.",
-          "Segera telepon ambulans 119, sebutkan patokan jalan presisi, dan laporkan tanda-tanda syok korban.",
-        ],
-        criticalSafety:
-          "Jangan sekali-kali memberi minum atau makan kepada korban yang lemas di pinggir jalan karena berisiko tersedak ke paru-paru.",
-      },
+    id: 1,
+    category: "Penanganan Kejang",
+    categoryBadge: "bg-blue/10 text-blue border-blue/20",
+    categoryColor: "text-blue",
+    question: "Apa tindakan yang tidak boleh dilakukan saat seseorang mengalami kejang?",
+    options: [
+      { key: "A", text: "Menjauhkan benda berbahaya" },
+      { key: "B", text: "Mengamankan lingkungan" },
+      { key: "C", text: "Memasukkan benda ke dalam mulut" },
+      { key: "D", text: "Memantau kondisi korban" },
     ],
+    correctAnswer: "C",
+    explanation:
+      "Memasukkan benda apapun (seperti sendok, kain, kayu, atau jari) ke dalam mulut orang yang sedang kejang sangat dilarang. Tindakan ini berisiko mematahkan gigi, melukai rongga mulut, dan dapat menyumbat total jalan napas korban.",
   },
   {
-    id: "eval-kejang",
-    topic: "Kejang",
-    title: "Evaluasi Kasus: Penumpang atau Warga Mengalami Kejang Mendadak",
-    badgeColor: "bg-blue/10 text-blue border-blue/20",
-    description:
-      "Uji ketepatan sikap driver ojol dalam melindungi kepala korban dari benturan aspal dan mengeliminasi mitos berbahaya saat kejang berlangsung.",
-    scenarios: [
-      {
-        question:
-          "Skenario 1: Penumpang ojek online Anda tiba-tiba terjatuh saat hendak turun di pangkalan dan mengalami kejang kelojotan. Warga sekitar panik dan ingin memasukkan gagang sendok serta minyak ke mulutnya. Bagaimana sikap tegas Anda?",
-        keyPoints: [
-          "Larang keras tindakan memasukkan sendok, kopi, atau benda apa pun ke mulut korban (dapat mematahkan gigi dan menyumbat total jalan napas).",
-          "Singkirkan sepeda motor, helm, batu tajam, dan benda keras di sekitar korban.",
-          "Lipat jaket driver Anda dan letakkan di bawah kepala korban sebagai bantalan empuk agar tidak mengalami gegar otak akibat benturan aspal.",
-          "Longgarkan jaket atau pakaian ketat korban di area leher.",
-          "Jangan menahan paksa gerakan tangan/kaki korban; biarkan kejang selesai dengan sendirinya.",
-        ],
-        criticalSafety:
-          "Menahan paksa tubuh yang kejang dapat mengakibatkan dislokasi sendi dan patah tulang pada korban.",
-      },
-      {
-        question:
-          "Skenario 2: Fase kelojotan korban telah berhenti, namun korban masih belum sadar dan napasnya terdengar mendengkur (ngorok). Apa yang harus dilakukan driver?",
-        keyPoints: [
-          "Segera miringkan tubuh korban ke satu sisi (Posisi Miring Mantap / Recovery Position).",
-          "Dengakkan sedikit dagu korban agar lidah tidak jatuh ke belakang menyumbat tenggorokan.",
-          "Biarkan cairan liur atau muntahan mengalir keluar ke aspal.",
-          "Catat durasi kejadian dan segera hubungi 119 bila kejang lebih dari 5 menit atau kejang berulang.",
-        ],
-        criticalSafety:
-          "Selalu pantau apakah dada korban tetap naik-turun bernapas setelah fase kejang selesai.",
-      },
+    id: 2,
+    category: "Perdarahan Eksternal",
+    categoryBadge: "bg-red/10 text-red border-red/20",
+    categoryColor: "text-red",
+    question: "Apa tindakan utama pada perdarahan eksternal?",
+    options: [
+      { key: "A", text: "Memberikan minuman" },
+      { key: "B", text: "Memberikan tekanan langsung pada sumber perdarahan" },
+      { key: "C", text: "Membiarkan luka terbuka tanpa tindakan" },
+      { key: "D", text: "Memijat area luka" },
     ],
+    correctAnswer: "B",
+    explanation:
+      "Tindakan utama dan paling krusial pada luka perdarahan luar adalah memberikan penekanan langsung (direct pressure) dengan kain kassa steril atau kain bersih tepat di atas sumber perdarahan secara konstan hingga perdarahan terkendali.",
   },
   {
-    id: "eval-bhd",
-    topic: "BHD",
-    title: "Evaluasi Kasus: Korban Kolaps Henti Jantung di Tempat Umum",
-    badgeColor: "bg-green/10 text-green-dark border-green/30",
-    description:
-      "Pedoman kesiapan driver ojol mengenai algoritma pengenalan henti jantung mendadak, panggilan darurat 119, dan resusitasi jantung paru berkualitas tinggi.",
-    scenarios: [
+    id: 3,
+    category: "Bantuan Hidup Dasar (BHD)",
+    categoryBadge: "bg-green/10 text-green-dark border-green/30",
+    categoryColor: "text-green-dark",
+    question:
+      "Apa yang harus dilakukan ketika menemukan korban tidak responsif dan tidak bernapas normal?",
+    options: [
+      { key: "A", text: "Meninggalkan korban" },
+      { key: "B", text: "Memberikan makanan" },
       {
-        question:
-          "Skenario 1: Saat antre di SPBU atau pangkalan, Anda melihat seseorang tiba-tiba tumbang pingsan dan tidak bergerak sama sekali. Apa 3 langkah awal Anda dalam 10 detik pertama?",
-        keyPoints: [
-          "1. Pastikan Keamanan (Aman diri dan lingkungan dari lalu lintas kendaraan SPBU).",
-          "2. Cek Respons: Tepuk kedua bahu korban dengan tegas dan panggil dengan lantang: 'Pak/Bu, apakah Anda sadar?'.",
-          "3. Jika korban tidak merespons dan napasnya berhenti (atau hanya megap-megap seperti ikan / gasping), teriak minta bantuan rekan driver lain dan segera hubungi 119.",
-        ],
-        criticalSafety:
-          "Jangan habiskan waktu mencari denyut nadi bila Anda ragu; jika tidak sadar dan napas tidak normal, anggap henti jantung dan segera minta bantuan 119.",
+        key: "C",
+        text: "Memanggil bantuan dan memulai tindakan BHD sesuai kemampuan/pelatihan",
       },
-      {
-        question:
-          "Skenario 2: Petugas 119 menginstruksikan Anda untuk melakukan kompresi dada (Hands-Only CPR). Apa saja parameter kualitas kompresi yang wajib Anda jaga?",
-        keyPoints: [
-          "Titik kompresi: Letakkan tumit tangan di tengah tulang dada korban, kunci jari tangan satunya di atasnya.",
-          "Posisi tubuh driver: Berlutut di samping korban, siku lurus vertikal memanfaatkan beban tubuh atas.",
-          "Kecepatan kompresi: 100 hingga 120 kali per menit (seperti tempo irama lagu 'Stayin Alive').",
-          "Kedalaman kompresi: 5 hingga 6 cm pada orang dewasa.",
-          "Full Recoil: Pastikan dada mengembang sempurna sebelum ditekan kembali.",
-          "Lanjutkan kompresi tanpa henti hingga tim ambulans 119 tiba mengambil alih atau korban mulai bergerak sadar.",
-        ],
-        criticalSafety:
-          "Kompresi dada yang tidak terputus adalah penentu utama mengalirnya oksigen ke otak korban yang henti jantung.",
-      },
+      { key: "D", text: "Membiarkan korban tidur" },
     ],
+    correctAnswer: "C",
+    explanation:
+      "Korban yang tidak merespons dan tidak bernapas normal (atau hanya megap-megap / gasping) berada dalam keadaan gawat darurat henti napas/jantung. Penolong harus segera menghubungi nomor darurat 119 dan menginisiasi BHD (Bantuan Hidup Dasar / CPR).",
+  },
+  {
+    id: 4,
+    category: "Pemantauan Kejang",
+    categoryBadge: "bg-yellow/20 text-yellow border-yellow/40",
+    categoryColor: "text-yellow",
+    question:
+      "Salah satu hal penting yang perlu dilakukan penolong selama korban mengalami kejang adalah …",
+    options: [
+      { key: "A", text: "Menghitung dan mencatat durasi kejang" },
+      { key: "B", text: "Memberikan air minum" },
+      { key: "C", text: "Memijat tubuh korban" },
+      { key: "D", text: "Menahan tubuh korban agar tidak bergerak" },
+    ],
+    correctAnswer: "A",
+    explanation:
+      "Menghitung dan mencatat berapa lama kejang berlangsung sangat vital untuk disampaikan ke dokter/paramedis. Kejang yang berlangsung lebih dari 5 menit (status epileptikus) merupakan kegawatdaruratan medis yang membutuhkan penanganan obat injeksi darurat.",
+  },
+  {
+    id: 5,
+    category: "Protokol CPR / RJP Dewasa",
+    categoryBadge: "bg-lavender/30 text-ink border-lavender",
+    categoryColor: "text-lavender",
+    question:
+      "Perbandingan kompresi dada dan ventilasi pada CPR/BHD dewasa oleh satu penolong adalah …",
+    options: [
+      { key: "A", text: "15 : 1" },
+      { key: "B", text: "15 : 2" },
+      { key: "C", text: "30 : 1" },
+      { key: "D", text: "30 : 2" },
+    ],
+    correctAnswer: "D",
+    explanation:
+      "Berdasarkan pedoman resmi resusitasi jantung paru (CPR/BHD) internasional, perbandingan kompresi dada dengan napas buatan (ventilasi) untuk korban dewasa oleh satu penolong adalah 30 kompresi berbanding 2 ventilasi (30 : 2) dengan ritme 100-120 kali/menit.",
   },
 ];
 
 export default function EvaluasiPage() {
-  const [activeTab, setActiveTab] = useState<string>("eval-perdarahan");
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, "A" | "B" | "C" | "D">>({});
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [activeQuestionIndex, setActiveQuestionIndex] = useState<number>(0);
+  const [showAllQuestions, setShowAllQuestions] = useState<boolean>(true);
 
-  const currentRubric = evaluasiData.find((r) => r.id === activeTab) || evaluasiData[0];
+  // Answer handler
+  const handleSelectOption = (questionId: number, optionKey: "A" | "B" | "C" | "D") => {
+    if (isSubmitted) return; // Prevent changing after submit until reset
+    setSelectedAnswers((prev) => ({
+      ...prev,
+      [questionId]: optionKey,
+    }));
+  };
+
+  // Submit evaluation
+  const handleSubmit = () => {
+    setIsSubmitted(true);
+    // Scroll to results summary
+    const resultsElement = document.getElementById("quiz-results");
+    if (resultsElement) {
+      resultsElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Reset quiz
+  const handleReset = () => {
+    setSelectedAnswers({});
+    setIsSubmitted(false);
+    setActiveQuestionIndex(0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // Calculate score
+  const totalQuestions = quizQuestions.length;
+  const answeredCount = Object.keys(selectedAnswers).length;
+  const correctCount = quizQuestions.reduce((acc, q) => {
+    return selectedAnswers[q.id] === q.correctAnswer ? acc + 1 : acc;
+  }, 0);
+  const scorePercentage = Math.round((correctCount / totalQuestions) * 100);
+
+  // Status message based on score
+  const getFeedbackDetails = () => {
+    if (scorePercentage === 100) {
+      return {
+        title: "Luar Biasa! Pemahaman Sempurna",
+        badge: "Driver Siaga Teladan ⭐",
+        desc: "Anda menguasai seluruh konsep inti pertolongan pertama kedaruratan jalan raya dengan tepat!",
+        color: "text-green-dark",
+        bgColor: "bg-green-light/50 border-green/30",
+      };
+    }
+    if (scorePercentage >= 80) {
+      return {
+        title: "Sangat Bagus! Kesiapsiagaan Tinggi",
+        badge: "Driver Siaga Terverifikasi 👍",
+        desc: "Pemahaman Anda sudah sangat solid. Tinjau kembali pembahasan untuk soal yang belum tepat.",
+        color: "text-blue",
+        bgColor: "bg-blue-light/50 border-blue/20",
+      };
+    }
+    if (scorePercentage >= 60) {
+      return {
+        title: "Cukup Baik! Perlu Penguatan",
+        badge: "Perlu Pemantapan Modul 📘",
+        desc: "Anda telah memahami sebagian prinsip dasar. Pelajari kembali materi untuk mengoptimalkan aksi penyelamatan.",
+        color: "text-yellow",
+        bgColor: "bg-yellow-light/60 border-yellow/40",
+      };
+    }
+    return {
+      title: "Perlu Mengulang Modul",
+      badge: "Ulas Kembali Materi 🔄",
+      desc: "Jangan berkecil hati! Luangkan waktu sejenak membaca ulang modul kedaruratan agar makin siap di jalan raya.",
+      color: "text-red",
+      bgColor: "bg-red-light/50 border-red/20",
+    };
+  };
+
+  const feedback = getFeedbackDetails();
 
   return (
     <SmoothScroll>
@@ -148,182 +220,473 @@ export default function EvaluasiPage() {
         <Navbar />
 
         <main className="pt-28 pb-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-xs text-ink-lighter mb-8">
               <Link href="/" className="hover:text-red transition-colors">
                 Beranda
               </Link>
               <span>/</span>
-              <span className="font-semibold text-ink">Evaluasi Driver Siaga</span>
+              <span className="font-semibold text-ink">Evaluasi Pembelajaran</span>
             </nav>
 
             {/* Header */}
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gray-100 text-ink border border-gray-200 mb-4">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-ink border border-ink/10 shadow-sm mb-4">
                 <Bike className="w-3.5 h-3.5 text-red" />
-                Instrumen Evaluasi Formatif Driver Ojol
-              </span>
+                <span>Evaluasi Formatif Kedaruratan</span>
+              </div>
               <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-ink mb-4">
-                Evaluasi{" "}
+                Kuis Evaluasi{" "}
                 <span className="font-handwritten text-red text-5xl sm:text-6xl inline-block -rotate-1">
                   Kesiapsiagaan
-                </span>{" "}
-                di Jalan
+                </span>
               </h1>
               <p className="text-base sm:text-lg text-ink-light leading-relaxed">
-                Tolak ukur intuisi dan penalaran taktis mitra pengemudi ojek online menghadapi situasi darurat di jalan raya melalui skenario kasus nyata dan rubrik keselamatan.
+                Setelah mempelajari seluruh materi, pengguna dapat diberikan kuis sederhana ini untuk menguji
+                pemahaman dan respon taktis terhadap kondisi darurat di jalan raya.
               </p>
             </div>
 
-            {/* Educational Model Information Notice */}
-            <div className="mb-12 rounded-2xl bg-white border border-ink/8 p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-green/10 flex items-center justify-center shrink-0 text-green-dark">
-                  <ShieldCheck className="w-5 h-5" />
-                </div>
+            {/* Progress & Quick Stats Card */}
+            <div className="mb-10 rounded-3xl bg-white border border-ink/8 p-6 sm:p-7 shadow-sm">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
                 <div>
-                  <h4 className="text-sm font-bold text-ink">Refleksi Kesiapan Tanpa Tekanan Nilai</h4>
+                  <h3 className="text-sm font-bold text-ink flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-yellow" />
+                    Status Pengerjaan Kuis
+                  </h3>
                   <p className="text-xs text-ink-lighter mt-0.5">
-                    Instrumen ini dirancang sebagai panduan telaah insiden aspal bagi komunitas pengemudi ojek online, tanpa tes otomatis atau sistem nilai skor kaku.
+                    {isSubmitted
+                      ? `Kuis Selesai! Skor Anda: ${correctCount} dari ${totalQuestions} benar (${scorePercentage}%)`
+                      : `${answeredCount} dari ${totalQuestions} pertanyaan telah dijawab`}
                   </p>
                 </div>
+
+                <div className="flex items-center gap-2">
+                  {isSubmitted && (
+                    <button
+                      onClick={handleReset}
+                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-ink/5 hover:bg-ink/10 text-xs font-bold text-ink transition-colors"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                      Ulangi Kuis
+                    </button>
+                  )}
+                  <span className="px-3 py-1.5 rounded-xl bg-cream border border-ink/10 text-xs font-mono font-bold text-ink">
+                    5 Soal Pilihan Ganda
+                  </span>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Link
-                  href="/lkpd"
-                  className="px-4 py-2 rounded-xl bg-gray-50 border border-ink/10 text-xs font-semibold text-ink hover:bg-ink hover:text-white transition-colors"
-                >
-                  Buka Kasus LKPD
-                </Link>
+
+              {/* Progress Bar */}
+              <div className="w-full bg-cream h-2.5 rounded-full overflow-hidden border border-ink/5">
+                <div
+                  className={`h-full transition-all duration-500 rounded-full ${
+                    isSubmitted
+                      ? scorePercentage >= 80
+                        ? "bg-green-dark"
+                        : scorePercentage >= 60
+                        ? "bg-yellow"
+                        : "bg-red"
+                      : "bg-red"
+                  }`}
+                  style={{
+                    width: isSubmitted
+                      ? `${scorePercentage}%`
+                      : `${(answeredCount / totalQuestions) * 100}%`,
+                  }}
+                />
+              </div>
+
+              {/* Question Navigation Bubbles */}
+              <div className="flex flex-wrap items-center justify-between gap-3 mt-6 pt-5 border-t border-ink/5">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-medium text-ink-lighter mr-1">Lompat ke Soal:</span>
+                  {quizQuestions.map((q, idx) => {
+                    const isAnswered = selectedAnswers[q.id] !== undefined;
+                    const isCorrect = isSubmitted && selectedAnswers[q.id] === q.correctAnswer;
+                    const isWrong = isSubmitted && isAnswered && !isCorrect;
+
+                    return (
+                      <a
+                        key={q.id}
+                        href={`#soal-${q.id}`}
+                        className={`w-8 h-8 rounded-xl text-xs font-bold flex items-center justify-center transition-all ${
+                          isSubmitted
+                            ? isCorrect
+                              ? "bg-green-dark text-white shadow-sm"
+                              : isWrong
+                              ? "bg-red text-white shadow-sm"
+                              : "bg-gray-100 text-gray-400 border border-gray-200"
+                            : isAnswered
+                            ? "bg-ink text-white"
+                            : "bg-cream text-ink-light border border-ink/10 hover:border-ink/20"
+                        }`}
+                      >
+                        {idx + 1}
+                      </a>
+                    );
+                  })}
+                </div>
+
+                <div className="text-xs text-ink-lighter font-medium">
+                  {isSubmitted ? (
+                    <span className="text-green-dark font-bold">
+                      ✓ Penilaian Selesai • Tinjau Pembahasan di Bawah
+                    </span>
+                  ) : (
+                    <span>Pilih salah satu opsi (A, B, C, atau D) pada setiap pertanyaan</span>
+                  )}
+                </div>
               </div>
             </div>
 
-            {/* Subject Selector Tabs */}
-            <div className="flex flex-wrap gap-2 mb-8 justify-center">
-              {evaluasiData.map((item) => {
-                const isActive = activeTab === item.id;
+            {/* Quiz Result Banner (Appears after submission) */}
+            {isSubmitted && (
+              <div
+                id="quiz-results"
+                className={`mb-10 rounded-3xl border p-6 sm:p-8 shadow-sm animate-fadeIn ${feedback.bgColor}`}
+              >
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-14 h-14 rounded-2xl bg-white border border-ink/10 flex items-center justify-center shrink-0 shadow-sm">
+                      <Award className={`w-8 h-8 ${feedback.color}`} />
+                    </div>
+                    <div>
+                      <div className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white border border-ink/10 mb-2">
+                        {feedback.badge}
+                      </div>
+                      <h2 className="text-2xl sm:text-3xl font-extrabold text-ink">
+                        {feedback.title}
+                      </h2>
+                      <p className="text-sm text-ink-light mt-1 max-w-xl">
+                        {feedback.desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col items-center justify-center bg-white rounded-2xl p-4 sm:p-5 border border-ink/10 shadow-sm shrink-0 min-w-[170px] text-center">
+                    <span className="text-xs font-bold uppercase tracking-wider text-ink-lighter mb-1">
+                      Skor Akhir
+                    </span>
+                    <span className="text-4xl font-extrabold text-ink font-mono">
+                      {scorePercentage}
+                      <span className="text-lg text-ink-lighter">/100</span>
+                    </span>
+                    <span className="text-xs text-ink-light font-semibold mt-1">
+                      {correctCount} dari {totalQuestions} Soal Benar
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-5 border-t border-ink/10 flex flex-wrap items-center justify-between gap-3 text-xs">
+                  <div className="flex items-center gap-4 text-ink-light">
+                    <span className="flex items-center gap-1.5 font-medium">
+                      <span className="w-3 h-3 rounded-full bg-green-dark inline-block" />
+                      Jawaban Benar: {correctCount}
+                    </span>
+                    <span className="flex items-center gap-1.5 font-medium">
+                      <span className="w-3 h-3 rounded-full bg-red inline-block" />
+                      Jawaban Kurang Tepat: {totalQuestions - correctCount}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => window.print()}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-ink/10 text-xs font-semibold text-ink hover:bg-cream transition-colors"
+                    >
+                      <Printer className="w-3.5 h-3.5" />
+                      Cetak Lembar Evaluasi
+                    </button>
+                    <button
+                      onClick={handleReset}
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-ink text-white text-xs font-semibold hover:bg-red transition-colors"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                      Coba Lagi
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Questions List */}
+            <div className="space-y-8 mb-12">
+              {quizQuestions.map((q, idx) => {
+                const userChoice = selectedAnswers[q.id];
+                const isAnswered = userChoice !== undefined;
+                const isCorrect = isSubmitted && userChoice === q.correctAnswer;
+                const isWrong = isSubmitted && isAnswered && !isCorrect;
+
                 return (
-                  <button
-                    key={item.id}
-                    onClick={() => setActiveTab(item.id)}
-                    className={`px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all ${
-                      isActive
-                        ? "bg-ink text-white shadow-md scale-105"
-                        : "bg-white text-ink-light border border-ink/10 hover:border-ink/20 hover:bg-cream"
+                  <div
+                    key={q.id}
+                    id={`soal-${q.id}`}
+                    className={`rounded-3xl border transition-all p-6 sm:p-8 bg-white shadow-sm ${
+                      isSubmitted
+                        ? isCorrect
+                          ? "border-green/40 ring-1 ring-green/30"
+                          : "border-red/30 ring-1 ring-red/20"
+                        : isAnswered
+                        ? "border-ink/20"
+                        : "border-ink/8 hover:border-ink/15"
                     }`}
                   >
-                    Kasus: {item.topic}
-                  </button>
+                    {/* Question Header */}
+                    <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-4 border-b border-ink/5">
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-8 h-8 rounded-xl bg-ink text-white text-xs font-extrabold flex items-center justify-center shrink-0">
+                          {idx + 1}
+                        </span>
+                        <span
+                          className={`px-3 py-1 rounded-full text-xs font-bold border ${q.categoryBadge}`}
+                        >
+                          {q.category}
+                        </span>
+                      </div>
+
+                      {isSubmitted && (
+                        <div className="flex items-center gap-1.5">
+                          {isCorrect ? (
+                            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-green-light text-green-dark border border-green/30">
+                              <CheckCircle2 className="w-3.5 h-3.5" />
+                              Benar (+20 Poin)
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-red-light text-red-dark border border-red/20">
+                              <XCircle className="w-3.5 h-3.5" />
+                              Kurang Tepat
+                            </span>
+                          )}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Question Text */}
+                    <h3 className="text-lg sm:text-xl font-bold text-ink leading-snug mb-6">
+                      {q.question}
+                    </h3>
+
+                    {/* Options (A, B, C, D) */}
+                    <div className="grid grid-cols-1 gap-3 mb-6">
+                      {q.options.map((opt) => {
+                        const isSelected = userChoice === opt.key;
+                        const isThisCorrect = q.correctAnswer === opt.key;
+
+                        let optionStyle =
+                          "border-ink/10 bg-cream/30 text-ink hover:bg-cream hover:border-ink/20";
+                        let badgeStyle = "bg-white text-ink-light border-ink/15";
+
+                        if (isSubmitted) {
+                          if (isThisCorrect) {
+                            optionStyle =
+                              "border-green/60 bg-green-light/40 text-ink font-semibold shadow-sm";
+                            badgeStyle = "bg-green-dark text-white border-green-dark";
+                          } else if (isSelected && !isThisCorrect) {
+                            optionStyle =
+                              "border-red/50 bg-red-light/40 text-ink-light line-through decoration-red";
+                            badgeStyle = "bg-red text-white border-red";
+                          } else {
+                            optionStyle = "border-ink/5 bg-gray-50/50 text-ink-lighter opacity-60";
+                            badgeStyle = "bg-gray-100 text-gray-400 border-gray-200";
+                          }
+                        } else if (isSelected) {
+                          optionStyle =
+                            "border-ink bg-ink/5 text-ink ring-2 ring-ink/10 font-semibold shadow-sm";
+                          badgeStyle = "bg-ink text-white border-ink";
+                        }
+
+                        return (
+                          <button
+                            key={opt.key}
+                            type="button"
+                            disabled={isSubmitted}
+                            onClick={() => handleSelectOption(q.id, opt.key)}
+                            className={`w-full text-left p-4 sm:p-4.5 rounded-2xl border transition-all flex items-center justify-between gap-4 cursor-pointer disabled:cursor-default ${optionStyle}`}
+                          >
+                            <div className="flex items-center gap-3.5 flex-1">
+                              <span
+                                className={`w-8 h-8 rounded-xl font-extrabold text-xs flex items-center justify-center shrink-0 border transition-colors ${badgeStyle}`}
+                              >
+                                {opt.key}
+                              </span>
+                              <span className="text-sm sm:text-base leading-relaxed">
+                                {opt.text}
+                              </span>
+                            </div>
+
+                            {/* Option status icon */}
+                            {isSubmitted ? (
+                              isThisCorrect ? (
+                                <span className="inline-flex items-center gap-1 text-xs font-bold text-green-dark bg-white px-2.5 py-1 rounded-lg border border-green/30 shrink-0">
+                                  <Check className="w-3.5 h-3.5 text-green-dark" />
+                                  Kunci Jawaban
+                                </span>
+                              ) : isSelected ? (
+                                <span className="inline-flex items-center gap-1 text-xs font-bold text-red bg-white px-2.5 py-1 rounded-lg border border-red/20 shrink-0">
+                                  <X className="w-3.5 h-3.5 text-red" />
+                                  Pilihan Anda
+                                </span>
+                              ) : null
+                            ) : (
+                              isSelected && (
+                                <span className="w-5 h-5 rounded-full bg-ink text-white flex items-center justify-center shrink-0">
+                                  <Check className="w-3 h-3" />
+                                </span>
+                              )
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Explanation Box (Visible after submit) */}
+                    {isSubmitted && (
+                      <div className="rounded-2xl border border-ink/8 bg-cream/40 p-5 mt-4 space-y-2 animate-fadeIn">
+                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-ink">
+                          <HelpCircle className="w-4 h-4 text-blue" />
+                          <span>
+                            Pembahasan Jawaban Resmi (Kunci: Opsi {q.correctAnswer})
+                          </span>
+                        </div>
+                        <p className="text-xs sm:text-sm text-ink-light leading-relaxed">
+                          {q.explanation}
+                        </p>
+                      </div>
+                    )}
+                  </div>
                 );
               })}
             </div>
 
-            {/* Active Rubric Showcase */}
-            <div className="rounded-3xl border border-ink/8 bg-white p-7 sm:p-10 mb-16 shadow-sm">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-ink/8">
-                <div>
-                  <span
-                    className={`inline-block px-3 py-1 rounded-full text-xs font-semibold border mb-2 ${currentRubric.badgeColor}`}
-                  >
-                    Skenario Driver: {currentRubric.topic}
-                  </span>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-ink">
-                    {currentRubric.title}
-                  </h2>
-                </div>
-                <div className="text-xs text-ink-lighter font-mono">
-                  {currentRubric.scenarios.length} Skenario Lapangan
-                </div>
+            {/* Bottom Action Card */}
+            <div className="rounded-3xl border border-ink/8 bg-white p-7 sm:p-9 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 mb-16">
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-ink">
+                  {isSubmitted
+                    ? "Evaluasi Anda Telah Tercatat"
+                    : "Siap Menyelesaikan Evaluasi?"}
+                </h3>
+                <p className="text-xs sm:text-sm text-ink-light mt-1 max-w-xl">
+                  {isSubmitted
+                    ? "Anda dapat meninjau kembali seluruh pembahasan di atas atau mengulang kuis untuk mematangkan refleks kedaruratan di jalan."
+                    : answeredCount < totalQuestions
+                    ? `Perhatian: Masih ada ${
+                        totalQuestions - answeredCount
+                      } soal yang belum dijawab. Pastikan semua opsi telah terpilih sebelum mengirim.`
+                    : "Seluruh 5 soal telah Anda jawab. Klik tombol di samping untuk memeriksa skor dan pembahasan lengkap."}
+                </p>
               </div>
 
-              <p className="text-sm text-ink-light leading-relaxed mb-8">
-                {currentRubric.description}
-              </p>
-
-              {/* Scenarios and Answers Guide */}
-              <div className="space-y-8">
-                {currentRubric.scenarios.map((sc, idx) => (
-                  <div
-                    key={idx}
-                    className="rounded-2xl border border-ink/10 bg-cream/20 p-6 sm:p-7 space-y-5"
+              <div className="flex items-center gap-3 shrink-0 w-full sm:w-auto">
+                {isSubmitted ? (
+                  <button
+                    onClick={handleReset}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-ink text-white font-bold text-sm hover:bg-red transition-all shadow-md active:scale-95"
                   >
-                    <div className="flex items-start gap-3">
-                      <span className="w-7 h-7 rounded-full bg-red text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
-                        {idx + 1}
-                      </span>
-                      <h3 className="text-base sm:text-lg font-bold text-ink leading-snug">
-                        {sc.question}
-                      </h3>
-                    </div>
-
-                    {/* Key Rubric Points */}
-                    <div className="bg-white p-5 rounded-2xl border border-ink/5 space-y-3">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-ink-light flex items-center gap-1.5">
-                        <CheckCircle2 className="w-4 h-4 text-green-dark" />
-                        Poin Kunci Respons Driver yang Tepat:
-                      </h4>
-                      <ul className="space-y-2 text-xs sm:text-sm text-ink-light">
-                        {sc.keyPoints.map((point, pIdx) => (
-                          <li key={pIdx} className="flex items-start gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-ink-lighter shrink-0 mt-2" />
-                            <span className="leading-relaxed">{point}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Critical safety caveat */}
-                    <div className="p-4 rounded-xl bg-red-light/30 border border-red/20 text-xs sm:text-sm text-red-dark flex items-start gap-2.5">
-                      <HelpCircle className="w-4 h-4 text-red shrink-0 mt-0.5" />
-                      <div>
-                        <strong>Fokus Keselamatan (Critical Safety):</strong> {sc.criticalSafety}
-                      </div>
-                    </div>
-                  </div>
-                ))}
+                    <RotateCcw className="w-4 h-4" />
+                    Ulangi Kuis
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleSubmit}
+                    disabled={answeredCount === 0}
+                    className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl font-bold text-sm transition-all shadow-md active:scale-95 ${
+                      answeredCount === totalQuestions
+                        ? "bg-red text-white hover:bg-red-dark hover:shadow-lg"
+                        : "bg-ink text-white hover:bg-ink-light disabled:opacity-50 disabled:cursor-not-allowed"
+                    }`}
+                  >
+                    <span>Kirim & Periksa Jawaban</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                )}
               </div>
             </div>
 
-            {/* Checklist of Self-Competency */}
+            {/* Quick Learning Review Section */}
             <div className="rounded-3xl border border-ink/10 bg-gradient-to-br from-cream to-white p-8 sm:p-10 mb-16">
+              <div className="flex items-center gap-2.5 mb-3">
+                <ShieldCheck className="w-5 h-5 text-green-dark" />
+                <span className="text-xs font-bold uppercase tracking-wider text-ink-light">
+                  Ikhtisar 5 Poin Kritis Kedaruratan
+                </span>
+              </div>
               <h3 className="text-2xl font-bold text-ink mb-4">
-                Daftar Periksa Kesiapan Driver Ojol di Jalan Raya
+                Prinsip Tindakan Penyelamatan di Aspal
               </h3>
-              <p className="text-xs sm:text-sm text-ink-lighter mb-6">
-                Gunakan daftar ini untuk mengevaluasi kesiapan pribadi Anda sebagai penolong pertama di jalanan:
+              <p className="text-xs sm:text-sm text-ink-lighter mb-6 leading-relaxed">
+                Ingat selalu 5 prinsip dasar yang diujikan dalam kuis evaluasi ini saat Anda bertugas di jalan raya:
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-                {[
-                  "Saya menyimpan nomor panggilan darurat 119 dan tahu cara share lokasi presisi di jalan.",
-                  "Saya selalu mengutamakan prinsip 3A (tepikan motor & amankan arus kendaraan) sebelum menolong.",
-                  "Saya membawa perlengkapan P3K sederhana (kain kasa/perban/sarung tangan) di bagasi motor.",
-                  "Saya paham cara balut tekan langsung pada luka perdarahan tanpa melepas lapisan kain pertama.",
-                  "Saya tahu cara melindungi kepala korban kejang dengan jaket tanpa menahan paksa tubuhnya.",
-                  "Saya tidak akan memasukkan sendok, kopi, atau benda apa pun ke mulut orang yang kejang.",
-                  "Saya memahami posisi miring mantap (recovery position) untuk membebaskan jalan napas.",
-                  "Saya siap melakukan kompresi dada RJP berkualitas tinggi sambil menunggu ambulans tiba.",
-                ].map((check, i) => (
-                  <div
-                    key={i}
-                    className="flex items-start gap-3 p-3.5 rounded-2xl bg-white border border-ink/5"
-                  >
-                    <CheckCircle2 className="w-4 h-4 text-green-dark shrink-0 mt-0.5" />
-                    <span className="text-xs sm:text-sm text-ink-light font-medium">{check}</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex items-start gap-3 p-4 rounded-2xl bg-white border border-ink/5 shadow-2xs">
+                  <span className="w-7 h-7 rounded-xl bg-blue/10 text-blue font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                    1
+                  </span>
+                  <div>
+                    <h4 className="text-sm font-bold text-ink">Proteksi Kejang Tanpa Sumpal Mulut</h4>
+                    <p className="text-xs text-ink-lighter mt-1 leading-relaxed">
+                      Jauhkan benda berbahaya dan alasi kepala dengan jaket. Dilarang memasukkan sendok atau benda apapun ke dalam mulut korban.
+                    </p>
                   </div>
-                ))}
+                </div>
+
+                <div className="flex items-start gap-3 p-4 rounded-2xl bg-white border border-ink/5 shadow-2xs">
+                  <span className="w-7 h-7 rounded-xl bg-red/10 text-red font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                    2
+                  </span>
+                  <div>
+                    <h4 className="text-sm font-bold text-ink">Balut Tekan Langsung (Direct Pressure)</h4>
+                    <p className="text-xs text-ink-lighter mt-1 leading-relaxed">
+                      Lakukan penekanan langsung di atas luka perdarahan luar secara mantap dengan kain bersih tanpa melepas kain lapisan pertama.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-4 rounded-2xl bg-white border border-ink/5 shadow-2xs">
+                  <span className="w-7 h-7 rounded-xl bg-green/10 text-green-dark font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                    3
+                  </span>
+                  <div>
+                    <h4 className="text-sm font-bold text-ink">Tanggap Korban Tidak Responsif</h4>
+                    <p className="text-xs text-ink-lighter mt-1 leading-relaxed">
+                      Bila korban tidak sadar dan napas tidak normal, segera panggil ambulans 119 dan mulai BHD/CPR sesuai kemampuan.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-4 rounded-2xl bg-white border border-ink/5 shadow-2xs">
+                  <span className="w-7 h-7 rounded-xl bg-yellow/20 text-yellow font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                    4
+                  </span>
+                  <div>
+                    <h4 className="text-sm font-bold text-ink">Catat Durasi Kejang & Rasio 30:2 CPR</h4>
+                    <p className="text-xs text-ink-lighter mt-1 leading-relaxed">
+                      Hitung durasi kejang (&gt;5 menit darurat kritis) dan terapkan rasio kompresi CPR 30 kali tekan dada berbanding 2 kali napas bantuan.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Next Steps CTA */}
-            <div className="text-center">
+            {/* Navigation to Other Resources */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/materi"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-ink text-white font-semibold text-sm hover:bg-red transition-all shadow-md active:scale-95"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-ink text-white font-semibold text-sm hover:bg-red transition-all shadow-md active:scale-95"
               >
-                Ulas Kembali Modul Kedaruratan Driver
-                <ArrowRight className="w-4 h-4" />
+                <BookOpen className="w-4 h-4" />
+                <span>Pelajari Materi Lengkap</span>
+              </Link>
+              <Link
+                href="/lkpd"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white border border-ink/15 text-ink font-semibold text-sm hover:bg-cream transition-all shadow-sm active:scale-95"
+              >
+                <span>Buka Lembar Kasus LKPD</span>
+                <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
           </div>

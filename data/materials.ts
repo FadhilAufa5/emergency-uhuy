@@ -1,5 +1,6 @@
 export interface MaterialDetail {
   slug: string;
+  orderNumber: number;
   title: string;
   subtitle: string;
   description: string;
@@ -12,10 +13,12 @@ export interface MaterialDetail {
   pengertian: {
     title: string;
     content: string;
+    note?: string;
   };
   tanda: {
     title: string;
     items: string[];
+    note?: string;
   };
   langkah: {
     title: string;
@@ -24,6 +27,7 @@ export interface MaterialDetail {
       title: string;
       description: string;
     }[];
+    criticalInstruction?: string;
   };
   hindari: {
     title: string;
@@ -40,272 +44,336 @@ export interface MaterialDetail {
 
 export const materials: MaterialDetail[] = [
   {
-    slug: "perdarahan",
-    title: "Perdarahan",
-    subtitle: "Pertolongan Perdarahan Kecelakaan Jalan Raya",
-    description:
-      "Panduan praktis bagi pengemudi ojol menangani luka terbuka di aspal, teknik direct pressure, dan pencegahan syok sebelum bantuan ambulans tiba.",
-    category: "Perdarahan Jalan",
-    categoryColor: "bg-red/10 text-red border-red/20",
-    accentColor: "#F04438",
-    bgColor: "bg-red-light",
-    iconBg: "bg-red/10",
-    heroImage: "bleeding",
-    pengertian: {
-      title: "Apa Itu Perdarahan Akibat Kecelakaan?",
-      content:
-        "Perdarahan adalah keluarnya darah dari pembuluh darah akibat benturan, gesekan aspal, atau trauma benda tajam saat kecelakaan lalu lintas. Perdarahan dapat berupa luka robek luar (eksternal) yang tampak jelas, maupun perdarahan dalam (internal) yang ditandai dengan memar luas dan syok lemas. Sebagai penolong pertama di jalanan, tindakan cepat driver ojol dalam 5 menit pertama sangat krusial menghentikan kehilangan darah.",
-    },
-    tanda: {
-      title: "Tanda Bahaya yang Perlu Diwaspadai Driver",
-      items: [
-        "Darah merah terang memancar berdenyut (perdarahan arteri) atau mengalir deras terus-menerus.",
-        "Pakaian korban basah kuyup oleh genangan darah.",
-        "Kulit korban terasa dingin, basah berkeringat, dan tampak pucat pasi.",
-        "Korban mengeluh sangat haus, pusing melayang, atau napas tersengal-sengal.",
-        "Denyut nadi teraba sangat cepat namun lemah.",
-        "Korban mulai kehilangan kesadaran atau tidak merespons panggilan.",
-      ],
-    },
-    langkah: {
-      title: "Langkah Pertolongan Driver di Lokasi Kejadian",
-      steps: [
-        {
-          number: 1,
-          title: "Amankan Diri & Arus Lalu Lintas (3A)",
-          description:
-            "Tepikan motor di bahu jalan aman, nyalakan lampu hazard, dan pasang tanda agar kendaraan lain melambat. Gunakan sarung tangan atau plastik bersih sebelum menyentuh luka.",
-        },
-        {
-          number: 2,
-          title: "Tekan Luka Langsung (Direct Pressure)",
-          description:
-            "Gunakan kain kasa steril atau kain bersih tebal dari kotak P3K motor. Tekan tepat di atas pusat luka dengan telapak tangan secara mantap dan terus-menerus.",
-        },
-        {
-          number: 3,
-          title: "Pertahankan Tekanan & Tambah Lapisan",
-          description:
-            "Jangan pernah mencabut kain pertama meski darah merembes tembus. Tambahkan lapisan kain bersih baru di atasnya dan pertahankan penekanan kuat.",
-        },
-        {
-          number: 4,
-          title: "Tinggikan Area Cedera & Cegah Syok",
-          description:
-            "Bila tidak ada patah tulang, posisikan anggota tubuh yang berdarah lebih tinggi dari jantung. Selimuti korban dengan jaket driver agar tetap hangat.",
-        },
-        {
-          number: 5,
-          title: "Hubungi Layanan Darurat 119",
-          description:
-            "Segera telepon 119 atau 112. Sebutkan patokan jalan spesifik, arah jalur kendaraan, jumlah korban, dan kondisinya.",
-        },
-      ],
-    },
-    hindari: {
-      title: "Tindakan Berbahaya yang Harus Dihindari",
-      items: [
-        "Jangan mencabut serpihan kaca, logam, atau benda yang menancap dalam di tubuh korban.",
-        "Jangan membuka paksa helm korban jika ada kecurigaan cedera leher/tulang belakang, kecuali jalan napas tersumbat total.",
-        "Jangan memasang ikatan torniket sembarangan menggunakan tali/kawat tanpa pelatihan medis khusus.",
-        "Jangan memberikan minum air putih atau kopi pada korban kecelakaan yang lemas atau syok.",
-        "Jangan membersihkan luka terbuka dalam dengan bensin, alkohol murni, atau bubuk kopi.",
-      ],
-    },
-    kapanDarurat: {
-      title: "Kapan Wajib Segera Menghubungi 119?",
-      content: "Segera panggil ambulans darurat (119) dan bawa ke IGD jika:",
-      items: [
-        "Darah terus mengalir deras setelah ditekan kuat selama 10 menit.",
-        "Korban mengantuk berat, meracau, atau kehilangan kesadaran.",
-        "Terdapat dugaan patah tulang terbuka (tulang menonjol keluar).",
-        "Kecelakaan melibatkan benturan kepala, dada, atau perut berkecepatan tinggi.",
-        "Korban adalah anak-anak, lansia, atau ibu hamil.",
-      ],
-    },
-    ringkasan:
-      "Saat menghadapi korban kecelakaan di jalan raya, prioritas pertama driver adalah mengamankan arus lalu lintas (Aman Diri). Hentikan perdarahan dengan menekan luka langsung menggunakan kain bersih tanpa henti. Selimuti korban untuk mencegah syok dan hubungi ambulans 119. Informasi ini bersifat panduan edukatif kesiapsiagaan driver ojol.",
-    relatedSlugs: ["kejang", "bhd"],
-  },
-  {
     slug: "kejang",
-    title: "Kejang",
-    subtitle: "Pendampingan Aman Penumpang & Warga Saat Kejang",
+    orderNumber: 1,
+    title: "Materi 1 — Kejang",
+    subtitle: "Mengenal Kejang & 7 Langkah Pertolongan Awal",
     description:
-      "Panduan bagi mitra ojol saat penumpang di motor atau warga di pangkalan/pinggir jalan mengalami kejang mendadak tanpa panik.",
-    category: "Kejang di Jalan",
+      "Kejang merupakan kondisi ketika terjadi aktivitas listrik abnormal di otak yang dapat menyebabkan gerakan tubuh tidak terkendali dan/atau perubahan kesadaran.",
+    category: "Materi 1 — Kejang",
     categoryColor: "bg-blue/10 text-blue border-blue/20",
     accentColor: "#3978F6",
     bgColor: "bg-blue-light",
     iconBg: "bg-blue/10",
     heroImage: "seizure",
     pengertian: {
-      title: "Mengenali Kejang di Ruang Publik",
+      title: "1. Mengenal Kejang",
       content:
-        "Kejang adalah gangguan aktivitas listrik mendadak di otak yang menyebabkan perubahan perilaku, kehilangan kesadaran, dan gerakan menyentak tidak terkontrol pada otot tubuh. Kondisi ini bisa dialami oleh penumpang yang sedang dijemput, rekan sesama driver di pangkalan, atau warga di pinggir jalan. Kunci utama pertolongan driver bukanlah menghentikan kejangnya, melainkan melindungi korban dari cedera fisik benturan aspal hingga kejang selesai dengan sendirinya.",
+        "Kejang merupakan kondisi ketika terjadi aktivitas listrik abnormal di otak yang dapat menyebabkan gerakan tubuh tidak terkendali dan/atau perubahan kesadaran.",
+      note: "Setelah kejang reda, korban dapat tampak lemas atau bingung. Hal ini merupakan fase pemulihan normal yang membutuhkan pendampingan tenang.",
     },
     tanda: {
-      title: "Tanda-Tanda Kejang yang Terlihat",
+      title: "Tanda yang Dapat Ditemukan",
       items: [
-        "Korban tiba-tiba jatuh terkulai lemas atau kaku di tempat.",
-        "Tubuh, tangan, dan kaki kelojotan atau menyentak ritmis di aspal/lantai.",
-        "Mata mendelik ke atas atau tatapan kosong tidak merespons panggilan.",
-        "Mulut mengeluarkan busa liur dan rahang mengatup rapat.",
-        "Napas terdengar berat, mendengkur, atau bibir sempat membiru.",
-        "Setelah kejang berhenti, korban tampak linglung, bingung, atau mengantuk berat.",
+        "Tubuh kaku atau bergetar.",
+        "Gerakan tubuh tidak terkendali.",
+        "Tatapan kosong atau mata berbalik.",
+        "Tidak merespons.",
       ],
+      note: "Setelah kejang korban dapat tampak lemas atau bingung.",
     },
     langkah: {
-      title: "Langkah Pertolongan Driver yang Benar",
+      title: "2. Pertolongan Awal Jika Menemukan Seseorang Mengalami Kejang",
       steps: [
         {
           number: 1,
-          title: "Tepikan Kendaraan & Amankan Area",
+          title: "Langkah 1: Perhatikan Waktu",
           description:
-            "Jika kejang terjadi saat berhenti, topang korban dengan tenang. Singkirkan sepeda motor, helm, batu tajam, dan kerumunan yang menghalangi udara segar.",
+            "Tetap tenang dan perhatikan waktu dimulainya kejang.",
         },
         {
           number: 2,
-          title: "Lindungi Kepala Korban",
+          title: "Langkah 2: Amankan Area",
           description:
-            "Lipat jaket driver Anda atau kain tebal, lalu letakkan lembut di bawah kepala korban agar tidak terbentur keras ke aspal saat menyentak.",
+            "Amankan area sekitar dengan menjauhkan benda-benda tajam, keras, atau berbahaya (seperti pisau, pecahan kaca, atau kendaraan).",
         },
         {
           number: 3,
-          title: "Longgarkan Pakaian Ketat",
+          title: "Langkah 3: Alasi Kepala",
           description:
-            "Buka kancing kerah jaket atau longgarkan tali helm/baju di area leher agar pernapasan korban tidak tercekik.",
+            "Beri alas pada kepala penderita menggunakan benda lembut seperti bantal, jaket, atau handuk agar kepala tidak terbentur lantai.",
         },
         {
           number: 4,
-          title: "Miringkan Tubuh Setelah Kejang Mereda",
+          title: "Langkah 4: Dilarang Sumpal Mulut",
           description:
-            "Segera posisikan korban dalam Posisi Miring Mantap (Recovery Position) agar lidah tidak menyumbat tenggorokan dan air liur mengalir keluar.",
+            "Jangan memasukkan benda, makanan, minuman, atau jari ke dalam mulut korban.",
         },
         {
           number: 5,
-          title: "Dampingi dengan Tenang & Catat Waktu",
+          title: "Langkah 5: Longgarkan Pakaian",
           description:
-            "Tetap bersama korban hingga ia sadar penuh. Catat berapa menit kejang berlangsung dan tenangkan korban saat ia mulai tersadar.",
+            "Longgarkan pakaian yang ketat, terutama di bagian leher, dada, atau ikat pinggang agar penderita bisa bernapas lebih lega.",
+        },
+        {
+          number: 6,
+          title: "Langkah 6: Miringkan Tubuh",
+          description:
+            "Miringkan tubuh penderita (ke sisi kanan atau kiri) secara perlahan, terutama setelah kejang mulai mereda atau jika ada muntah, untuk mencegah air liur atau muntahan masuk ke saluran pernapasan.",
+        },
+        {
+          number: 7,
+          title: "Langkah 7: Dampingi Hingga Sadar",
+          description:
+            "Dampingi penderita terus-menerus sampai kejang benar-benar berhenti dan ia sadar penuh.",
         },
       ],
+      criticalInstruction:
+        "Catat lama kejang dan laporkan durasi kejadian kepada petugas medis atau dokter.",
     },
     hindari: {
-      title: "Mitos & Tindakan Terlarang",
+      title: "Tindakan yang Berbahaya & Harus Dihindari",
       items: [
-        "JANGAN memasukkan sendok, gagang kunci, atau jari ke dalam mulut korban (berbahaya, gigi bisa patah dan menyumbat saluran napas).",
-        "JANGAN menyiramkan air dingin atau mencekoki kopi ke mulut korban yang sedang kejang.",
-        "JANGAN menahan paksa atau menduduki tangan dan kaki korban yang sedang menyentak.",
-        "JANGAN memberi makanan, minuman, atau obat tablet sebelum korban sadar 100%.",
-        "JANGAN membiarkan korban telentang saat mulutnya penuh cairan liur atau muntahan.",
+        "Jangan memasukkan benda, makanan, minuman, sendok, atau jari ke dalam mulut korban.",
+        "Jangan menahan tubuh korban agar tidak bergerak atau menduduki tangan dan kakinya saat kejang berlangsung.",
+        "Jangan menyiram air dingin atau menampar wajah korban yang sedang kejang.",
+        "Jangan memberikan obat tablet atau air minum sebelum korban sadar 100% dan dapat menelan normal.",
+        "Jangan meninggalkan korban sendirian di lokasi sampai kejang benar-benar reda dan kondisinya stabil.",
       ],
     },
     kapanDarurat: {
-      title: "Kapan Wajib Memanggil Ambulans 119?",
-      content: "Segera hubungi 119 atau bawa ke IGD terdekat jika:",
+      title: "Kapan Wajib Segera Hubungi 112 atau 119?",
+      content:
+        "Segera panggil bantuan medis darurat (112 / 119) jika ditemukan kondisi berikut:",
       items: [
-        "Kejang berlangsung lebih dari 5 menit tanpa jeda.",
+        "Kejang berlangsung lebih dari 5 menit (status epileptikus).",
         "Kejang berulang kembali sebelum korban sempat sadar.",
-        "Korban mengalami sesak napas berat atau tidak sadar lebih dari 15 menit.",
-        "Kejang terjadi setelah kepala korban terbentur keras dalam kecelakaan.",
-        "Korban sedang hamil atau memiliki riwayat penyakit berat.",
+        "Korban mengalami kesulitan bernapas setelah kejang berhenti.",
+        "Kejang terjadi di dalam air atau korban terbentur keras hingga cedera.",
+        "Korban sedang hamil atau tidak memiliki riwayat kejang sebelumnya.",
       ],
     },
     ringkasan:
-      "Saat penumpang atau warga kejang, tugas driver adalah menjadi pelindung: alasi kepala dengan jaket, jauhkan benda keras, dan JANGAN masukkan benda apa pun ke mulutnya. Miringkan tubuh korban setelah kejang usai agar napasnya lapang. Informasi ini merupakan panduan praktis kesiapsiagaan mitra ojol.",
+      "Kejang adalah gangguan akibat aktivitas listrik abnormal di otak. Langkah utama penolong: tetap tenang, perhatikan waktu, amankan area dari benda berbahaya, alasi kepala dengan jaket/benda lembut, dilarang menyumpal mulut, longgarkan pakaian leher, miringkan tubuh saat mereda agar saluran napas bebas, dampingi sampai sadar penuh, dan selalu catat lama kejang.",
     relatedSlugs: ["perdarahan", "bhd"],
   },
   {
-    slug: "bhd",
-    title: "Bantuan Hidup Dasar (BHD)",
-    subtitle: "RJP & Penyelamatan Henti Jantung di Tempat Umum",
+    slug: "perdarahan",
+    orderNumber: 2,
+    title: "Materi 2 — Perdarahan",
+    subtitle: "Mengenal Jenis Perdarahan & 9 Langkah Pertolongan Awal",
     description:
-      "Tindakan cepat resusitasi jantung paru (Hands-Only CPR) saat menemukan korban kolaps tak bernapas di pangkalan, SPBU, atau jalanan.",
-    category: "BHD Jalanan",
+      "Perdarahan merupakan keluarnya darah dari pembuluh darah akibat cedera atau kondisi tertentu, dengan perbedaan karakteristik pada arteri, vena, dan kapiler.",
+    category: "Materi 2 — Perdarahan",
+    categoryColor: "bg-red/10 text-red border-red/20",
+    accentColor: "#F04438",
+    bgColor: "bg-red-light",
+    iconBg: "bg-red/10",
+    heroImage: "bleeding",
+    pengertian: {
+      title: "1. Mengenal Perdarahan",
+      content:
+        "Perdarahan merupakan keluarnya darah dari pembuluh darah akibat cedera atau kondisi tertentu. Dalam website ditampilkan ilustrasi untuk membantu pengguna mengenali karakteristik, pola aliran, dan tingkat bahaya perdarahan arteri, vena, serta kapiler.",
+    },
+    tanda: {
+      title: "Karakteristik Tiga Jenis Perdarahan",
+      items: [
+        "Perdarahan arteri: Darah berwarna merah cerah, memancar atau menyembur keluar mengikuti detak jantung. Tingkat bahaya paling parah dan sulit dikendalikan karena tekanan darah tinggi.",
+        "Perdarahan vena: Darah berwarna merah tua atau gelap, mengalir secara stabil dan terus-menerus (tidak menyembur). Bisa mengancam nyawa jika pembuluh besar rusak, tetapi umumnya lebih mudah dikendalikan daripada arteri.",
+        "Perdarahan kapiler: Darah berwarna merah, merembes secara perlahan dari permukaan kulit (seperti pada luka lecet). Paling ringan, mudah dihentikan, dan sering kali terasa lebih nyeri.",
+        "Tanda syok: Korban tampak lemas, pucat, dingin berkeringat, dan napas tersengal-sengal.",
+      ],
+      note: "Pengenalan jenis perdarahan sangat penting untuk menentukan kecepatan respons penolong di lokasi.",
+    },
+    langkah: {
+      title: "2. Pertolongan Awal Jika Menemukan Seseorang Mengalami Perdarahan",
+      steps: [
+        {
+          number: 1,
+          title: "Langkah 1: Tenang & Proteksi Diri",
+          description:
+            "Tetap tenang dan pastikan lokasi aman bagi penolong dan korban. Jika ada, gunakan sarung tangan atau plastik bersih sebagai pelindung dari darah.",
+        },
+        {
+          number: 2,
+          title: "Langkah 2: Hubungi Layanan Darurat",
+          description:
+            "Minta orang sekitar menghubungi layanan darurat (112 atau 119), terutama jika darah memancar, perdarahan banyak, atau korban tampak lemas dan pucat.",
+        },
+        {
+          number: 3,
+          title: "Langkah 3: Posisikan Korban",
+          description:
+            "Baringkan atau dudukkan korban agar nyaman dan tidak terjatuh.",
+        },
+        {
+          number: 4,
+          title: "Langkah 4: Tekan Langsung (Direct Pressure)",
+          description:
+            "Tekan langsung luka menggunakan kain bersih, kassa, atau handuk dengan tekanan kuat dan terus-menerus.",
+        },
+        {
+          number: 5,
+          title: "Langkah 5: Tambahkan Lapisan Baru",
+          description:
+            "Jika kain basah oleh darah, jangan dilepas. Tambahkan lapisan kain baru di atasnya dan tetap tekan.",
+        },
+        {
+          number: 6,
+          title: "Langkah 6: Tinggikan Bagian Cedera",
+          description:
+            "Jika luka berada di lengan atau tungkai dan tidak dicurigai patah tulang, tinggikan bagian tubuh yang terluka lebih tinggi dari jantung.",
+        },
+        {
+          number: 7,
+          title: "Langkah 7: Balut Luka Rapi & Pas",
+          description:
+            "Setelah perdarahan berkurang, balut luka dengan perban atau kain yang cukup kencang, tetapi tidak sampai menghambat aliran darah (jari tetap hangat dan berwarna merah muda).",
+        },
+        {
+          number: 8,
+          title: "Langkah 8: Jaga Benda Menancap",
+          description:
+            "Jangan mencabut benda yang tertancap pada luka. Tekan di sekitar benda tersebut dan stabilkan agar tidak bergerak.",
+        },
+        {
+          number: 9,
+          title: "Langkah 9: Jaga Kehangatan & Pantau",
+          description:
+            "Jaga korban tetap hangat dengan selimut atau jaket, dan pantau kesadaran serta napasnya sampai bantuan medis datang.",
+        },
+      ],
+      criticalInstruction:
+        "Segera cari pertolongan medis jika perdarahan tidak berhenti setelah ditekan sekitar 10 menit.",
+    },
+    hindari: {
+      title: "Tindakan yang Berbahaya & Harus Dihindari",
+      items: [
+        "Jangan mencabut benda yang tertancap pada luka (stabilkan posisi benda dan tekan tepinya).",
+        "Jangan melepas lapisan kain pertama saat darah menembus (cukup timpa dengan kain baru di atasnya).",
+        "Jangan mengikat perban terlalu kencang hingga memutus sirkulasi darah (pastikan ujung jari tetap hangat).",
+        "Jangan mengoleskan bensin, minyak, alkohol murni, atau bubuk kopi ke luka terbuka.",
+        "Jangan memberi makan atau minum kepada korban yang lemas, pucat, atau diduga syok.",
+      ],
+    },
+    kapanDarurat: {
+      title: "Kapan Wajib Segera Hubungi 112 atau 119?",
+      content:
+        "Segera cari pertolongan medis dan hubungi 112 / 119 jika:",
+      items: [
+        "Perdarahan tidak berhenti setelah ditekan kuat secara terus-menerus selama sekitar 10 menit.",
+        "Darah menyembur atau memancar deras mengikuti denyut jantung (perdarahan arteri).",
+        "Korban tampak sangat lemas, pucat, pusing berat, atau kehilangan kesadaran.",
+        "Luka sangat dalam, melibatkan serpihan besar tertancap, atau terdapat dugaan patah tulang.",
+      ],
+    },
+    ringkasan:
+      "Perdarahan adalah keluarnya darah dari pembuluh darah akibat cedera. Kenali 3 jenisnya: arteri (memancar merah cerah, paling parah), vena (mengalir stabil merah tua), dan kapiler (merembes merah pada luka lecet). Lakukan 9 langkah pertolongan: aman diri dengan sarung tangan, panggil 112/119, baringkan korban, tekan langsung luka secara kuat, jangan cabut kain pertama, tinggikan jika aman, balut pas, stabilkan benda menancap, jaga kehangatan, dan evaluasi dalam 10 menit.",
+    relatedSlugs: ["kejang", "bhd"],
+  },
+  {
+    slug: "bhd",
+    orderNumber: 3,
+    title: "Materi 3 — Bantuan Hidup Dasar (BHD)",
+    subtitle: "Mengenal BHD & 9 Langkah Resusitasi Jantung Paru",
+    description:
+      "Bantuan Hidup Dasar merupakan serangkaian tindakan awal untuk mempertahankan kehidupan seseorang ketika terjadi kegawatdaruratan, terutama ketika korban tidak responsif dan tidak bernapas normal.",
+    category: "Materi 3 — BHD",
     categoryColor: "bg-green/10 text-green-dark border-green/30",
     accentColor: "#6EE7A8",
     bgColor: "bg-green-light",
     iconBg: "bg-green/10",
     heroImage: "cpr",
     pengertian: {
-      title: "Apa Itu BHD bagi Pengemudi Ojek Online?",
+      title: "1. Mengenal BHD",
       content:
-        "Bantuan Hidup Dasar (BHD) adalah serangkaian pertolongan darurat tanpa alat medis rumit yang dilakukan untuk menyelamatkan nyawa seseorang yang mengalami henti jantung mendadak (sudden cardiac arrest). Setiap 1 menit tanpa pertolongan, peluang bertahan hidup korban menurun hingga 10%. Dengan keberadaan driver ojol yang tersebar luas di seluruh penjuru kota, penguasaan teknik BHD menjadikan mitra ojol sebagai garda penyelamat paling krusial sebelum tim ambulans tiba di lokasi.",
+        "Bantuan Hidup Dasar merupakan serangkaian tindakan awal untuk mempertahankan kehidupan seseorang ketika terjadi kegawatdaruratan, terutama ketika korban tidak responsif dan tidak bernapas normal.",
+      note: "Setiap menit penundaan BHD menurunkan peluang keberhasilan korban bertahan hidup hingga 10%. Inisiasi cepat penolong sangat menentukan keselamatan otak.",
     },
     tanda: {
-      title: "Cara Mengenali Korban Henti Jantung",
+      title: "Tanda yang Perlu Dikenali",
       items: [
-        "Korban tiba-tiba roboh pingsan dan tidak bergerak sama sekali.",
-        "Tidak ada respons saat pundaknya ditepuk kencang dan dipanggil namanya.",
-        "Korban tidak bernapas atau hanya bernapas megap-megap tidak wajar (gasping).",
-        "Wajah dan bibir mulai tampak pucat pasi atau kebiruan.",
-        "Tubuh terkulai lemas tanpa ada tanda-tanda kehidupan aktif.",
+        "Korban tidak responsif (tidak bereaksi saat dipanggil atau ditepuk bahunya).",
+        "Tidak bernapas atau napas tidak normal (megap-megap).",
+        "Dada tidak tampak naik turun.",
       ],
+      note: "Jika Anda menemukan korban dengan tanda-tanda di atas, segera curigai henti jantung/napas darurat dan mulai rantai keselamatan hidup.",
     },
     langkah: {
-      title: "Urutan Tindakan BHD Cepat untuk Driver",
+      title:
+        "2. Pertolongan Awal Jika Menemukan Korban Tidak Responsif dan Tidak Bernapas Normal",
       steps: [
         {
           number: 1,
-          title: "Pastikan Keamanan Area",
+          title: "Langkah 1: Pastikan Keadaan Aman",
           description:
-            "Pastikan Anda dan korban aman dari arus lalu lintas kendaraan bermotor di jalan raya atau SPBU.",
+            "Pastikan keadaan aman bagi diri sendiri, korban, dan lingkungan sekitar (misalnya jauhkan dari lalu lintas).",
         },
         {
           number: 2,
-          title: "Cek Kesadaran Korban",
+          title: "Langkah 2: Periksa Respons Korban",
           description:
-            "Tepuk kedua bahu korban dengan mantap dan bersuara lantang: 'Pak/Bu, apakah Anda dengar saya?'.",
+            "Periksa respons korban dengan menepuk bahunya dan memanggil dengan keras.",
         },
         {
           number: 3,
-          title: "Minta Bantuan & Telepon 119",
+          title: "Langkah 3: Minta Bantuan & Panggil 112/119",
           description:
-            "Jika tidak merespons, tunjuk rekan sekitar secara spesifik: 'Pak, tolong telepon 119 ambulans sekarang, katakan ada korban tidak bernapas!'.",
+            "Jika korban tidak merespons, minta bantuan orang sekitar untuk menghubungi layanan darurat (112 atau 119) dan mencari AED jika tersedia.",
         },
         {
           number: 4,
-          title: "Cek Napas Singkat (<10 Detik)",
+          title: "Langkah 4: Periksa Napas Singkat",
           description:
-            "Lihat gerakan dadanya. Bila dada tidak naik-turun atau hanya napas megap-megap, segera mulai kompresi dada.",
+            "Periksa napas dengan melihat gerakan dada selama maksimal 10 detik. Jika tidak bernapas atau napas tidak normal, segera mulai tindakan.",
         },
         {
           number: 5,
-          title: "Lakukan Kompresi Dada (Hands-Only CPR)",
+          title: "Langkah 5: Posisikan Korban di Permukaan Keras",
           description:
-            "Letakkan tumit tangan di tengah dada. Tekan sedalam 5-6 cm dengan kecepatan 100-120 kompresi per menit secara ritmis dan konsisten.",
+            "Baringkan korban telentang pada permukaan yang datar dan keras.",
         },
         {
           number: 6,
-          title: "Lanjutkan Bergantian",
+          title: "Langkah 6: Lakukan Kompresi Dada",
           description:
-            "Kompresi tanpa henti. Ajak rekan driver lain bergantian setiap 2 menit agar kualitas kompresi tetap kuat hingga ambulans 119 datang.",
+            "Lakukan kompresi dada dengan meletakkan tumit tangan di tengah dada (separuh bawah tulang dada), tekan dengan kecepatan 100-120 kali per menit dan kedalaman sekitar 5-6 cm. Biarkan dada mengembang penuh di antara tekanan.",
+        },
+        {
+          number: 7,
+          title: "Langkah 7: Bantuan Ventilasi (Bagi yang Terlatih)",
+          description:
+            "Jika terlatih, berikan 2 napas buatan setelah 30 kali kompresi (30 : 2). Jika tidak terlatih, lakukan kompresi dada saja tanpa berhenti.",
+        },
+        {
+          number: 8,
+          title: "Langkah 8: Gunakan AED Segera",
+          description:
+            "Gunakan AED segera setelah tersedia dan ikuti petunjuk suaranya.",
+        },
+        {
+          number: 9,
+          title: "Langkah 9: Lanjutkan Kompresi Berkesinambungan",
+          description:
+            "Lanjutkan sampai korban bergerak atau bernapas normal, petugas medis tiba, atau penolong kelelahan.",
         },
       ],
+      criticalInstruction:
+        "Catat waktu mulai tindakan dan laporkan kepada petugas medis saat serah terima penanganan.",
     },
     hindari: {
-      title: "Hal yang Harus Dihindari",
+      title: "Tindakan yang Berbahaya & Harus Dihindari",
       items: [
-        "Jangan buang waktu lebih dari 10 detik mencari denyut nadi jika Anda tidak terlatih medis; langsung mulai kompresi.",
-        "Jangan memindahkan korban kecuali berada dalam ancaman bahaya fisik langsung (api, ledakan).",
-        "Jangan menghentikan kompresi dada lebih dari 10 detik.",
-        "Jangan ragu atau takut melakukan kompresi—melakukan kompresi dada jauh lebih baik daripada tidak berbuat apa-apa.",
-        "Jangan membiarkan kerumunan warga menutupi sirkulasi udara korban.",
+        "Jangan buang waktu lebih dari 10 detik mencari denyut nadi jika Anda bukan tenaga medis terlatih.",
+        "Jangan melakukan kompresi di permukaan lunak (seperti kasur pegas); korban harus di atas lantai atau permukaan keras.",
+        "Jangan menghentikan kompresi lebih dari 10 detik kecuali saat AED menganalisis irama atau memberikan ventilasi terukur.",
+        "Jangan menyentuh tubuh korban saat alat AED sedang menganalisis ritme jantung atau memberi kejutan listrik.",
+        "Jangan menunda menghubungi 112/119 sebelum memulai tindakan.",
       ],
     },
     kapanDarurat: {
-      title: "Setiap Menit Adalah Emas",
-      content: "Ingat prinsip penyelamatan rantai hidup (Chain of Survival):",
+      title: "Hubungi Layanan Darurat Segera",
+      content:
+        "Ketika menemukan orang kolaps di tempat umum:",
       items: [
-        "Deteksi dini dan segera telepon 119 saat menemukan korban kolaps.",
-        "Kompresi dada berkualitas mengalirkan darah beroksigen ke otak korban.",
-        "Bila ada alat AED (Automated External Defibrillator) di stasiun/mall terdekat, segera ambil dan ikuti panduan suaranya.",
-        "Tetap berikan bantuan hingga tenaga medis profesional SPGDT 119 tiba mengambil alih.",
-        "Ikuti pelatihan praktik resmi BHD bersama organisasi medis untuk mengasah memori otot tangan Anda.",
+        "Langsung hubungi 112 atau 119 bebas pulsa.",
+        "Sampaikan lokasi dengan jelas, sebutkan patokan jalan spesifik.",
+        "Informasikan bahwa korban tidak sadar dan tidak bernapas normal.",
+        "Minta orang lain di sekitar untuk mengambil perangkat AED terdekat.",
       ],
     },
     ringkasan:
-      "Bantuan Hidup Dasar (BHD) adalah keterampilan penyelamat nyawa paling berharga di jalan raya. Keberanian driver ojol mengenali henti napas, memanggil bantuan 119, dan melakukan kompresi dada yang kuat serta berkesinambungan dapat menyelamatkan nyawa sesama warga. Materi ini merupakan panduan dasar edukasi publik.",
-    relatedSlugs: ["perdarahan", "kejang"],
+      "Bantuan Hidup Dasar (BHD) adalah serangkaian tindakan awal mempertahankan kehidupan saat korban tidak responsif dan tidak bernapas normal (atau megap-megap). Lakukan 9 langkah pertolongan: pastikan aman, cek respons, telepon 112/119 & cari AED, cek napas <10 detik, baringkan di permukaan datar keras, lakukan kompresi 100-120x/menit kedalaman 5-6 cm (30:2 jika terlatih atau kompresi saja jika awam), ikuti instruksi AED, lanjutkan tanpa henti hingga tim medis tiba, dan selalu catat waktu mulai tindakan untuk dilaporkan.",
+    relatedSlugs: ["kejang", "perdarahan"],
   },
 ];

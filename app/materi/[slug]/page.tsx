@@ -11,12 +11,16 @@ import {
   Bookmark,
   ShieldCheck,
   Info,
+  Clock,
+  Droplet,
+  HeartPulse,
 } from "lucide-react";
 import SmoothScroll from "@/components/animations/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import { MedicalIllustration } from "@/components/illustrations/MedicalIllustration";
+import BleedingTypesIllustration from "@/components/illustrations/BleedingTypesIllustration";
 import { materials, MaterialDetail } from "@/data/materials";
 
 interface PageProps {
@@ -98,7 +102,7 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                   <span
                     className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 border ${material.categoryColor}`}
                   >
-                    Kategori: {material.category}
+                    {material.category}
                   </span>
                   <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-ink mb-4 leading-tight">
                     {material.title}
@@ -113,11 +117,11 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                   <div className="flex flex-wrap items-center gap-3">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-100 text-xs font-semibold text-ink-light">
                       <ShieldCheck className="w-4 h-4 text-green-dark" />
-                      Pedoman Pertolongan Pertama
+                      Pedoman Pertolongan Pertama Medis
                     </span>
                     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-100 text-xs font-semibold text-ink-light">
-                      <Info className="w-4 h-4 text-blue" />
-                      Edukasi Driver Ojol & Komunitas Jalan
+                      <PhoneCall className="w-4 h-4 text-red" />
+                      Panggilan Darurat: 112 / 119
                     </span>
                   </div>
                 </div>
@@ -150,17 +154,25 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                     >
                       1. Pengertian
                     </a>
+                    {material.slug === "perdarahan" && (
+                      <a
+                        href="#jenis-perdarahan"
+                        className="block px-3 py-2 rounded-lg font-bold text-red hover:bg-red-light transition-colors"
+                      >
+                        • Ilustrasi 3 Jenis Perdarahan
+                      </a>
+                    )}
                     <a
                       href="#tanda"
                       className="block px-3 py-2 rounded-lg font-medium text-ink-light hover:bg-cream hover:text-red transition-colors"
                     >
-                      2. Tanda Bahaya
+                      2. Tanda Kondisi
                     </a>
                     <a
                       href="#langkah"
                       className="block px-3 py-2 rounded-lg font-medium text-ink-light hover:bg-cream hover:text-red transition-colors"
                     >
-                      3. Langkah Pertolongan
+                      3. Pertolongan Awal
                     </a>
                     <a
                       href="#hindari"
@@ -172,7 +184,7 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                       href="#kapan-darurat"
                       className="block px-3 py-2 rounded-lg font-medium text-ink-light hover:bg-cream hover:text-red transition-colors"
                     >
-                      5. Kapan Kontak 119
+                      5. Hubungi 112 / 119
                     </a>
                     <a
                       href="#ringkasan"
@@ -186,13 +198,13 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                   <div className="pt-4 border-t border-ink/5">
                     <div className="rounded-xl bg-red-light p-3.5 text-center">
                       <div className="text-[11px] font-bold text-red uppercase tracking-wider">
-                        Kondisi Mengancam Jiwa?
+                        Kondisi Darurat Medis
                       </div>
-                      <div className="text-lg font-extrabold text-red-dark mt-0.5">
-                        Telepon 119
+                      <div className="text-xl font-extrabold text-red-dark mt-0.5">
+                        112 / 119
                       </div>
                       <p className="text-[10px] text-ink-lighter mt-1 leading-snug">
-                        Layanan Tanggap Kedaruratan Medis Kementerian Kesehatan RI.
+                        Layanan Tanggap Kedaruratan Bebas Pulsa 24 Jam.
                       </p>
                     </div>
                   </div>
@@ -215,7 +227,22 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                   <p className="text-sm sm:text-base text-ink-light leading-relaxed">
                     {material.pengertian.content}
                   </p>
+                  {material.pengertian.note && (
+                    <div className="mt-4 p-4 rounded-2xl bg-cream/70 border border-ink/10 flex items-start gap-3">
+                      <Info className="w-4 h-4 text-blue shrink-0 mt-0.5" />
+                      <p className="text-xs sm:text-sm text-ink-light leading-relaxed">
+                        {material.pengertian.note}
+                      </p>
+                    </div>
+                  )}
                 </section>
+
+                {/* Khusus Perdarahan: Tampilkan Ilustrasi Jenis Perdarahan (Arteri, Vena, Kapiler) */}
+                {material.slug === "perdarahan" && (
+                  <section id="jenis-perdarahan" className="scroll-mt-24">
+                    <BleedingTypesIllustration />
+                  </section>
+                )}
 
                 {/* 2. Tanda yang Perlu Dikenali */}
                 <section
@@ -232,11 +259,11 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                     Waspadai tanda-tanda berikut pada korban untuk segera mengambil tindakan pertolongan:
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-4">
                     {material.tanda.items.map((item, idx) => (
                       <div
                         key={idx}
-                        className="flex items-start gap-3 p-3.5 rounded-2xl bg-cream/60 border border-ink/5"
+                        className="flex items-start gap-3 p-4 rounded-2xl bg-cream/50 border border-ink/5"
                       >
                         <AlertTriangle className="w-4 h-4 text-red shrink-0 mt-0.5" />
                         <span className="text-xs sm:text-sm text-ink-light font-medium leading-relaxed">
@@ -245,6 +272,15 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                       </div>
                     ))}
                   </div>
+
+                  {material.tanda.note && (
+                    <div className="mt-4 p-4 rounded-2xl bg-yellow-light/60 border border-yellow/40 flex items-start gap-3">
+                      <Info className="w-4 h-4 text-ink shrink-0 mt-0.5" />
+                      <p className="text-xs sm:text-sm font-bold text-ink leading-relaxed">
+                        Catatan Penting: {material.tanda.note}
+                      </p>
+                    </div>
+                  )}
                 </section>
 
                 {/* 3. Langkah Pertolongan Pertama */}
@@ -253,7 +289,7 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                   className="rounded-3xl border border-ink/8 bg-white p-7 sm:p-9 scroll-mt-24 shadow-sm"
                 >
                   <div className="inline-block px-3 py-1 rounded-full bg-blue-light text-blue text-xs font-bold mb-3 border border-blue/20">
-                    Bagian 03 — Panduan Utama
+                    Bagian 03 — Panduan Langkah Pertolongan
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-ink mb-2">
                     {material.langkah.title}
@@ -268,7 +304,7 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                         key={step.number}
                         className="flex flex-col sm:flex-row sm:items-start gap-4 p-5 rounded-2xl bg-gray-50/80 border border-ink/5 hover:border-ink/15 transition-colors"
                       >
-                        <div className="w-10 h-10 rounded-xl bg-ink text-white font-extrabold text-base flex items-center justify-center shrink-0">
+                        <div className="w-10 h-10 rounded-xl bg-ink text-white font-extrabold text-base flex items-center justify-center shrink-0 shadow-sm">
                           {step.number}
                         </div>
                         <div className="flex-1">
@@ -282,6 +318,23 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                       </div>
                     ))}
                   </div>
+
+                  {/* Critical Action Banner */}
+                  {material.langkah.criticalInstruction && (
+                    <div className="mt-7 p-5 rounded-2xl bg-red-light/50 border border-red/30 flex items-start gap-4 shadow-sm">
+                      <div className="w-10 h-10 rounded-xl bg-red text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                        <Clock className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <div className="text-xs font-extrabold uppercase tracking-wider text-red">
+                          Instruksi Kritis untuk Penolong
+                        </div>
+                        <p className="text-sm sm:text-base font-extrabold text-ink mt-0.5 leading-relaxed">
+                          {material.langkah.criticalInstruction}
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </section>
 
                 {/* 4. Yang Harus Dihindari */}
@@ -297,7 +350,7 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                     {material.hindari.title}
                   </h2>
                   <p className="text-xs text-ink-lighter mb-6">
-                    Tindakan yang salah dapat memperburuk kondisi korban. Hindari kesalahan umum berikut:
+                    Tindakan yang keliru dapat membahayakan keselamatan korban. Hindari kesalahan berikut:
                   </p>
 
                   <div className="space-y-3">
@@ -315,7 +368,7 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                   </div>
                 </section>
 
-                {/* 5. Kapan Membutuhkan Bantuan Darurat */}
+                {/* 5. Kapan Membutuhkan Bantuan Darurat 112 / 119 */}
                 <section
                   id="kapan-darurat"
                   className="rounded-3xl border border-yellow/40 bg-yellow-light/30 p-7 sm:p-9 scroll-mt-24 shadow-sm"
@@ -368,33 +421,57 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                   </div>
                 </section>
 
-                {/* Related Materials Section */}
-                {relatedMaterials.length > 0 && (
-                  <div className="pt-8 border-t border-ink/10">
-                    <h3 className="text-xl font-bold text-ink mb-4">
-                      Materi Terkait Lainnya
-                    </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {relatedMaterials.map((rel) => (
-                        <Link
-                          key={rel.slug}
-                          href={`/materi/${rel.slug}`}
-                          className="group p-5 rounded-2xl border border-ink/8 bg-white hover:border-ink/20 hover:shadow-md transition-all flex items-center justify-between"
-                        >
-                          <div>
-                            <span className="text-[11px] font-bold text-red uppercase tracking-wider">
-                              Modul Berikutnya
-                            </span>
-                            <div className="text-base font-bold text-ink group-hover:text-red transition-colors">
-                              {rel.title}
-                            </div>
-                          </div>
-                          <ArrowRight className="w-4 h-4 text-ink-lighter group-hover:text-red group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                      ))}
+                {/* Navigation to Quiz & Other Materials */}
+                <div className="pt-8 border-t border-ink/10 space-y-6">
+                  {/* Evaluasi CTA Banner */}
+                  <div className="rounded-3xl bg-ink text-white p-7 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
+                    <div>
+                      <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-xs font-bold uppercase tracking-wider text-red-light mb-2">
+                        Evaluasi Pemahaman
+                      </span>
+                      <h3 className="text-xl sm:text-2xl font-extrabold">
+                        Uji Pemahaman Melalui Kuis Evaluasi
+                      </h3>
+                      <p className="text-xs sm:text-sm text-white/70 mt-1 max-w-lg">
+                        Setelah mempelajari seluruh materi, ukur pemahaman Anda dengan 5 kuis interaktif berstandar kedaruratan.
+                      </p>
                     </div>
+                    <Link
+                      href="/evaluasi"
+                      className="shrink-0 px-6 py-3.5 rounded-2xl bg-red text-white text-xs sm:text-sm font-bold hover:bg-red-dark transition-colors shadow-md"
+                    >
+                      Buka Kuis Evaluasi
+                    </Link>
                   </div>
-                )}
+
+                  {/* Related Materials Section */}
+                  {relatedMaterials.length > 0 && (
+                    <div>
+                      <h3 className="text-lg font-bold text-ink mb-4">
+                        Modul Materi Lainnya
+                      </h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {relatedMaterials.map((rel) => (
+                          <Link
+                            key={rel.slug}
+                            href={`/materi/${rel.slug}`}
+                            className="group p-5 rounded-2xl border border-ink/8 bg-white hover:border-ink/20 hover:shadow-md transition-all flex items-center justify-between"
+                          >
+                            <div>
+                              <span className="text-[11px] font-bold text-red uppercase tracking-wider">
+                                {rel.category}
+                              </span>
+                              <div className="text-base font-bold text-ink group-hover:text-red transition-colors">
+                                {rel.title}
+                              </div>
+                            </div>
+                            <ArrowRight className="w-4 h-4 text-ink-lighter group-hover:text-red group-hover:translate-x-1 transition-transform" />
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>

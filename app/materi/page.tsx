@@ -1,5 +1,16 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, AlertCircle, ShieldAlert, HeartPulse, PhoneCall, CheckCircle2, Bike } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  AlertCircle,
+  ShieldAlert,
+  HeartPulse,
+  PhoneCall,
+  CheckCircle2,
+  Bike,
+  Sparkles,
+  ClipboardCheck,
+} from "lucide-react";
 import SmoothScroll from "@/components/animations/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -8,15 +19,15 @@ import { MedicalIllustration } from "@/components/illustrations/MedicalIllustrat
 import { materials } from "@/data/materials";
 
 export const metadata = {
-  title: "Koleksi Materi Driver — E-Art Gallery of Emergency",
+  title: "Katalog Materi Kedaruratan — E-Art Gallery of Emergency",
   description:
-    "Panduan pertolongan pertama komprehensif bagi mitra pengemudi ojek online untuk menangani perdarahan kecelakaan, kejang penumpang/warga, dan BHD di jalan raya.",
+    "Panduan materi pertolongan pertama komprehensif: Mengenal Kejang, Perdarahan Arteri/Vena/Kapiler, dan Bantuan Hidup Dasar (BHD) untuk penyelamatan darurat di jalan raya.",
 };
 
 export default function MateriPage() {
   const iconMap: Record<string, typeof AlertCircle> = {
-    perdarahan: AlertCircle,
     kejang: ShieldAlert,
+    perdarahan: AlertCircle,
     bhd: HeartPulse,
   };
 
@@ -33,23 +44,23 @@ export default function MateriPage() {
                 Beranda
               </Link>
               <span>/</span>
-              <span className="font-semibold text-ink">Materi Pertolongan Pertama Driver Ojol</span>
+              <span className="font-semibold text-ink">Materi Pertolongan Pertama</span>
             </nav>
 
             {/* Header */}
-            <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="text-center max-w-3xl mx-auto mb-14">
               <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-red/10 text-red border border-red/20 mb-4">
                 <Bike className="w-3.5 h-3.5" />
-                Panduan Driver Siaga Jalan Raya
+                Materi Pelatihan Inti Driver Siaga
               </span>
               <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-ink mb-4">
                 Katalog Materi{" "}
                 <span className="font-handwritten text-red text-5xl sm:text-6xl inline-block -rotate-1">
-                  Kedaruratan Jalan
+                  Kedaruratan
                 </span>
               </h1>
               <p className="text-base sm:text-lg text-ink-light leading-relaxed">
-                Panduan praktis dan terstruktur bagi mitra pengemudi ojek online untuk merespons kondisi kritis di aspal secara tenang, aman, dan tepat sebelum bantuan medis tiba.
+                Pelajari 3 modul pertolongan pertama esensial: Penanganan Kejang, Manajemen Perdarahan (Arteri, Vena, Kapiler), dan Rantai Bantuan Hidup Dasar (BHD).
               </p>
             </div>
 
@@ -61,13 +72,13 @@ export default function MateriPage() {
                 </div>
                 <div>
                   <div className="text-xs font-bold uppercase tracking-wider text-red-light">
-                    Kedaruratan Medis Bebas Pulsa (SPGDT)
+                    Kedaruratan Medis Bebas Pulsa Nasional
                   </div>
                   <div className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-                    Hubungi 119 atau 112
+                    Hubungi 112 atau 119
                   </div>
                   <p className="text-xs sm:text-sm text-white/80 mt-0.5">
-                    Sebutkan patokan jalan, arah lajur lalu lintas, jumlah korban, dan kondisi kesadaran korban.
+                    Sebutkan patokan jalan spesifik, arah jalur kendaraan, jumlah korban, dan kondisi kesadaran serta napas korban.
                   </p>
                 </div>
               </div>
@@ -82,7 +93,7 @@ export default function MateriPage() {
             </div>
 
             {/* Materials Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
               {materials.map((item) => {
                 const Icon = iconMap[item.slug] || AlertCircle;
                 const illuType =
@@ -105,8 +116,8 @@ export default function MateriPage() {
                         <Icon className="w-3.5 h-3.5" />
                         {item.category}
                       </span>
-                      <span className="text-xs font-mono text-ink-lighter">
-                        Modul {item.slug.toUpperCase()}
+                      <span className="text-xs font-mono font-bold text-ink-lighter">
+                        Materi 0{item.orderNumber}
                       </span>
                     </div>
 
@@ -121,43 +132,74 @@ export default function MateriPage() {
                     </div>
 
                     {/* Title */}
-                    <h2 className="text-2xl font-bold text-ink mb-2">
+                    <h2 className="text-2xl font-bold text-ink mb-1.5">
                       {item.title}
                     </h2>
+                    <p className="text-xs font-semibold text-red mb-3">
+                      {item.subtitle}
+                    </p>
                     <p className="text-sm text-ink-light leading-relaxed mb-6 flex-1">
                       {item.description}
                     </p>
 
                     {/* Key Highlights */}
-                    <div className="space-y-2 mb-6 pt-4 border-t border-ink/5">
+                    <div className="space-y-2.5 mb-6 pt-4 border-t border-ink/5">
                       <div className="text-xs font-bold text-ink-light uppercase tracking-wider">
-                        Ringkasan Pembelajaran Driver:
+                        Poin Kunci Pembelajaran:
                       </div>
                       <div className="flex items-center gap-2 text-xs text-ink/80">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-mint-green text-green-dark shrink-0" />
-                        <span>{item.tanda.items.length} tanda kondisi yang perlu diwaspadai di jalan</span>
+                        <CheckCircle2 className="w-3.5 h-3.5 text-green-dark shrink-0" />
+                        <span>{item.tanda.items.length} tanda kondisi yang perlu dikenali</span>
                       </div>
                       <div className="flex items-center gap-2 text-xs text-ink/80">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-mint-green text-green-dark shrink-0" />
-                        <span>{item.langkah.steps.length} langkah aman pertolongan lapangan</span>
+                        <CheckCircle2 className="w-3.5 h-3.5 text-green-dark shrink-0" />
+                        <span>{item.langkah.steps.length} langkah aman pertolongan awal</span>
                       </div>
                       <div className="flex items-center gap-2 text-xs text-ink/80">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-mint-green text-green-dark shrink-0" />
-                        <span>Tindakan terlarang yang membahayakan korban</span>
+                        <CheckCircle2 className="w-3.5 h-3.5 text-green-dark shrink-0" />
+                        <span>Tindakan berbahaya yang wajib dihindari</span>
                       </div>
                     </div>
 
                     {/* Action link */}
                     <Link
                       href={`/materi/${item.slug}`}
-                      className="inline-flex items-center justify-center gap-2 w-full py-3 px-5 rounded-2xl bg-ink text-white font-semibold text-sm hover:bg-red transition-all shadow-sm"
+                      className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-2xl bg-ink text-white font-semibold text-sm hover:bg-red transition-all shadow-sm active:scale-95"
                     >
-                      Buka Modul Detail
+                      <span>Buka Modul Materi Lengkap</span>
                       <ArrowRight className="w-4 h-4" />
                     </Link>
                   </div>
                 );
               })}
+            </div>
+
+            {/* Evaluasi Quiz Link Banner */}
+            <div className="mb-14 rounded-3xl border border-ink/8 bg-gradient-to-br from-cream to-white p-8 sm:p-10 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-red text-white flex items-center justify-center shrink-0 shadow-sm">
+                  <ClipboardCheck className="w-6 h-6" />
+                </div>
+                <div>
+                  <span className="text-xs font-bold text-red uppercase tracking-wider">
+                    Uji Refleks Pertolongan
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-ink mt-0.5">
+                    Sudah Mempelajari Seluruh Materi?
+                  </h3>
+                  <p className="text-xs sm:text-sm text-ink-light mt-1 max-w-xl">
+                    Uji pemahaman Anda melalui 5 kuis pilihan ganda evaluasi kesiapsiagaan darurat dengan penilaian otomatis dan pembahasan medis lengkap.
+                  </p>
+                </div>
+              </div>
+
+              <Link
+                href="/evaluasi"
+                className="shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl bg-ink text-white font-bold text-sm hover:bg-red transition-all shadow-md active:scale-95"
+              >
+                <span>Mulai Kuis Evaluasi</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
 
             {/* Quick Learning Philosophy Card */}
@@ -167,20 +209,20 @@ export default function MateriPage() {
                   Etika & Prinsip Keselamatan di Jalan Raya
                 </span>
                 <h3 className="text-2xl font-bold text-ink mt-1 mb-3">
-                  Prinsip 3A untuk Pengemudi Ojek Online
+                  Prinsip 3A untuk Penolong Pertama
                 </h3>
                 <p className="text-sm text-ink-light leading-relaxed mb-4">
-                  Sebelum melakukan pertolongan, driver ojol wajib mengutamakan <strong>Aman Diri</strong> (tepikan motor, nyalakan lampu hazard, gunakan helm/sarung tangan), <strong>Aman Lingkungan</strong> (amankan arus lalu lintas jalan dari kendaraan lain), dan <strong>Aman Korban</strong> (hindari mengangkat atau memindahkan korban kecelakaan tanpa indikasi jelas).
+                  Sebelum melakukan pertolongan, penolong wajib mengutamakan <strong>Aman Diri</strong> (gunakan sarung tangan/plastik bersih, waspadai lalu lintas), <strong>Aman Lingkungan</strong> (amankan area sekitar dari benda tajam, bahaya api, atau kendaraan), dan <strong>Aman Korban</strong> (posisikan korban dengan benar tanpa memperparah cedera).
                 </p>
                 <div className="flex flex-wrap gap-2 text-xs font-semibold">
                   <span className="px-3 py-1 rounded-full bg-red-light text-red border border-red/20">
-                    1. Aman Diri (Driver Safety)
+                    1. Aman Diri
                   </span>
                   <span className="px-3 py-1 rounded-full bg-yellow-light text-ink border border-yellow/30">
-                    2. Aman Lingkungan (Traffic Safety)
+                    2. Aman Lingkungan
                   </span>
                   <span className="px-3 py-1 rounded-full bg-blue-light text-blue border border-blue/20">
-                    3. Aman Korban (Patient Safety)
+                    3. Aman Korban
                   </span>
                 </div>
               </div>

@@ -62,7 +62,8 @@ export default function TentangPage() {
                 of Emergency
               </h1>
               <p className="text-base sm:text-lg text-ink-light leading-relaxed">
-                Menjadikan seni visual edukatif sebagai jembatan bagi mitra pengemudi ojek online untuk menguasai pertolongan pertama di jalan raya dengan percaya diri, tenang, dan tanpa rasa takut.
+               E-Art Gallery of Emergency merupakan media edukasi digital yang menyajikan informasi pertolongan pertama pada kondisi kegawatdaruratan melalui ilustrasi, infografis, teks singkat, dan panduan langkah demi langkah.
+
               </p>
             </div>
 

@@ -103,8 +103,7 @@ export default function Footer() {
               © 2026 E-Art Gallery of Emergency. Media Edukasi Digital.
             </p>
             <div className="flex items-center gap-1 text-xs text-gray-500">
-              Dibuat dengan <Heart className="w-3 h-3 text-red mx-0.5 inline" /> untuk pembelajaran
-            </div>
+              &copy; 2026 xyzdto&reg;</div>
           </div>
         </div>
       </div>
