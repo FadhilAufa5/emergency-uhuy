@@ -44,110 +44,6 @@ export interface MaterialDetail {
 
 export const materials: MaterialDetail[] = [
   {
-    slug: "kejang",
-    orderNumber: 1,
-    title: "Materi 1 — Kejang",
-    subtitle: "Mengenal Kejang & 7 Langkah Pertolongan Awal",
-    description:
-      "Kejang merupakan kondisi ketika terjadi aktivitas listrik abnormal di otak yang dapat menyebabkan gerakan tubuh tidak terkendali dan/atau perubahan kesadaran.",
-    category: "Materi 1 — Kejang",
-    categoryColor: "bg-blue/10 text-blue border-blue/20",
-    accentColor: "#3978F6",
-    bgColor: "bg-blue-light",
-    iconBg: "bg-blue/10",
-    heroImage: "seizure",
-    pengertian: {
-      title: "1. Mengenal Kejang",
-      content:
-        "Kejang merupakan kondisi ketika terjadi aktivitas listrik abnormal di otak yang dapat menyebabkan gerakan tubuh tidak terkendali dan/atau perubahan kesadaran.",
-      note: "Setelah kejang reda, korban dapat tampak lemas atau bingung. Hal ini merupakan fase pemulihan normal yang membutuhkan pendampingan tenang.",
-    },
-    tanda: {
-      title: "Tanda yang Dapat Ditemukan",
-      items: [
-        "Tubuh kaku atau bergetar.",
-        "Gerakan tubuh tidak terkendali.",
-        "Tatapan kosong atau mata berbalik.",
-        "Tidak merespons.",
-      ],
-      note: "Setelah kejang korban dapat tampak lemas atau bingung.",
-    },
-    langkah: {
-      title: "2. Pertolongan Awal Jika Menemukan Seseorang Mengalami Kejang",
-      steps: [
-        {
-          number: 1,
-          title: "Langkah 1: Perhatikan Waktu",
-          description:
-            "Tetap tenang dan perhatikan waktu dimulainya kejang.",
-        },
-        {
-          number: 2,
-          title: "Langkah 2: Amankan Area",
-          description:
-            "Amankan area sekitar dengan menjauhkan benda-benda tajam, keras, atau berbahaya (seperti pisau, pecahan kaca, atau kendaraan).",
-        },
-        {
-          number: 3,
-          title: "Langkah 3: Alasi Kepala",
-          description:
-            "Beri alas pada kepala penderita menggunakan benda lembut seperti bantal, jaket, atau handuk agar kepala tidak terbentur lantai.",
-        },
-        {
-          number: 4,
-          title: "Langkah 4: Dilarang Sumpal Mulut",
-          description:
-            "Jangan memasukkan benda, makanan, minuman, atau jari ke dalam mulut korban.",
-        },
-        {
-          number: 5,
-          title: "Langkah 5: Longgarkan Pakaian",
-          description:
-            "Longgarkan pakaian yang ketat, terutama di bagian leher, dada, atau ikat pinggang agar penderita bisa bernapas lebih lega.",
-        },
-        {
-          number: 6,
-          title: "Langkah 6: Miringkan Tubuh",
-          description:
-            "Miringkan tubuh penderita (ke sisi kanan atau kiri) secara perlahan, terutama setelah kejang mulai mereda atau jika ada muntah, untuk mencegah air liur atau muntahan masuk ke saluran pernapasan.",
-        },
-        {
-          number: 7,
-          title: "Langkah 7: Dampingi Hingga Sadar",
-          description:
-            "Dampingi penderita terus-menerus sampai kejang benar-benar berhenti dan ia sadar penuh.",
-        },
-      ],
-      criticalInstruction:
-        "Catat lama kejang dan laporkan durasi kejadian kepada petugas medis atau dokter.",
-    },
-    hindari: {
-      title: "Tindakan yang Berbahaya & Harus Dihindari",
-      items: [
-        "Jangan memasukkan benda, makanan, minuman, sendok, atau jari ke dalam mulut korban.",
-        "Jangan menahan tubuh korban agar tidak bergerak atau menduduki tangan dan kakinya saat kejang berlangsung.",
-        "Jangan menyiram air dingin atau menampar wajah korban yang sedang kejang.",
-        "Jangan memberikan obat tablet atau air minum sebelum korban sadar 100% dan dapat menelan normal.",
-        "Jangan meninggalkan korban sendirian di lokasi sampai kejang benar-benar reda dan kondisinya stabil.",
-      ],
-    },
-    kapanDarurat: {
-      title: "Kapan Wajib Segera Hubungi 112 atau 119?",
-      content:
-        "Segera panggil bantuan medis darurat (112 / 119) jika ditemukan kondisi berikut:",
-      items: [
-        "Kejang berlangsung lebih dari 5 menit (status epileptikus).",
-        "Kejang berulang kembali sebelum korban sempat sadar.",
-        "Korban mengalami kesulitan bernapas setelah kejang berhenti.",
-        "Kejang terjadi di dalam air atau korban terbentur keras hingga cedera.",
-        "Korban sedang hamil atau tidak memiliki riwayat kejang sebelumnya.",
-      ],
-    },
-    ringkasan:
-      "Kejang adalah gangguan akibat aktivitas listrik abnormal di otak. Langkah utama penolong: tetap tenang, perhatikan waktu, amankan area dari benda berbahaya, alasi kepala dengan jaket/benda lembut, dilarang menyumpal mulut, longgarkan pakaian leher, miringkan tubuh saat mereda agar saluran napas bebas, dampingi sampai sadar penuh, dan selalu catat lama kejang.",
-    relatedSlugs: ["perdarahan", "bhd"],
-  },
-  {
     slug: "perdarahan",
     orderNumber: 2,
     title: "Materi 2 — Perdarahan",
@@ -259,121 +155,241 @@ export const materials: MaterialDetail[] = [
     },
     ringkasan:
       "Perdarahan adalah keluarnya darah dari pembuluh darah akibat cedera. Kenali 3 jenisnya: arteri (memancar merah cerah, paling parah), vena (mengalir stabil merah tua), dan kapiler (merembes merah pada luka lecet). Lakukan 9 langkah pertolongan: aman diri dengan sarung tangan, panggil 112/119, baringkan korban, tekan langsung luka secara kuat, jangan cabut kain pertama, tinggikan jika aman, balut pas, stabilkan benda menancap, jaga kehangatan, dan evaluasi dalam 10 menit.",
-    relatedSlugs: ["kejang", "bhd"],
+    relatedSlugs: ["pingsan", "fraktur"],
   },
   {
-    slug: "bhd",
+    slug: "pingsan",
     orderNumber: 3,
-    title: "Materi 3 — Bantuan Hidup Dasar (BHD)",
-    subtitle: "Mengenal BHD & 9 Langkah Resusitasi Jantung Paru",
+    title: "Materi 3 — Pingsan (Sinkop)",
+    subtitle: "Mengenal Pingsan & 9 Langkah Pertolongan Awal",
     description:
-      "Bantuan Hidup Dasar merupakan serangkaian tindakan awal untuk mempertahankan kehidupan seseorang ketika terjadi kegawatdaruratan, terutama ketika korban tidak responsif dan tidak bernapas normal.",
-    category: "Materi 3 — BHD",
-    categoryColor: "bg-green/10 text-green-dark border-green/30",
-    accentColor: "#6EE7A8",
-    bgColor: "bg-green-light",
-    iconBg: "bg-green/10",
-    heroImage: "cpr",
+      "Sinkop merupakan kehilangan kesadaran sementara akibat penurunan perfusi serebral global yang bersifat reversibel dan umumnya pulih spontan. (Susyanti, Gustina, & dkk, 2026)",
+    category: "Materi 3 — Pingsan",
+    categoryColor: "bg-blue/10 text-blue border-blue/20",
+    accentColor: "#3978F6",
+    bgColor: "bg-blue-light",
+    iconBg: "bg-blue/10",
+    heroImage: "pingsan",
     pengertian: {
-      title: "1. Mengenal BHD",
+      title: "1. Mengenal Pingsan",
       content:
-        "Bantuan Hidup Dasar merupakan serangkaian tindakan awal untuk mempertahankan kehidupan seseorang ketika terjadi kegawatdaruratan, terutama ketika korban tidak responsif dan tidak bernapas normal.",
-      note: "Setiap menit penundaan BHD menurunkan peluang keberhasilan korban bertahan hidup hingga 10%. Inisiasi cepat penolong sangat menentukan keselamatan otak.",
+        "Sinkop merupakan kehilangan kesadaran sementara akibat penurunan perfusi serebral global yang bersifat reversibel dan umumnya pulih spontan. (Susyanti, Gustina, & dkk, 2026)",
+      note: "Pemicu umum: Berdiri terlalu lama, keletihan, dehidrasi, beraktivitas terlalu berat. Kondisi lain: Gula darah rendah, perdarahan, atau gangguan jantung. Tingkat bahaya: Umumnya ringan, tetapi dapat berbahaya jika korban terjatuh dan terbentur kepala atau memiliki penyakit jantung.",
     },
     tanda: {
-      title: "Tanda yang Perlu Dikenali",
+      title: "Tanda Sebelum & Saat Pingsan",
       items: [
-        "Korban tidak responsif (tidak bereaksi saat dipanggil atau ditepuk bahunya).",
-        "Tidak bernapas atau napas tidak normal (megap-megap).",
-        "Dada tidak tampak naik turun.",
+        "Tanda Sebelum Pingsan (Gejala): Mengantuk, menguap, terlihat pucat, pusing, pandangan kabur atau berkunang-kunang, tubuh terasa lemah.",
+        "Tanda Saat Pingsan (Kesadaran): Tidak sadar sesaat dan tidak merespons saat dipanggil.",
+        "Napas & Nadi: Korban masih bernapas, nadi teraba lemah.",
+        "Durasi: Umumnya sadar kembali dalam waktu singkat (kurang dari 1 menit).",
       ],
-      note: "Jika Anda menemukan korban dengan tanda-tanda di atas, segera curigai henti jantung/napas darurat dan mulai rantai keselamatan hidup.",
+      note: "Perhatikan durasi! Pingsan umumnya pulih spontan kurang dari 1 menit. Jika korban tak sadar lebih dari 1 menit, waspadai kondisi darurat yang lebih serius.",
     },
     langkah: {
-      title:
-        "2. Pertolongan Awal Jika Menemukan Korban Tidak Responsif dan Tidak Bernapas Normal",
+      title: "2. Pertolongan Awal Jika Menemukan Seseorang Pingsan",
       steps: [
         {
           number: 1,
-          title: "Langkah 1: Pastikan Keadaan Aman",
+          title: "Langkah 1: Tetap Tenang & Amankan Lokasi",
           description:
-            "Pastikan keadaan aman bagi diri sendiri, korban, dan lingkungan sekitar (misalnya jauhkan dari lalu lintas).",
+            "Tetap tenang dan pastikan lokasi aman bagi penolong dan korban (misalnya jauhkan dari lalu lintas).",
         },
         {
           number: 2,
-          title: "Langkah 2: Periksa Respons Korban",
+          title: "Langkah 2: Periksa Respons & Napas (Maks 10 Detik)",
           description:
-            "Periksa respons korban dengan menepuk bahunya dan memanggil dengan keras.",
+            "Periksa respons korban dengan menepuk bahunya dan memanggil dengan keras, lalu periksa napas maksimal 10 detik. Jika korban tidak bernapas atau napas tidak normal, segera lakukan Bantuan Hidup Dasar (BHD).",
         },
         {
           number: 3,
-          title: "Langkah 3: Minta Bantuan & Panggil 112/119",
+          title: "Langkah 3: Hubungi Layanan Darurat 112 / 119",
           description:
-            "Jika korban tidak merespons, minta bantuan orang sekitar untuk menghubungi layanan darurat (112 atau 119) dan mencari AED jika tersedia.",
+            "Minta orang sekitar menghubungi layanan darurat (112 atau 119) jika korban tidak sadar lebih dari 1 menit, mengalami cedera, atau tampak sakit berat.",
         },
         {
           number: 4,
-          title: "Langkah 4: Periksa Napas Singkat",
+          title: "Langkah 4: Baringkan & Tinggikan Tungkai ±30 cm",
           description:
-            "Periksa napas dengan melihat gerakan dada selama maksimal 10 detik. Jika tidak bernapas atau napas tidak normal, segera mulai tindakan.",
+            "Baringkan korban telentang pada permukaan datar, lalu tinggikan kedua tungkai sekitar 30 cm (lebih tinggi dari jantung) jika tidak ada dugaan cedera tulang.",
         },
         {
           number: 5,
-          title: "Langkah 5: Posisikan Korban di Permukaan Keras",
+          title: "Langkah 5: Longgarkan Pakaian & Beri Udara Segar",
           description:
-            "Baringkan korban telentang pada permukaan yang datar dan keras.",
+            "Longgarkan pakaian yang ketat (kerah, ikat pinggang) dan pastikan korban mendapat udara segar. Beri ruang dan jangan biarkan korban dikerumuni.",
         },
         {
           number: 6,
-          title: "Langkah 6: Lakukan Kompresi Dada",
+          title: "Langkah 6: Miringkan Tubuh Jika Muntah",
           description:
-            "Lakukan kompresi dada dengan meletakkan tumit tangan di tengah dada (separuh bawah tulang dada), tekan dengan kecepatan 100-120 kali per menit dan kedalaman sekitar 5-6 cm. Biarkan dada mengembang penuh di antara tekanan.",
+            "Jika korban muntah atau tetap tidak sadar tetapi bernapas normal, miringkan tubuhnya agar muntahan tidak masuk ke saluran pernapasan.",
         },
         {
           number: 7,
-          title: "Langkah 7: Bantuan Ventilasi (Bagi yang Terlatih)",
+          title: "Langkah 7: Dilarang Menampar / Mengguyur Air",
           description:
-            "Jika terlatih, berikan 2 napas buatan setelah 30 kali kompresi (30 : 2). Jika tidak terlatih, lakukan kompresi dada saja tanpa berhenti.",
+            "Jangan menampar, mengguyur dengan air, atau memberi makan dan minum selama korban belum sadar penuh.",
         },
         {
           number: 8,
-          title: "Langkah 8: Gunakan AED Segera",
+          title: "Langkah 8: Bantu Duduk Perlahan & Minum Manis",
           description:
-            "Gunakan AED segera setelah tersedia dan ikuti petunjuk suaranya.",
+            "Setelah korban sadar, bantu duduk perlahan, lalu berikan air minum atau minuman manis sedikit demi sedikit. Jangan langsung membantunya berdiri atau berkendara.",
         },
         {
           number: 9,
-          title: "Langkah 9: Lanjutkan Kompresi Berkesinambungan",
+          title: "Langkah 9: Periksa Luka Jatuh & Pantau Napas",
           description:
-            "Lanjutkan sampai korban bergerak atau bernapas normal, petugas medis tiba, atau penolong kelelahan.",
+            "Periksa apakah ada luka akibat terjatuh, serta pantau kesadaran dan napas sampai bantuan medis datang.",
         },
       ],
       criticalInstruction:
-        "Catat waktu mulai tindakan dan laporkan kepada petugas medis saat serah terima penanganan.",
+        "Segera cari pertolongan medis jika pingsan lebih dari 1 menit, terjadi berulang, atau disertai nyeri dada, sesak napas, kejang, kelumpuhan, cedera kepala, atau korban sedang hamil, lansia, atau memiliki penyakit jantung dan diabetes.",
     },
     hindari: {
       title: "Tindakan yang Berbahaya & Harus Dihindari",
       items: [
-        "Jangan buang waktu lebih dari 10 detik mencari denyut nadi jika Anda bukan tenaga medis terlatih.",
-        "Jangan melakukan kompresi di permukaan lunak (seperti kasur pegas); korban harus di atas lantai atau permukaan keras.",
-        "Jangan menghentikan kompresi lebih dari 10 detik kecuali saat AED menganalisis irama atau memberikan ventilasi terukur.",
-        "Jangan menyentuh tubuh korban saat alat AED sedang menganalisis ritme jantung atau memberi kejutan listrik.",
-        "Jangan menunda menghubungi 112/119 sebelum memulai tindakan.",
+        "Jangan menampar, memukul wajah, atau mengguyur air ke kepala dan tubuh korban.",
+        "Jangan memberi makan atau minum selama korban belum sadar penuh (risiko tersedak dan aspirasi paru).",
+        "Jangan langsung memaksa korban berdiri atau mengemudikan kendaraan sesaat setelah sadar.",
+        "Jangan meninggikan tungkai jika ada dugaan patah tulang paha, panggul, atau cedera leher/tulang belakang.",
+        "Jangan biarkan kerumunan warga mengelilingi korban sehingga menghambat sirkulasi udara segar.",
       ],
     },
     kapanDarurat: {
-      title: "Hubungi Layanan Darurat Segera",
+      title: "Kapan Wajib Segera Hubungi 112 / 119 & Cari Bantuan Medis?",
       content:
-        "Ketika menemukan orang kolaps di tempat umum:",
+        "Segera cari pertolongan medis dan hubungi 112 / 119 jika:",
       items: [
-        "Langsung hubungi 112 atau 119 bebas pulsa.",
-        "Sampaikan lokasi dengan jelas, sebutkan patokan jalan spesifik.",
-        "Informasikan bahwa korban tidak sadar dan tidak bernapas normal.",
-        "Minta orang lain di sekitar untuk mengambil perangkat AED terdekat.",
+        "Pingsan berlangsung lebih dari 1 menit atau terjadi berulang kali.",
+        "Disertai keluhan nyeri dada, sesak napas, atau jantung berdebar kencang.",
+        "Disertai kejang, kelumpuhan, atau kesulitan berbicara.",
+        "Korban mengalami cedera kepala akibat terbentur saat terjatuh.",
+        "Korban sedang hamil, lansia, atau memiliki riwayat penyakit jantung dan diabetes.",
       ],
     },
     ringkasan:
-      "Bantuan Hidup Dasar (BHD) adalah serangkaian tindakan awal mempertahankan kehidupan saat korban tidak responsif dan tidak bernapas normal (atau megap-megap). Lakukan 9 langkah pertolongan: pastikan aman, cek respons, telepon 112/119 & cari AED, cek napas <10 detik, baringkan di permukaan datar keras, lakukan kompresi 100-120x/menit kedalaman 5-6 cm (30:2 jika terlatih atau kompresi saja jika awam), ikuti instruksi AED, lanjutkan tanpa henti hingga tim medis tiba, dan selalu catat waktu mulai tindakan untuk dilaporkan.",
-    relatedSlugs: ["kejang", "perdarahan"],
+      "Sinkop (pingsan) adalah kehilangan kesadaran sementara akibat penurunan perfusi serebral global yang bersifat reversibel dan pulih spontan. 9 langkah pertolongan: amankan lokasi (3A), cek respons & napas <10 detik (bila tidak bernapas segera BHD), panggil 112/119 jika >1 menit, baringkan datar & tinggikan tungkai 30 cm, longgarkan pakaian & beri udara segar, miringkan jika muntah, jangan tampar/guyur air, bantu duduk perlahan dan beri minum manis setelah sadar penuh, serta cek luka akibat terjatuh.",
+    relatedSlugs: ["perdarahan", "fraktur"],
+  },
+  {
+    slug: "fraktur",
+    orderNumber: 4,
+    title: "Materi 4 — Fraktur (Patah Tulang)",
+    subtitle: "Mengenal Fraktur Terbuka & Tertutup Serta 9 Langkah Pertolongan Awal",
+    description:
+      "Fraktur dapat diartikan sebagai retak atau patah pada tulang yang berfungsi sebagai penopang tubuh manusia dan tempat melekatnya otot. (Qasanah, Winarto, & dkk, 2023)",
+    category: "Materi 4 — Fraktur",
+    categoryColor: "bg-yellow/10 text-yellow-dark border-yellow/40",
+    accentColor: "#FFD166",
+    bgColor: "bg-yellow-light",
+    iconBg: "bg-yellow/10",
+    heroImage: "fraktur",
+    pengertian: {
+      title: "1. Mengenal Fraktur",
+      content:
+        "Fraktur dapat diartikan sebagai retak atau patah pada tulang. Tulang merupakan suatu komponen tubuh yang sangat penting, karena memiliki fungsi sebagai tempat melekatnya otot, penopang tubuh manusia supaya dapat bergerak secara maksimal (Qasanah, Winarto, & dkk, 2023). Fraktur terbagi menjadi fraktur terbuka dan fraktur tertutup. Dalam website ditampilkan ilustrasi untuk membantu pengguna mengenali karakteristik masing-masing jenis fraktur.",
+      note: "Fraktur terbuka memiliki tingkat bahaya lebih berat karena risiko perdarahan banyak dan infeksi tinggi, sehingga membutuhkan pertolongan medis segera.",
+    },
+    tanda: {
+      title: "Karakteristik Fraktur Tertutup & Terbuka",
+      items: [
+        "Fraktur tertutup: Tidak ada fragmen tulang yang menembus kulit dan karena itu lokasi fraktur tidak terkontaminasi oleh lingkungan kulit luar.",
+        "Tanda fraktur tertutup: Nyeri hebat, bengkak, memar, bentuk anggota tubuh tampak berubah, dan sulit digerakkan.",
+        "Tingkat bahaya fraktur tertutup: Risiko infeksi lebih rendah, tetapi tetap membutuhkan penanganan medis karena dapat merusak pembuluh darah dan saraf.",
+        "Fraktur terbuka: Fraktur dimana relasi melalui kondisi eksternal terjadi pada kulit.",
+        "Tanda fraktur terbuka: Perdarahan, nyeri hebat, bengkak, dan bentuk anggota tubuh berubah.",
+        "Tingkat bahaya fraktur terbuka: Lebih berat karena risiko perdarahan banyak dan infeksi tinggi, sehingga membutuhkan pertolongan medis segera.",
+      ],
+      note: "Penanganan fraktur di jalan raya berfokus pada imobilisasi dan pencegahan cedera sekunder tanpa mencoba mengembalikan posisi tulang.",
+    },
+    langkah: {
+      title: "2. Pertolongan Awal Jika Menemukan Seseorang yang Dicurigai Mengalami Patah Tulang",
+      steps: [
+        {
+          number: 1,
+          title: "Langkah 1: Tenang & Amankan Lokasi",
+          description:
+            "Tetap tenang dan pastikan lokasi aman bagi penolong dan korban. Jangan memindahkan korban kecuali ada bahaya langsung (misalnya lalu lintas atau api).",
+        },
+        {
+          number: 2,
+          title: "Langkah 2: Hubungi Layanan Darurat 112 / 119",
+          description:
+            "Minta orang sekitar menghubungi layanan darurat (112 atau 119), terutama pada fraktur terbuka, perdarahan banyak, atau dugaan cedera kepala, leher, tulang belakang, panggul, atau paha.",
+        },
+        {
+          number: 3,
+          title: "Langkah 3: Diamkan Bagian Cedera",
+          description:
+            "Minta korban tetap diam dan jangan menggerakkan bagian yang cedera. Jangan mencoba meluruskan tulang atau memasukkan kembali tulang yang menonjol.",
+        },
+        {
+          number: 4,
+          title: "Langkah 4: Waspada Cedera Leher & Jangan Lepas Helm",
+          description:
+            "Jika dicurigai cedera leher atau tulang belakang (misalnya jatuh dari motor, nyeri leher atau punggung, kesemutan), jangan gerakkan korban. Jangan melepas helm kecuali menghalangi jalan napas.",
+        },
+        {
+          number: 5,
+          title: "Langkah 5: Tutup Luka Fraktur Terbuka",
+          description:
+            "Fraktur terbuka: Tutup luka dengan kain bersih atau kassa. Jika berdarah, tekan lembut di sekitar luka tanpa menekan ujung tulang yang menonjol.",
+        },
+        {
+          number: 6,
+          title: "Langkah 6: Kompres Dingin Fraktur Tertutup",
+          description:
+            "Fraktur tertutup: Kompres dingin dengan es yang dibungkus kain pada area yang bengkak selama sekitar 20 menit. Jangan menempelkan es langsung ke kulit.",
+        },
+        {
+          number: 7,
+          title: "Langkah 7: Pasang Bidai Imobilisasi (Jika Terlatih)",
+          description:
+            "Jika terlatih dan bantuan lama datang, imobilisasi bagian yang cedera dengan bidai (papan, kayu, atau karton) yang mencakup sendi di atas dan di bawah patahan, lalu ikat tidak terlalu kencang.",
+        },
+        {
+          number: 8,
+          title: "Langkah 8: Periksa Sirkulasi Ujung Jari",
+          description:
+            "Periksa ujung anggota gerak di bawah bidai atau balutan: pastikan jari tetap hangat, berwarna merah muda, dan masih dapat merasakan sentuhan.",
+        },
+        {
+          number: 9,
+          title: "Langkah 9: Jaga Kehangatan & Pantau Tanda Vital",
+          description:
+            "Jaga korban tetap hangat, jangan beri makan atau minum, serta pantau kesadaran dan napasnya sampai bantuan medis datang.",
+        },
+      ],
+      criticalInstruction:
+        "Segera cari pertolongan medis pada semua dugaan patah tulang, terutama jika ujung tulang terlihat, perdarahan banyak, atau bagian tubuh di bawah cedera tampak pucat, dingin, kebiruan, atau mati rasa.",
+    },
+    hindari: {
+      title: "Tindakan yang Berbahaya & Harus Dihindari",
+      items: [
+        "Jangan mencoba meluruskan tulang atau memasukkan kembali tulang yang menonjol ke dalam kulit.",
+        "Jangan memindahkan atau menggerakkan korban jika dicurigai cedera leher atau tulang belakang.",
+        "Jangan melepas helm korban kecelakaan motor kecuali menghalangi jalan napas.",
+        "Jangan menempelkan es batu langsung ke permukaan kulit tanpa lapisan kain.",
+        "Jangan mengikat bidai terlalu kencang sehingga menghambat aliran darah (cek kehangatan jari).",
+        "Jangan memberi makan atau minum kepada korban yang dicurigai memerlukan pembiusan/operasi darurat.",
+      ],
+    },
+    kapanDarurat: {
+      title: "Kapan Wajib Segera Hubungi 112 / 119 & Bantuan Medis?",
+      content:
+        "Segera cari pertolongan medis pada semua dugaan patah tulang, terutama jika:",
+      items: [
+        "Ujung tulang terlihat menonjol keluar menembus kulit (fraktur terbuka).",
+        "Terjadi perdarahan banyak dan aktif di sekitar area patahan.",
+        "Bagian tubuh di bawah cedera tampak pucat, dingin, kebiruan, atau mati rasa.",
+        "Dugaan cedera pada leher, tulang punggung, panggul, atau tulang paha (femur).",
+        "Korban mengalami penurunan kesadaran atau tanda-tanda syok berat.",
+      ],
+    },
+    ringkasan:
+      "Fraktur adalah retak atau patah pada tulang penopang tubuh. Kenali 2 jenisnya: fraktur tertutup (kulit utuh, risiko infeksi rendah) dan fraktur terbuka (relasi eksternal kulit, risiko perdarahan & infeksi tinggi). 9 langkah pertolongan: amankan lokasi tanpa memindahkan korban, panggil 112/119, instruksikan diam tanpa meluruskan tulang, proteksi leher & jangan lepas helm sembarangan, tutup luka fraktur terbuka dengan kain bersih tanpa menekan tulang, kompres es berbalut kain 20 menit pada fraktur tertutup, pasang bidai melewati dua sendi bila terlatih, pastikan jari tetap hangat dan berasa, serta jaga kehangatan tubuh sampai ambulans tiba.",
+    relatedSlugs: ["perdarahan", "pingsan"],
   },
 ];

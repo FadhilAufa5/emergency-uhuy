@@ -5,7 +5,37 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ArrowRight, BookOpen, ShieldAlert, Bike, Sparkles } from "lucide-react";
-import { MedicalIllustration } from "@/components/illustrations/MedicalIllustration";
+import Image from "next/image";
+import RawLogoLoop from "@/components/LogoLoop";
+
+const LogoLoop = RawLogoLoop as React.ComponentType<any>;
+
+const BATIK_LOGOS = [
+  {
+    src: "/batik2.jpg",
+    alt: "Batik Flora Nusantara",
+  },
+  {
+    src: "/Kain-Batik.jpg",
+    alt: "Kain Batik Gurdo",
+  },
+  {
+    src: "/batik 3.webp",
+    alt: "Batik Megamendung",
+  },
+  {
+    src: "/batik2.jpg",
+    alt: "Batik Flora Nusantara",
+  },
+  {
+    src: "/Kain-Batik.jpg",
+    alt: "Kain Batik Gurdo",
+  },
+  {
+    src: "/batik 3.webp",
+    alt: "Batik Megamendung",
+  },
+];
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLElement>(null);
@@ -39,12 +69,6 @@ export default function HeroSection() {
           ".hero-cta",
           { opacity: 0, y: 15 },
           { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 },
-          "-=0.2"
-        )
-        .fromTo(
-          ".hero-stats",
-          { opacity: 0, y: 15 },
-          { opacity: 1, y: 0, duration: 0.5 },
           "-=0.2"
         )
         .fromTo(
@@ -91,7 +115,7 @@ export default function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[90vh] flex items-center pt-20 pb-16 overflow-hidden"
+      className="relative min-h-[90vh] flex flex-col justify-between pt-20 pb-4 overflow-hidden"
     >
       {/* Background decorative shapes */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -129,7 +153,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="hero-description mt-6 text-base sm:text-lg text-ink-lighter leading-relaxed max-w-md">
-              Ruang belajar kreatif bagi mitra pengemudi ojek online untuk memahami pertolongan pertama di jalan raya—mulai dari luka kecelakaan aspal, kejang penumpang, hingga henti jantung di tempat umum.
+              Ruang belajar kreatif bagi mitra pengemudi ojek online untuk memahami pertolongan pertama di jalan raya—mulai dari luka perdarahan kecelakaan, korban pingsan (sinkop), hingga penanganan fraktur patah tulang.
             </p>
 
             <div className="flex flex-wrap gap-3 mt-8">
@@ -149,43 +173,19 @@ export default function HeroSection() {
             </div>
 
             {/* Stats */}
-            <div className="hero-stats flex flex-wrap gap-6 mt-10 pt-8 border-t border-gray-200">
-              <div className="flex items-center gap-2.5">
-                <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-red-light">
-                  <ShieldAlert className="w-4 h-4 text-red" />
-                </div>
-                <div>
-                  <p className="text-lg font-bold text-ink">3 Kunci</p>
-                  <p className="text-xs text-ink-lighter">Kedaruratan di Jalan</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-blue-light">
-                  <BookOpen className="w-4 h-4 text-blue" />
-                </div>
-                <div>
-                  <p className="text-lg font-bold text-ink">Prinsip 3A</p>
-                  <p className="text-xs text-ink-lighter">Aman Diri & Lalu Lintas</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-green-light">
-                  <Sparkles className="w-4 h-4 text-green-dark" />
-                </div>
-                <div>
-                  <p className="text-lg font-bold text-ink">Driver Siaga</p>
-                  <p className="text-xs text-ink-lighter">Respon Cepat 119</p>
-                </div>
-              </div>
-            </div>
+
           </div>
 
           {/* Right: Illustration */}
           <div className="relative flex items-center justify-center">
             <div className="hero-illustration relative">
-              <MedicalIllustration
-                type="hero"
-                className="w-full max-w-md lg:max-w-lg mx-auto"
+              <Image
+                src="/ojol.svg"
+                alt="Ilustrasi Mitra Ojek Online Tanggap Darurat"
+                width={581}
+                height={436}
+                priority
+                className="w-full max-w-md lg:max-w-lg mx-auto h-auto object-contain drop-shadow-sm select-none"
               />
             </div>
 
@@ -202,6 +202,23 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* LogoLoop Batik di bawah hero */}
+      <div className="w-full overflow-hidden">
+        <LogoLoop
+          logos={BATIK_LOGOS}
+          speed={40}
+          hoverSpeed={10}
+          pauseOnHover={true}
+          gap={0}
+          logoHeight={54}
+          fadeOut={true}
+          fadeOutWidth={0.12}
+          draggable={true}
+          intro={false}
+          ariaLabel="Logo Motif Batik Nusantara"
+        />
       </div>
     </section>
   );

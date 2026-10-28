@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Droplet, Activity, AlertTriangle, ShieldAlert, HeartCrack, Sparkles } from "lucide-react";
+import BloodVesselIllustration from "./BloodVesselIllustration";
 
 export interface BleedingTypeData {
   id: "arteri" | "vena" | "kapiler";
@@ -127,85 +128,16 @@ export default function BleedingTypesIllustration() {
 
       {/* Active Type Detail Showcase */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-cream/30 rounded-3xl p-6 sm:p-8 border border-ink/8">
-        {/* SVG Visual Diagram */}
+        {/* Visual Artwork Showcase — animated SVG vessel illustration */}
         <div className="lg:col-span-5 flex flex-col items-center justify-center">
-          <div className="w-full h-64 rounded-2xl bg-white border border-ink/10 p-4 flex items-center justify-center relative overflow-hidden shadow-inner">
-            {activeTab === "arteri" && (
-              <svg viewBox="0 0 300 220" className="w-full h-full" fill="none">
-                <rect width="300" height="220" rx="16" fill="#FEE4E2" opacity="0.4" />
-                {/* Vessel */}
-                <path d="M40 160 Q120 150 160 145" stroke="#F04438" strokeWidth="18" strokeLinecap="round" />
-                <path d="M160 145 Q200 140 260 135" stroke="#F04438" strokeWidth="18" strokeLinecap="round" strokeDasharray="6 6" opacity="0.4" />
-                {/* Spurting Arc 1 */}
-                <path d="M155 140 Q180 40 250 80" stroke="#F04438" strokeWidth="6" strokeLinecap="round" fill="none" />
-                <path d="M155 140 Q160 20 220 50" stroke="#FF5C4D" strokeWidth="4.5" strokeLinecap="round" fill="none" />
-                {/* Spurting Arc 2 */}
-                <path d="M158 142 Q140 30 190 70" stroke="#F04438" strokeWidth="5" strokeLinecap="round" fill="none" />
-                {/* Spurting Droplets in rhythm */}
-                <circle cx="255" cy="85" r="7" fill="#F04438" />
-                <circle cx="225" cy="52" r="6" fill="#FF5C4D" />
-                <circle cx="195" cy="73" r="5.5" fill="#F04438" />
-                <circle cx="270" cy="110" r="4" fill="#F04438" />
-                <circle cx="240" cy="95" r="3.5" fill="#FF5C4D" />
-                {/* Pulse waves */}
-                <path d="M60 40 L80 40 L90 20 L100 55 L110 35 L120 40 L140 40" stroke="#F04438" strokeWidth="2.5" strokeLinecap="round" />
-                <text x="60" y="70" fontSize="11" fill="#F04438" fontWeight="bold">Detak Jantung: Memancar Tinggi</text>
-                {/* Badge text */}
-                <g transform="translate(18, 185)">
-                  <rect width="115" height="22" rx="6" fill="#F04438" />
-                  <text x="57" y="15" fontSize="10" fill="white" fontWeight="bold" textAnchor="middle">Merah Cerah (Arteri)</text>
-                </g>
-              </svg>
-            )}
-
-            {activeTab === "vena" && (
-              <svg viewBox="0 0 300 220" className="w-full h-full" fill="none">
-                <rect width="300" height="220" rx="16" fill="#FEE4E2" opacity="0.3" />
-                {/* Vessel */}
-                <path d="M40 160 Q120 150 160 145" stroke="#991B1B" strokeWidth="18" strokeLinecap="round" />
-                <path d="M160 145 Q200 140 260 135" stroke="#991B1B" strokeWidth="18" strokeLinecap="round" strokeDasharray="6 6" opacity="0.4" />
-                {/* Steady flow pool and downward pour */}
-                <path d="M152 142 C150 165 170 190 220 195 C260 198 280 185 270 170 C250 150 200 155 160 142 Z" fill="#991B1B" opacity="0.85" />
-                <path d="M150 140 Q170 160 210 165" stroke="#7F1D1D" strokeWidth="8" strokeLinecap="round" />
-                <path d="M155 142 Q185 170 240 175" stroke="#991B1B" strokeWidth="6" strokeLinecap="round" />
-                {/* Steady flow waves */}
-                <path d="M60 40 Q85 30 110 40 T160 40" stroke="#991B1B" strokeWidth="3" fill="none" />
-                <text x="60" y="65" fontSize="11" fill="#991B1B" fontWeight="bold">Aliran Stabil & Terus-Menerus</text>
-                {/* Badge text */}
-                <g transform="translate(18, 185)">
-                  <rect width="125" height="22" rx="6" fill="#991B1B" />
-                  <text x="62" y="15" fontSize="10" fill="white" fontWeight="bold" textAnchor="middle">Merah Tua/Gelap (Vena)</text>
-                </g>
-              </svg>
-            )}
-
-            {activeTab === "kapiler" && (
-              <svg viewBox="0 0 300 220" className="w-full h-full" fill="none">
-                <rect width="300" height="220" rx="16" fill="#FFF8F0" />
-                {/* Skin layer */}
-                <path d="M30 150 Q150 140 270 150" stroke="#FBBF94" strokeWidth="22" strokeLinecap="round" />
-                {/* Abrasion / Grazed area */}
-                <ellipse cx="150" cy="140" rx="65" ry="14" fill="#FCA5A5" opacity="0.6" />
-                {/* Oozing beads */}
-                <circle cx="120" cy="136" r="5" fill="#DC2626" />
-                <circle cx="138" cy="133" r="6.5" fill="#EF4444" />
-                <circle cx="155" cy="138" r="5" fill="#DC2626" />
-                <circle cx="170" cy="134" r="5.5" fill="#EF4444" />
-                <circle cx="185" cy="138" r="4" fill="#DC2626" />
-                <circle cx="145" cy="143" r="4" fill="#EF4444" />
-                {/* Gentle trickle */}
-                <path d="M138 139 Q140 155 142 165" stroke="#DC2626" strokeWidth="3" strokeLinecap="round" />
-                <text x="60" y="55" fontSize="11" fill="#DC2626" fontWeight="bold">Merembes Perlahan dari Permukaan Kulit</text>
-                {/* Badge text */}
-                <g transform="translate(18, 185)">
-                  <rect width="135" height="22" rx="6" fill="#DC2626" />
-                  <text x="67" y="15" fontSize="10" fill="white" fontWeight="bold" textAnchor="middle">Merah / Luka Lecet (Kapiler)</text>
-                </g>
-              </svg>
-            )}
+          <div className="relative w-full rounded-2xl overflow-hidden border border-ink/10 shadow-md bg-white">
+            <BloodVesselIllustration
+              type={activeType.id}
+              className="w-full"
+            />
           </div>
-          <div className="text-center mt-3 text-xs font-mono text-ink-lighter">
-            Model Visual Pembuluh: {activeType.pembuluh}
+          <div className="text-center mt-3 text-xs font-medium text-ink-lighter">
+            Model Pembuluh: {activeType.pembuluh}
           </div>
         </div>
 

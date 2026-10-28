@@ -28,10 +28,17 @@ export default function FeaturedArtwork() {
             >
               {/* Image area */}
               <div className={`relative aspect-[4/3] overflow-hidden ${artwork.bgColor}`}>
-                <div className="absolute inset-0 flex items-center justify-center p-6 transition-transform duration-500 group-hover:scale-105">
+                <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-4 transition-transform duration-500 group-hover:scale-105">
                   <MedicalIllustration
-                    type={artwork.imagePlaceholder as "bleeding" | "seizure" | "cpr"}
-                    className="w-full h-full object-contain"
+                    type={
+                      artwork.imagePlaceholder as
+                        | "bleeding"
+                        | "seizure"
+                        | "cpr"
+                        | "pingsan"
+                        | "fraktur"
+                    }
+                    className="w-full h-full object-cover rounded-xl shadow-sm"
                   />
                 </div>
                 {/* Category badge */}

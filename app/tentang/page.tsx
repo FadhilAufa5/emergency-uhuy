@@ -78,7 +78,7 @@ export default function TentangPage() {
                     Driver Ojol: Saksi Mata Pertama & Penolong Garda Depan Jalanan
                   </h2>
                   <p className="text-sm sm:text-base text-ink-light leading-relaxed">
-                    Setiap hari, jutaan mitra pengemudi ojek online menjelajahi jalanan kota hingga pelosok. Di lapangan, saat kecelakaan lalu lintas terjadi, penumpang mendadak kejang, atau pejalan kaki kolaps pingsan, <strong>driver ojek onlinelah yang paling sering tiba pertama kali di tempat kejadian perkara (TKP)</strong> jauh sebelum mobil ambulans dapat menembus kemacetan.
+                    Setiap hari, jutaan mitra pengemudi ojek online menjelajahi jalanan kota hingga pelosok. Di lapangan, saat kecelakaan lalu lintas terjadi, korban pingsan akibat keletihan, atau pengendara mengalami patah tulang, <strong>driver ojek onlinelah yang paling sering tiba pertama kali di tempat kejadian perkara (TKP)</strong> jauh sebelum mobil ambulans dapat menembus kemacetan.
                   </p>
                   <p className="text-sm sm:text-base text-ink-light leading-relaxed">
                     Namun, materi medis formal kerap disajikan dengan istilah rumit atau foto luka berdarah yang memicu kepanikan. <strong>E-Art Gallery of Emergency</strong> hadir dengan pendekatan seni editorial: ramah mata, kaya ilustrasi bermakna, dan fokus pada protokol tindakan praktis yang relevan dengan kondisi jalan raya.

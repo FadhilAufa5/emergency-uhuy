@@ -10,8 +10,8 @@ import SectionHeading from "@/components/ui/SectionHeading";
 export default function MaterialSection() {
   const iconMap: Record<string, typeof AlertCircle> = {
     perdarahan: AlertCircle,
-    kejang: ShieldAlert,
-    bhd: HeartPulse,
+    pingsan: ShieldAlert,
+    fraktur: HeartPulse,
   };
 
   return (
@@ -37,9 +37,9 @@ export default function MaterialSection() {
             const illuType =
               item.slug === "perdarahan"
                 ? "bleeding"
-                : item.slug === "kejang"
-                ? "seizure"
-                : "cpr";
+                : item.slug === "pingsan"
+                ? "pingsan"
+                : "fraktur";
 
             return (
               <div

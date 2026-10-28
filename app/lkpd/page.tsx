@@ -75,72 +75,70 @@ const detailedLKPD: LKPDDetail[] = [
   {
     id: "lkpd-2",
     number: "02",
-    title: "LKPD 2 — Proteksi Penumpang & Warga Kejang di Ruang Publik",
-    topic: "Kejang di Tepi Jalan",
+    title: "LKPD 2 — Pertolongan Korban Pingsan (Sinkop) di Tempat Umum",
+    topic: "Pingsan di Ruang Publik",
     topicBadge: "bg-blue/10 text-blue border-blue/20",
     duration: "30 Menit",
     target: "Mitra Pengemudi Ojek Online & Relawan Jalan Raya",
     description:
-      "Studi kasus pendampingan saat penumpang atau warga di pangkalan ojol tiba-tiba kejang: pengamanan kepala dari aspal dan penanganan jalan napas pascakejang.",
+      "Studi kasus pendampingan korban pingsan (sinkop) akibat kelelahan, dehidrasi, atau berdiri terlalu lama: elevasi tungkai 30 cm, evaluasi kesadaran, dan posisi pemulihan.",
     objective:
-      "Mitra ojol mampu bertindak tenang melindungi korban dari benturan keras, mematahkan mitos memasukkan sendok/benda ke mulut, dan memposisikan recovery position.",
+      "Mitra ojol mampu mengenali tanda sebelum dan saat pingsan, memposisikan korban telentang dengan kaki terangkat 30 cm, melonggarkan pakaian, serta menghindari tindakan berbahaya seperti menampar atau memberi minum.",
     activities: [
       {
-        title: "Aktivitas 1: Proteksi Fisik & Hilangkan Mitos",
-        instructions:
-          [
-            "Segera hentikan motor dan bantu korban jika kejang terjadi saat berhenti di tepi jalan.",
-            "Letakkan jaket ojol atau kain empuk di bawah kepala korban agar tidak terbentur aspal keras.",
-            "Singkirkan motor, helm, dan benda tajam di sekitar korban.",
-            "Larang siapa pun memasukkan sendok, kopi, atau jari ke dalam mulut korban.",
-          ],
-        reflection: "Apa bahaya fatal jika seseorang memasukkan benda keras ke mulut orang yang sedang kejang?",
+        title: "Aktivitas 1: Amankan Lingkungan & Posisi Elevasi Kaki",
+        instructions: [
+          "Pastikan lokasi aman dan jauhkan korban dari arus lalu lintas kendaraan.",
+          "Periksa respons korban dengan menepuk bahu dan memanggil dengan keras, lalu cek napas maksimal 10 detik.",
+          "Baringkan korban telentang pada permukaan datar, lalu tinggikan kedua tungkai sekitar 30 cm (lebih tinggi dari jantung).",
+          "Longgarkan kerah baju, helm, dan ikat pinggang agar pernapasan lega serta beri ruang udara segar.",
+        ],
+        reflection: "Mengapa meninggikan kedua tungkai 30 cm efektif memulihkan kesadaran korban pingsan?",
       },
       {
-        title: "Aktivitas 2: Posisi Miring Mantap (Recovery Position)",
-        instructions:
-          [
-            "Setelah gerakan kejang berhenti, miringkan tubuh korban ke satu sisi dengan lembut.",
-            "Pastikan jalan napas bersih dari cairan ludah atau muntahan.",
-            "Dampingi korban hingga kesadarannya pulih utuh, dan hubungi 119 bila kejang lebih dari 5 menit.",
-          ],
-        reflection: "Kapan kondisi kejang di jalan raya wajib segera dilarikan ke IGD dengan ambulans?",
+        title: "Aktivitas 2: Pemulihan Sadar Penuh & Tindakan Terlarang",
+        instructions: [
+          "Dilarang keras menampar, mengguyur air ke wajah, atau memberi makan/minum sebelum korban sadar penuh.",
+          "Jika korban muntah, segera miringkan tubuhnya ke samping agar muntahan tidak menyumbat jalan napas.",
+          "Setelah sadar penuh, bantu duduk perlahan lalu berikan air minum atau teh manis sedikit demi sedikit.",
+          "Hubungi 112/119 jika korban tidak sadar lebih dari 1 menit, hamil, lansia, atau memiliki riwayat penyakit jantung.",
+        ],
+        reflection: "Apa risiko berbahaya apabila kita memaksa memberi minum pada korban yang belum sadar penuh?",
       },
     ],
   },
   {
     id: "lkpd-3",
     number: "03",
-    title: "LKPD 3 — Simulasi Respon BHD & CPR untuk Driver Siaga",
-    topic: "BHD Jalanan & Halte",
+    title: "LKPD 3 — Penanganan Fraktur (Patah Tulang) Kecelakaan Jalan Raya",
+    topic: "Fraktur & Patah Tulang",
     topicBadge: "bg-green/10 text-green-dark border-green/30",
     duration: "35 Menit",
     target: "Mitra Pengemudi Ojek Online & Relawan Jalan Raya",
     description:
-      "Panduan rantai keselamatan hidup saat menemukan korban kolaps mendadak tidak bernapas di pangkalan ojol, SPBU, atau trotoar jalan raya.",
+      "Panduan penanganan korban patah tulang akibat kecelakaan sepeda motor: membedakan fraktur tertutup vs terbuka, prinsip imobilisasi dengan bidai, dan perlindungan tulang belakang.",
     objective:
-      "Mitra ojol memahami urutan cek respons korban, aktivasi cepat sistem 119/112, dan teknik kompresi dada tanpa henti (hands-only CPR) hingga tim medis tiba.",
+      "Mitra ojol mampu mengidentifikasi tanda fraktur terbuka dan tertutup, melakukan imobilisasi aman tanpa meluruskan tulang, melindungi leher/tulang belakang, dan menghubungi 112/119 secara tepat.",
     activities: [
       {
-        title: "Aktivitas 1: Cek Respons & Panggilan Darurat 119",
-        instructions:
-          [
-            "Tepuk kedua pundak korban dengan tegas dan panggil dengan suara lantang.",
-            "Bila tidak ada respons dan napas berhenti/hanya megap-megap, langsung teriak minta bantuan rekan sekitar.",
-            "Telepon 119: sebutkan nama driver, lokasi spesifik, dan laporkan 'korban tidak bernapas'.",
-          ],
-        reflection: "Mengapa kompresi dada harus segera dimulai tanpa menunda waktu dalam kasus henti jantung?",
+        title: "Aktivitas 1: Penilaian Awal & Prinsip Jangan Menggerakkan Korban",
+        instructions: [
+          "Minta korban tetap diam dan jangan menggerakkan bagian tubuh yang dicurigai patah.",
+          "Dilarang mencoba meluruskan tulang atau memasukkan kembali tulang yang menonjol keluar kulit.",
+          "Jika dicurigai cedera leher/tulang belakang (jatuh dari motor, nyeri leher/punggung, kesemutan), jangan gerakkan korban dan jangan lepas helm kecuali jalan napas terhalang.",
+          "Segera minta orang sekitar menghubungi nomor darurat 112 atau 119.",
+        ],
+        reflection: "Mengapa pada korban kecelakaan motor helm tidak boleh dilepas sembarangan jika dicurigai cedera leher?",
       },
       {
-        title: "Aktivitas 2: Kompresi Dada Berkualitas (Hands-Only CPR)",
-        instructions:
-          [
-            "Letakkan tumit telapak tangan di tengah dada korban, kunci jari tangan satunya di atasnya.",
-            "Posisi lengan tegak lurus, tekan dada sedalam 5-6 cm dengan kecepatan 100-120 kali per menit.",
-            "Biarkan dada kembali mengembang sempurna setiap kali ditekan.",
-            "Lakukan bergantian dengan rekan driver lain setiap 2 menit jika merasa lelah.",
-          ],
-        reflection: "Mengapa peran driver ojol sebagai penolong pertama sangat menentukan peluang selamat korban henti jantung?",
+        title: "Aktivitas 2: Penanganan Luka & Pemasangan Bidai Lapangan",
+        instructions: [
+          "Fraktur terbuka: tutup luka dengan kain bersih/kassa, tekan lembut di sekitar luka tanpa menekan tulang yang menonjol.",
+          "Fraktur tertutup: kompres dingin dengan es dibungkus kain pada area bengkak selama sekitar 20 menit (jangan es langsung ke kulit).",
+          "Jika terlatih dan bantuan medis lama tiba, pasang bidai mencakup sendi di atas dan di bawah patahan dengan ikatan yang pas.",
+          "Periksa ujung jari anggota gerak: pastikan tetap hangat, berwarna merah muda, dan masih merasakan sentuhan.",
+        ],
+        reflection: "Mengapa bidai harus dipasang melewati sendi di atas dan sendi di bawah lokasi tulang yang patah?",
       },
     ],
   },
@@ -182,7 +180,7 @@ export default function LkpdPage() {
                 </span>
               </h1>
               <p className="text-base sm:text-lg text-ink-light leading-relaxed">
-                Koleksi skenario nyata di aspal untuk melatih kecepatan berpikir dan ketepatan tindakan mitra pengemudi ojek online menghadapi insiden kecelakaan, kejang penumpang, dan kolaps di jalan raya.
+                Koleksi skenario nyata di aspal untuk melatih kecepatan berpikir dan ketepatan tindakan mitra pengemudi ojek online menghadapi insiden perdarahan, korban pingsan (sinkop), dan patah tulang (fraktur) di jalan raya.
               </p>
             </div>
 

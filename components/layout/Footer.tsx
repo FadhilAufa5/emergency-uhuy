@@ -57,8 +57,8 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {[
                 { href: "/materi/perdarahan", label: "Perdarahan" },
-                { href: "/materi/kejang", label: "Kejang" },
-                { href: "/materi/bhd", label: "Bantuan Hidup Dasar" },
+                { href: "/materi/pingsan", label: "Pingsan (Sinkop)" },
+                { href: "/materi/fraktur", label: "Fraktur (Patah Tulang)" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link

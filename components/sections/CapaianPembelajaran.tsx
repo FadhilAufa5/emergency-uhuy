@@ -50,7 +50,7 @@ export default function CapaianPembelajaran() {
 
                 <div className="p-4 rounded-xl border border-gray-100">
                   <p className="text-sm text-ink leading-relaxed">
-                    Mitra pengemudi ojek online mampu mengenali situasi gawat darurat di jalan raya, menerapkan prinsip 3A (Aman Diri, Aman Lalu Lintas, Aman Korban), memberikan balut tekan efektif pada perdarahan kecelakaan, mengamankan posisi penumpang atau warga saat kejang tanpa mitos berbahaya, serta melakukan kompresi dada BHD/RJP darurat sembari menghubungkan lokasi kejadian secara akurat kepada ambulans 119.
+                    Mitra pengemudi ojek online mampu mengenali situasi gawat darurat di jalan raya, menerapkan prinsip 3A (Aman Diri, Aman Lalu Lintas, Aman Korban), memberikan balut tekan efektif pada luka perdarahan kecelakaan, menolong korban pingsan (sinkop) dengan posisi elevasi tungkai 30 cm tanpa tindakan berbahaya, serta melakukan imobilisasi awal pada fraktur (patah tulang) sembari menghubungkan lokasi kejadian secara akurat kepada ambulans 112/119.
                   </p>
                 </div>
 

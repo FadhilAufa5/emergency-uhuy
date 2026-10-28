@@ -21,14 +21,14 @@ import { materials } from "@/data/materials";
 export const metadata = {
   title: "Katalog Materi Kedaruratan — E-Art Gallery of Emergency",
   description:
-    "Panduan materi pertolongan pertama komprehensif: Mengenal Kejang, Perdarahan Arteri/Vena/Kapiler, dan Bantuan Hidup Dasar (BHD) untuk penyelamatan darurat di jalan raya.",
+    "Panduan materi pertolongan pertama komprehensif: Manajemen Perdarahan, Pertolongan Pingsan (Sinkop), dan Penanganan Fraktur (Patah Tulang) untuk penyelamatan darurat di jalan raya.",
 };
 
 export default function MateriPage() {
   const iconMap: Record<string, typeof AlertCircle> = {
-    kejang: ShieldAlert,
     perdarahan: AlertCircle,
-    bhd: HeartPulse,
+    pingsan: ShieldAlert,
+    fraktur: HeartPulse,
   };
 
   return (
@@ -60,7 +60,7 @@ export default function MateriPage() {
                 </span>
               </h1>
               <p className="text-base sm:text-lg text-ink-light leading-relaxed">
-                Pelajari 3 modul pertolongan pertama esensial: Penanganan Kejang, Manajemen Perdarahan (Arteri, Vena, Kapiler), dan Rantai Bantuan Hidup Dasar (BHD).
+                Pelajari 3 modul pertolongan pertama esensial: Manajemen Perdarahan (Arteri, Vena, Kapiler), Pertolongan Pingsan (Sinkop), dan Penanganan Fraktur (Patah Tulang).
               </p>
             </div>
 
@@ -99,9 +99,9 @@ export default function MateriPage() {
                 const illuType =
                   item.slug === "perdarahan"
                     ? "bleeding"
-                    : item.slug === "kejang"
-                    ? "seizure"
-                    : "cpr";
+                    : item.slug === "pingsan"
+                    ? "pingsan"
+                    : "fraktur";
 
                 return (
                   <div

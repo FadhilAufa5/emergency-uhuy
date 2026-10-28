@@ -14,6 +14,7 @@ import {
   Clock,
   Droplet,
   HeartPulse,
+  Activity,
 } from "lucide-react";
 import SmoothScroll from "@/components/animations/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
@@ -21,6 +22,7 @@ import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import { MedicalIllustration } from "@/components/illustrations/MedicalIllustration";
 import BleedingTypesIllustration from "@/components/illustrations/BleedingTypesIllustration";
+import FractureTypesIllustration from "@/components/illustrations/FractureTypesIllustration";
 import { materials, MaterialDetail } from "@/data/materials";
 
 interface PageProps {
@@ -28,6 +30,8 @@ interface PageProps {
     slug: string;
   }>;
 }
+
+export const instant = false;
 
 export async function generateStaticParams() {
   return materials.map((m) => ({
@@ -57,9 +61,11 @@ export default async function MaterialDetailPage({ params }: PageProps) {
   const illuType =
     material.slug === "perdarahan"
       ? "bleeding"
-      : material.slug === "kejang"
-      ? "seizure"
-      : "cpr";
+      : material.slug === "pingsan"
+      ? "pingsan"
+      : material.slug === "fraktur"
+      ? "fraktur"
+      : "bleeding";
 
   const relatedMaterials = materials.filter((m) =>
     material.relatedSlugs.includes(m.slug)
@@ -128,11 +134,11 @@ export default async function MaterialDetailPage({ params }: PageProps) {
 
                 <div className="lg:col-span-5 flex justify-center">
                   <div
-                    className={`w-full max-w-md h-72 rounded-3xl ${material.bgColor} p-6 flex items-center justify-center shadow-inner`}
+                    className={`w-full max-w-md h-72 sm:h-80 rounded-3xl ${material.bgColor} p-3 sm:p-4 flex items-center justify-center shadow-inner overflow-hidden`}
                   >
                     <MedicalIllustration
                       type={illuType}
-                      className="w-full h-full max-h-60 drop-shadow-md"
+                      className="w-full h-full object-cover rounded-2xl shadow-md"
                     />
                   </div>
                 </div>
@@ -160,6 +166,22 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                         className="block px-3 py-2 rounded-lg font-bold text-red hover:bg-red-light transition-colors"
                       >
                         • Ilustrasi 3 Jenis Perdarahan
+                      </a>
+                    )}
+                    {material.slug === "pingsan" && (
+                      <a
+                        href="#kasus-pingsan"
+                        className="block px-3 py-2 rounded-lg font-bold text-blue hover:bg-blue-light transition-colors"
+                      >
+                        • Ilustrasi Kasus Korban Pingsan
+                      </a>
+                    )}
+                    {material.slug === "fraktur" && (
+                      <a
+                        href="#jenis-fraktur"
+                        className="block px-3 py-2 rounded-lg font-bold text-green-dark hover:bg-green-light transition-colors"
+                      >
+                        • Ilustrasi Jenis Fraktur (Tertutup & Terbuka)
                       </a>
                     )}
                     <a
@@ -241,6 +263,88 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                 {material.slug === "perdarahan" && (
                   <section id="jenis-perdarahan" className="scroll-mt-24">
                     <BleedingTypesIllustration />
+                  </section>
+                )}
+
+                {/* Khusus Pingsan: Tampilkan Studi Kasus Ilustrasi Pingsan (Sinkop) */}
+                {material.slug === "pingsan" && (
+                  <section
+                    id="kasus-pingsan"
+                    className="scroll-mt-24 rounded-3xl border border-blue/20 bg-white p-6 sm:p-9 shadow-sm"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-ink/8">
+                      <div>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue/10 text-blue border border-blue/20 mb-2">
+                          <Activity className="w-3.5 h-3.5" />
+                          Studi Kasus Lapangan
+                        </span>
+                        <h3 className="text-2xl sm:text-3xl font-extrabold text-ink">
+                          Identifikasi Situasi Korban Pingsan di Jalan Raya
+                        </h3>
+                        <p className="text-xs sm:text-sm text-ink-lighter mt-1">
+                          Pelajari skenario visual pengemudi yang kolaps akibat kelelahan dan penurunan perfusi serebral global sementara:
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-blue-light/30 rounded-3xl p-6 sm:p-8 border border-blue/15">
+                      <div className="lg:col-span-5 flex flex-col items-center justify-center">
+                        <div className="relative w-full h-64 sm:h-72 rounded-2xl overflow-hidden border border-ink/10 shadow-md group bg-white">
+                          <img
+                            src="/pingsan.jpg"
+                            alt="Ilustrasi Kasus Korban Pingsan Jalan Raya"
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+                            <span className="text-[11px] font-bold text-blue-light uppercase tracking-wider">
+                              Karya Seni Kedaruratan
+                            </span>
+                            <span className="text-white text-xs sm:text-sm font-bold leading-snug">
+                              Pengemudi Tergeletak Akibat Dehidrasi & Kelelahan
+                            </span>
+                          </div>
+                        </div>
+                        <div className="text-center mt-3 text-xs font-medium text-ink-lighter">
+                          Model Kasus: Sinkop dengan Kesadaran Menurun Sesaat
+                        </div>
+                      </div>
+
+                      <div className="lg:col-span-7 space-y-4">
+                        <div className="p-4 rounded-2xl bg-white border border-blue/20">
+                          <h4 className="text-sm font-bold text-blue mb-1">
+                            1. Tanda Sebelum Korban Terjatuh
+                          </h4>
+                          <p className="text-xs sm:text-sm text-ink-light leading-relaxed">
+                            Mengantuk, menguap berulang, wajah terlihat sangat pucat, kepala pusing berkunang-kunang, dan seluruh tubuh terasa lemas tanpa tenaga.
+                          </p>
+                        </div>
+
+                        <div className="p-4 rounded-2xl bg-white border border-blue/20">
+                          <h4 className="text-sm font-bold text-blue mb-1">
+                            2. Tanda Saat Korban Tergeletak
+                          </h4>
+                          <p className="text-xs sm:text-sm text-ink-light leading-relaxed">
+                            Tidak merespons saat dipanggil sesaat, napas dan denyut nadi masih teraba lemah, serta umumnya sadar kembali dalam kurun waktu kurang dari 1 menit.
+                          </p>
+                        </div>
+
+                        <div className="p-4 rounded-2xl bg-white border border-blue/20">
+                          <h4 className="text-sm font-bold text-blue mb-1">
+                            3. Respons Pertolongan Kritis
+                          </h4>
+                          <p className="text-xs sm:text-sm text-ink-light leading-relaxed">
+                            Amankan area jalan dari lalu lintas motor, baringkan datar dan tinggikan kedua tungkai ±30 cm, longgarkan pakaian/helm, dan dilarang menampar atau memberi minum sampai sadar penuh.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                )}
+
+                {/* Khusus Fraktur: Tampilkan Ilustrasi Jenis Fraktur (Tertutup & Terbuka) */}
+                {material.slug === "fraktur" && (
+                  <section id="jenis-fraktur" className="scroll-mt-24">
+                    <FractureTypesIllustration />
                   </section>
                 )}
 

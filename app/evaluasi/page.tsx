@@ -47,19 +47,20 @@ interface QuestionItem {
 const quizQuestions: QuestionItem[] = [
   {
     id: 1,
-    category: "Penanganan Kejang",
+    category: "Pertolongan Pingsan (Sinkop)",
     categoryBadge: "bg-blue/10 text-blue border-blue/20",
     categoryColor: "text-blue",
-    question: "Apa tindakan yang tidak boleh dilakukan saat seseorang mengalami kejang?",
+    question:
+      "Bagaimana posisi tubuh yang tepat saat memberikan pertolongan pertama pada korban pingsan tanpa dugaan cedera tulang?",
     options: [
-      { key: "A", text: "Menjauhkan benda berbahaya" },
-      { key: "B", text: "Mengamankan lingkungan" },
-      { key: "C", text: "Memasukkan benda ke dalam mulut" },
-      { key: "D", text: "Memantau kondisi korban" },
+      { key: "A", text: "Didudukkan tegak dan langsung diberikan minuman manis hangat" },
+      { key: "B", text: "Dibaringkan telentang dan kedua tungkai ditinggikan sekitar 30 cm" },
+      { key: "C", text: "Ditengkurapkan agar jalan napas terbuka lebar" },
+      { key: "D", text: "Digendong berdiri dan diajak berjalan perlahan" },
     ],
-    correctAnswer: "C",
+    correctAnswer: "B",
     explanation:
-      "Memasukkan benda apapun (seperti sendok, kain, kayu, atau jari) ke dalam mulut orang yang sedang kejang sangat dilarang. Tindakan ini berisiko mematahkan gigi, melukai rongga mulut, dan dapat menyumbat total jalan napas korban.",
+      "Baringkan korban telentang pada permukaan datar, lalu tinggikan kedua tungkai sekitar 30 cm (lebih tinggi dari jantung) jika tidak ada dugaan cedera tulang. Hal ini bertujuan meningkatkan aliran darah kembali ke otak (perfusi serebral global) sesuai prinsip penanganan sinkop (Susyanti, Gustina, & dkk, 2026).",
   },
   {
     id: 2,
@@ -79,57 +80,63 @@ const quizQuestions: QuestionItem[] = [
   },
   {
     id: 3,
-    category: "Bantuan Hidup Dasar (BHD)",
+    category: "Pertolongan Fraktur",
     categoryBadge: "bg-green/10 text-green-dark border-green/30",
     categoryColor: "text-green-dark",
     question:
-      "Apa yang harus dilakukan ketika menemukan korban tidak responsif dan tidak bernapas normal?",
+      "Apa tindakan pertolongan pertama yang TIDAK boleh dilakukan saat mencurigai korban mengalami patah tulang (fraktur)?",
     options: [
-      { key: "A", text: "Meninggalkan korban" },
-      { key: "B", text: "Memberikan makanan" },
+      { key: "A", text: "Meminta korban tetap diam dan tidak menggerakkan bagian cedera" },
+      {
+        key: "B",
+        text: "Mencoba meluruskan tulang atau memasukkan kembali tulang yang menonjol",
+      },
       {
         key: "C",
-        text: "Memanggil bantuan dan memulai tindakan BHD sesuai kemampuan/pelatihan",
+        text: "Memasang bidai melewati sendi di atas dan di bawah patahan jika terlatih",
       },
-      { key: "D", text: "Membiarkan korban tidur" },
+      { key: "D", text: "Memeriksa apakah jari tetap hangat dan berwarna merah muda" },
     ],
-    correctAnswer: "C",
+    correctAnswer: "B",
     explanation:
-      "Korban yang tidak merespons dan tidak bernapas normal (atau hanya megap-megap / gasping) berada dalam keadaan gawat darurat henti napas/jantung. Penolong harus segera menghubungi nomor darurat 119 dan menginisiasi BHD (Bantuan Hidup Dasar / CPR).",
+      "Jangan pernah mencoba meluruskan tulang atau memasukkan kembali tulang yang menonjol. Tindakan tersebut dapat merusak pembuluh darah dan saraf di sekitarnya serta memicu perdarahan fatal dan nyeri hebat.",
   },
   {
     id: 4,
-    category: "Pemantauan Kejang",
+    category: "Larangan Saat Pingsan",
     categoryBadge: "bg-yellow/20 text-yellow border-yellow/40",
     categoryColor: "text-yellow",
     question:
-      "Salah satu hal penting yang perlu dilakukan penolong selama korban mengalami kejang adalah …",
+      "Tindakan manakah yang dilarang keras dilakukan saat korban belum sadar penuh setelah pingsan?",
     options: [
-      { key: "A", text: "Menghitung dan mencatat durasi kejang" },
-      { key: "B", text: "Memberikan air minum" },
-      { key: "C", text: "Memijat tubuh korban" },
-      { key: "D", text: "Menahan tubuh korban agar tidak bergerak" },
+      { key: "A", text: "Melonggarkan pakaian yang ketat seperti kerah atau ikat pinggang" },
+      { key: "B", text: "Menampar, mengguyur air, atau memberi makan dan minum" },
+      { key: "C", text: "Memiringkan tubuh korban jika korban tampak muntah" },
+      { key: "D", text: "Memastikan korban mendapat udara segar dan tidak dikerumuni" },
     ],
-    correctAnswer: "A",
+    correctAnswer: "B",
     explanation:
-      "Menghitung dan mencatat berapa lama kejang berlangsung sangat vital untuk disampaikan ke dokter/paramedis. Kejang yang berlangsung lebih dari 5 menit (status epileptikus) merupakan kegawatdaruratan medis yang membutuhkan penanganan obat injeksi darurat.",
+      "Jangan menampar, mengguyur dengan air, atau memberi makan dan minum selama korban belum sadar penuh. Memberi cairan atau makanan pada korban yang tidak sadar berisiko tinggi menyebabkan tersedak (aspirasi) ke saluran napas.",
   },
   {
     id: 5,
-    category: "Protokol CPR / RJP Dewasa",
+    category: "Fraktur Terbuka vs Tertutup",
     categoryBadge: "bg-lavender/30 text-ink border-lavender",
     categoryColor: "text-lavender",
     question:
-      "Perbandingan kompresi dada dan ventilasi pada CPR/BHD dewasa oleh satu penolong adalah …",
+      "Bagaimana langkah penanganan yang tepat pada fraktur terbuka yang disertai perdarahan?",
     options: [
-      { key: "A", text: "15 : 1" },
-      { key: "B", text: "15 : 2" },
-      { key: "C", text: "30 : 1" },
-      { key: "D", text: "30 : 2" },
+      { key: "A", text: "Menekan kuat ujung tulang yang menonjol agar masuk ke dalam luka" },
+      { key: "B", text: "Mengompres es langsung tanpa kain pembungkus pada luka terbuka" },
+      {
+        key: "C",
+        text: "Menutup luka dengan kain bersih/kassa dan menekan lembut di sekitar luka tanpa menekan tulang",
+      },
+      { key: "D", text: "Memaksa korban untuk segera berdiri dan berjalan" },
     ],
-    correctAnswer: "D",
+    correctAnswer: "C",
     explanation:
-      "Berdasarkan pedoman resmi resusitasi jantung paru (CPR/BHD) internasional, perbandingan kompresi dada dengan napas buatan (ventilasi) untuk korban dewasa oleh satu penolong adalah 30 kompresi berbanding 2 ventilasi (30 : 2) dengan ritme 100-120 kali/menit.",
+      "Pada fraktur terbuka, tutup luka dengan kain bersih atau kassa steril. Jika berdarah, tekan lembut di sekitar luka tanpa menekan ujung tulang yang menonjol. Segera hubungi layanan darurat 112 atau 119 karena fraktur terbuka berisiko tinggi infeksi dan perdarahan hebat.",
   },
 ];
 
@@ -627,9 +634,9 @@ export default function EvaluasiPage() {
                     1
                   </span>
                   <div>
-                    <h4 className="text-sm font-bold text-ink">Proteksi Kejang Tanpa Sumpal Mulut</h4>
+                    <h4 className="text-sm font-bold text-ink">Baringkan & Elevasi Tungkai 30 cm</h4>
                     <p className="text-xs text-ink-lighter mt-1 leading-relaxed">
-                      Jauhkan benda berbahaya dan alasi kepala dengan jaket. Dilarang memasukkan sendok atau benda apapun ke dalam mulut korban.
+                      Pada korban pingsan tanpa cedera tulang, baringkan telentang dan tinggikan kedua kaki 30 cm untuk memulihkan perfusi serebral global.
                     </p>
                   </div>
                 </div>
@@ -651,9 +658,9 @@ export default function EvaluasiPage() {
                     3
                   </span>
                   <div>
-                    <h4 className="text-sm font-bold text-ink">Tanggap Korban Tidak Responsif</h4>
+                    <h4 className="text-sm font-bold text-ink">Imobilisasi Fraktur Tanpa Meluruskan Tulang</h4>
                     <p className="text-xs text-ink-lighter mt-1 leading-relaxed">
-                      Bila korban tidak sadar dan napas tidak normal, segera panggil ambulans 119 dan mulai BHD/CPR sesuai kemampuan.
+                      Jangan pernah meluruskan tulang atau memasukkan tulang yang menonjol. Pasang bidai melewati 2 sendi dan periksa kehangatan ujung jari.
                     </p>
                   </div>
                 </div>
@@ -663,9 +670,9 @@ export default function EvaluasiPage() {
                     4
                   </span>
                   <div>
-                    <h4 className="text-sm font-bold text-ink">Catat Durasi Kejang & Rasio 30:2 CPR</h4>
+                    <h4 className="text-sm font-bold text-ink">Larangan Saat Pingsan & Fraktur</h4>
                     <p className="text-xs text-ink-lighter mt-1 leading-relaxed">
-                      Hitung durasi kejang (&gt;5 menit darurat kritis) dan terapkan rasio kompresi CPR 30 kali tekan dada berbanding 2 kali napas bantuan.
+                      Dilarang menampar/memberi makan-minum saat pingsan belum sadar, dan jangan menggerakkan leher/punggung yang dicurigai cedera saraf.
                     </p>
                   </div>
                 </div>

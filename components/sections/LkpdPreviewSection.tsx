@@ -15,7 +15,7 @@ export default function LkpdPreviewSection() {
             eyebrow="Panduan Kasus Lapangan Driver"
             title="Lembar Studi Kasus"
             highlight="Insiden Jalan"
-            description="Latih kesiapan mental dan tindakan terarah melalui studi kasus insiden aspal: luka kecelakaan, kejang penumpang, dan kolaps di pangkalan."
+            description="Latih kesiapan mental dan tindakan terarah melalui studi kasus insiden aspal: luka perdarahan, korban pingsan (sinkop), dan fraktur patah tulang di jalan raya."
             align="center"
           />
         </ScrollReveal>
