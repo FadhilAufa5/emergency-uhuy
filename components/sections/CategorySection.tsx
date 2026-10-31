@@ -22,7 +22,7 @@ const iconMap: Record<string, React.ElementType> = {
 
 export default function CategorySection() {
   return (
-    <section className="py-20 sm:py-28 bg-white">
+    <section className="py-20 sm:py-28 bg-white/85 backdrop-blur-md border-b border-ink/5">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <SectionHeading

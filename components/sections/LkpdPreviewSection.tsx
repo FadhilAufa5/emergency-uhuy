@@ -5,11 +5,21 @@ import { FileText, ArrowRight, CheckCircle2, Eye } from "lucide-react";
 import { lkpdItems } from "@/data/learning";
 import { ScrollReveal, StaggerReveal } from "@/components/animations/ScrollReveal";
 import SectionHeading from "@/components/ui/SectionHeading";
+import BatikBackground from "@/components/ui/BatikBackground";
 
 export default function LkpdPreviewSection() {
   return (
-    <section id="lkpd" className="py-20 sm:py-28 bg-cream/50 relative overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="lkpd" className="relative py-20 sm:py-28 overflow-hidden border-b border-ink/5">
+      {/* Latar Belakang Batik Nusantara */}
+      <BatikBackground
+        pattern="kain"
+        opacity="opacity-20 sm:opacity-25"
+        withOrnaments={true}
+        withVignette={true}
+        className="z-0"
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <SectionHeading
             eyebrow="Panduan Kasus Lapangan Driver"
@@ -24,7 +34,7 @@ export default function LkpdPreviewSection() {
           {lkpdItems.map((item, index) => (
             <div
               key={item.id}
-              className="group relative flex flex-col rounded-3xl border border-ink/8 bg-white p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-ink/5 hover:border-ink/15"
+              className="group relative flex flex-col rounded-3xl border border-ink/10 bg-white/95 backdrop-blur-xs p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-ink/5 hover:border-ink/20 shadow-xs"
             >
               {/* Document header badge */}
               <div className="flex items-center justify-between mb-5">
@@ -56,15 +66,15 @@ export default function LkpdPreviewSection() {
               {/* Simulated worksheet features list */}
               <div className="space-y-2 mb-6 pt-4 border-t border-ink/5">
                 <div className="flex items-center gap-2 text-xs text-ink/80">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-mint-green text-green-dark" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-green-dark" />
                   <span>Skenario nyata di jalan raya & pangkalan</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-ink/80">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-mint-green text-green-dark" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-green-dark" />
                   <span>Panduan aman diri & amankan lalu lintas</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-ink/80">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-mint-green text-green-dark" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-green-dark" />
                   <span>Format siap baca di smartphone driver</span>
                 </div>
               </div>
@@ -72,7 +82,7 @@ export default function LkpdPreviewSection() {
               {/* Card action */}
               <Link
                 href="/lkpd"
-                className="inline-flex items-center justify-between w-full py-2.5 px-4 rounded-xl bg-gray-50 border border-ink/10 text-xs font-semibold text-ink group-hover:bg-ink group-hover:text-white transition-all"
+                className="inline-flex items-center justify-between w-full py-2.5 px-4 rounded-xl bg-gray-50 border border-ink/10 text-xs font-semibold text-ink group-hover:bg-ink group-hover:text-white transition-all shadow-2xs"
               >
                 <span className="flex items-center gap-1.5">
                   <Eye className="w-3.5 h-3.5" />
@@ -88,7 +98,7 @@ export default function LkpdPreviewSection() {
         <ScrollReveal delay={0.2} className="mt-12 text-center">
           <Link
             href="/lkpd"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-blue text-white font-semibold text-sm hover:bg-blue-dark transition-all hover:shadow-lg hover:shadow-blue/20 active:scale-95"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-blue text-white font-semibold text-sm hover:bg-blue-dark transition-all hover:shadow-lg hover:shadow-blue/20 active:scale-95 shadow-md shadow-blue/15"
           >
             Akses Seluruh Modul Kasus Driver (LKPD)
             <ArrowRight className="w-4 h-4" />

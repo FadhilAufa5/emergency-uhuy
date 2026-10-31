@@ -1,11 +1,21 @@
 import { BookOpen, FileCheck, Bike } from "lucide-react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import SectionHeading from "@/components/ui/SectionHeading";
+import BatikBackground from "@/components/ui/BatikBackground";
 
 export default function CapaianPembelajaran() {
   return (
-    <section id="capaian-pembelajaran" className="py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="capaian-pembelajaran" className="relative py-20 sm:py-28 overflow-hidden border-b border-ink/5">
+      {/* Latar Belakang Batik Nusantara */}
+      <BatikBackground
+        pattern="flora"
+        opacity="opacity-20 sm:opacity-25"
+        withOrnaments={true}
+        withVignette={true}
+        className="z-0"
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <SectionHeading
             eyebrow="Standar Kesiapsiagaan Driver"
@@ -17,7 +27,7 @@ export default function CapaianPembelajaran() {
 
         <ScrollReveal delay={0.2}>
           <div className="max-w-3xl mx-auto">
-            <div className="bg-white rounded-2xl border border-gray-200/60 overflow-hidden shadow-sm">
+            <div className="bg-white/95 backdrop-blur-xs rounded-2xl border border-gray-200/80 overflow-hidden shadow-sm">
               {/* Header */}
               <div className="bg-blue/5 border-b border-blue/10 px-6 sm:px-8 py-5">
                 <div className="flex items-center gap-3">
@@ -37,7 +47,7 @@ export default function CapaianPembelajaran() {
 
               {/* Content */}
               <div className="px-6 sm:px-8 py-6 space-y-4">
-                <div className="flex items-start gap-3 p-4 rounded-xl bg-cream/50">
+                <div className="flex items-start gap-3 p-4 rounded-xl bg-cream/70 border border-amber-900/5">
                   <FileCheck className="w-5 h-5 text-blue mt-0.5 shrink-0" />
                   <div>
                     <p className="text-sm text-ink leading-relaxed">
@@ -48,13 +58,13 @@ export default function CapaianPembelajaran() {
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl border border-gray-100">
+                <div className="p-4 rounded-xl border border-gray-100 bg-white/60">
                   <p className="text-sm text-ink leading-relaxed">
                     Mitra pengemudi ojek online mampu mengenali situasi gawat darurat di jalan raya, menerapkan prinsip 3A (Aman Diri, Aman Lalu Lintas, Aman Korban), memberikan balut tekan efektif pada luka perdarahan kecelakaan, menolong korban pingsan (sinkop) dengan posisi elevasi tungkai 30 cm tanpa tindakan berbahaya, serta melakukan imobilisasi awal pada fraktur (patah tulang) sembari menghubungkan lokasi kejadian secara akurat kepada ambulans 112/119.
                   </p>
                 </div>
 
-                <div className="bg-yellow-light/50 rounded-xl px-4 py-3">
+                <div className="bg-yellow-light/60 rounded-xl px-4 py-3 border border-yellow/20">
                   <p className="text-xs text-ink-lighter leading-relaxed">
                     📌 Catatan: Capaian Pembelajaran di atas dirancang khusus untuk konteks respon darurat di jalanan, halte, pangkalan, dan ruang publik yang sering dilalui pengemudi ojek online.
                   </p>

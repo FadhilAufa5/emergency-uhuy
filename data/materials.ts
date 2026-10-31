@@ -26,6 +26,7 @@ export interface MaterialDetail {
       number: number;
       title: string;
       description: string;
+      image?: string;
     }[];
     criticalInstruction?: string;
   };
@@ -45,12 +46,12 @@ export interface MaterialDetail {
 export const materials: MaterialDetail[] = [
   {
     slug: "perdarahan",
-    orderNumber: 2,
-    title: "Materi 2 — Perdarahan",
+    orderNumber: 1,
+    title: "Materi 1 — Perdarahan",
     subtitle: "Mengenal Jenis Perdarahan & 9 Langkah Pertolongan Awal",
     description:
       "Perdarahan merupakan keluarnya darah dari pembuluh darah akibat cedera atau kondisi tertentu, dengan perbedaan karakteristik pada arteri, vena, dan kapiler.",
-    category: "Materi 2 — Perdarahan",
+    category: "Materi 1 — Perdarahan",
     categoryColor: "bg-red/10 text-red border-red/20",
     accentColor: "#F04438",
     bgColor: "bg-red-light",
@@ -79,54 +80,63 @@ export const materials: MaterialDetail[] = [
           title: "Langkah 1: Tenang & Proteksi Diri",
           description:
             "Tetap tenang dan pastikan lokasi aman bagi penolong dan korban. Jika ada, gunakan sarung tangan atau plastik bersih sebagai pelindung dari darah.",
+          image: "/perdarahan/1_Langkah_1_Tenang_dan_Proteksi_Diri.jpg",
         },
         {
           number: 2,
           title: "Langkah 2: Hubungi Layanan Darurat",
           description:
             "Minta orang sekitar menghubungi layanan darurat (112 atau 119), terutama jika darah memancar, perdarahan banyak, atau korban tampak lemas dan pucat.",
+          image: "/perdarahan/2_Langkah_2_Hubungi_Layanan_Darurat.jpg",
         },
         {
           number: 3,
           title: "Langkah 3: Posisikan Korban",
           description:
             "Baringkan atau dudukkan korban agar nyaman dan tidak terjatuh.",
+          image: "/perdarahan/3_Langkah_3_Posisikan_Korban.jpg",
         },
         {
           number: 4,
           title: "Langkah 4: Tekan Langsung (Direct Pressure)",
           description:
             "Tekan langsung luka menggunakan kain bersih, kassa, atau handuk dengan tekanan kuat dan terus-menerus.",
+          image: "/perdarahan/4_Langkah_4_Tekan_Langsung.jpg",
         },
         {
           number: 5,
           title: "Langkah 5: Tambahkan Lapisan Baru",
           description:
             "Jika kain basah oleh darah, jangan dilepas. Tambahkan lapisan kain baru di atasnya dan tetap tekan.",
+          image: "/perdarahan/5_Langkah_5_Tambahkan_Lapisan_Baru.jpg",
         },
         {
           number: 6,
           title: "Langkah 6: Tinggikan Bagian Cedera",
           description:
             "Jika luka berada di lengan atau tungkai dan tidak dicurigai patah tulang, tinggikan bagian tubuh yang terluka lebih tinggi dari jantung.",
+          image: "/perdarahan/6_Langkah_6_Tinggikan_Bagian_Cedera.jpg",
         },
         {
           number: 7,
           title: "Langkah 7: Balut Luka Rapi & Pas",
           description:
             "Setelah perdarahan berkurang, balut luka dengan perban atau kain yang cukup kencang, tetapi tidak sampai menghambat aliran darah (jari tetap hangat dan berwarna merah muda).",
+          image: "/perdarahan/7_Langkah_7_Balut_Luka_Rapi_dan_Pas.jpg",
         },
         {
           number: 8,
           title: "Langkah 8: Jaga Benda Menancap",
           description:
             "Jangan mencabut benda yang tertancap pada luka. Tekan di sekitar benda tersebut dan stabilkan agar tidak bergerak.",
+          image: "/perdarahan/8_Langkah_8_Jaga_Benda_Menancap.jpg",
         },
         {
           number: 9,
           title: "Langkah 9: Jaga Kehangatan & Pantau",
           description:
             "Jaga korban tetap hangat dengan selimut atau jaket, dan pantau kesadaran serta napasnya sampai bantuan medis datang.",
+          image: "/perdarahan/9_Langkah_9_Jaga_Kehangatan_dan_Pantau.jpg",
         },
       ],
       criticalInstruction:
@@ -159,12 +169,12 @@ export const materials: MaterialDetail[] = [
   },
   {
     slug: "pingsan",
-    orderNumber: 3,
-    title: "Materi 3 — Pingsan (Sinkop)",
+    orderNumber: 2,
+    title: "Materi 2 — Pingsan (Sinkop)",
     subtitle: "Mengenal Pingsan & 9 Langkah Pertolongan Awal",
     description:
-      "Sinkop merupakan kehilangan kesadaran sementara akibat penurunan perfusi serebral global yang bersifat reversibel dan umumnya pulih spontan. (Susyanti, Gustina, & dkk, 2026)",
-    category: "Materi 3 — Pingsan",
+      "Sinkop merupakan kehilangan kesadaran sementara akibat penurunan perfusi serebral global yang bersifat reversibel dan umumnya pulih spontan.",
+    category: "Materi 2 — Pingsan",
     categoryColor: "bg-blue/10 text-blue border-blue/20",
     accentColor: "#3978F6",
     bgColor: "bg-blue-light",
@@ -173,7 +183,7 @@ export const materials: MaterialDetail[] = [
     pengertian: {
       title: "1. Mengenal Pingsan",
       content:
-        "Sinkop merupakan kehilangan kesadaran sementara akibat penurunan perfusi serebral global yang bersifat reversibel dan umumnya pulih spontan. (Susyanti, Gustina, & dkk, 2026)",
+        "Sinkop merupakan kehilangan kesadaran sementara akibat penurunan perfusi serebral global yang bersifat reversibel dan umumnya pulih spontan.",
       note: "Pemicu umum: Berdiri terlalu lama, keletihan, dehidrasi, beraktivitas terlalu berat. Kondisi lain: Gula darah rendah, perdarahan, atau gangguan jantung. Tingkat bahaya: Umumnya ringan, tetapi dapat berbahaya jika korban terjatuh dan terbentur kepala atau memiliki penyakit jantung.",
     },
     tanda: {
@@ -275,12 +285,12 @@ export const materials: MaterialDetail[] = [
   },
   {
     slug: "fraktur",
-    orderNumber: 4,
-    title: "Materi 4 — Fraktur (Patah Tulang)",
+    orderNumber: 3,
+    title: "Materi 3 — Fraktur (Patah Tulang)",
     subtitle: "Mengenal Fraktur Terbuka & Tertutup Serta 9 Langkah Pertolongan Awal",
     description:
-      "Fraktur dapat diartikan sebagai retak atau patah pada tulang yang berfungsi sebagai penopang tubuh manusia dan tempat melekatnya otot. (Qasanah, Winarto, & dkk, 2023)",
-    category: "Materi 4 — Fraktur",
+      "Fraktur dapat diartikan sebagai retak atau patah pada tulang yang berfungsi sebagai penopang tubuh manusia dan tempat melekatnya otot.",
+    category: "Materi 3 — Fraktur",
     categoryColor: "bg-yellow/10 text-yellow-dark border-yellow/40",
     accentColor: "#FFD166",
     bgColor: "bg-yellow-light",
@@ -289,7 +299,7 @@ export const materials: MaterialDetail[] = [
     pengertian: {
       title: "1. Mengenal Fraktur",
       content:
-        "Fraktur dapat diartikan sebagai retak atau patah pada tulang. Tulang merupakan suatu komponen tubuh yang sangat penting, karena memiliki fungsi sebagai tempat melekatnya otot, penopang tubuh manusia supaya dapat bergerak secara maksimal (Qasanah, Winarto, & dkk, 2023). Fraktur terbagi menjadi fraktur terbuka dan fraktur tertutup. Dalam website ditampilkan ilustrasi untuk membantu pengguna mengenali karakteristik masing-masing jenis fraktur.",
+        "Fraktur dapat diartikan sebagai retak atau patah pada tulang. Tulang merupakan suatu komponen tubuh yang sangat penting, karena memiliki fungsi sebagai tempat melekatnya otot, penopang tubuh manusia supaya dapat bergerak secara maksimal. Fraktur terbagi menjadi fraktur terbuka dan fraktur tertutup. Dalam website ditampilkan ilustrasi untuk membantu pengguna mengenali karakteristik masing-masing jenis fraktur.",
       note: "Fraktur terbuka memiliki tingkat bahaya lebih berat karena risiko perdarahan banyak dan infeksi tinggi, sehingga membutuhkan pertolongan medis segera.",
     },
     tanda: {

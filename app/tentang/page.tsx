@@ -14,6 +14,7 @@ import SmoothScroll from "@/components/animations/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/ui/BackToTop";
+import BatikBackground from "@/components/ui/BatikBackground";
 
 export const metadata = {
   title: "Tentang Kami — E-Art Gallery of Emergency untuk Driver Ojol",
@@ -35,6 +36,7 @@ export default function TentangPage() {
   return (
     <SmoothScroll>
       <div className="relative min-h-screen bg-cream text-ink">
+        <BatikBackground opacity="opacity-20 sm:opacity-25" />
         <Navbar />
 
         <main className="pt-28 pb-24">

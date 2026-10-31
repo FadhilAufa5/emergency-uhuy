@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Caveat } from "next/font/google";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import BatikBackground from "@/components/ui/BatikBackground";
 
 // Remove Geist — not used in the design; PlusJakarta is the primary font
 const plusJakarta = Plus_Jakarta_Sans({
@@ -47,9 +48,11 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className="min-h-screen bg-cream text-ink font-sans"
+        className="relative min-h-screen bg-cream text-ink font-sans"
         suppressHydrationWarning
       >
+        {/* Global Batik Background halus di seluruh halaman */}
+        <BatikBackground opacity="opacity-[0.07]" className="fixed" withOrnaments={false} />
         {children}
       </body>
     </html>

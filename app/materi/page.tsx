@@ -17,6 +17,7 @@ import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import { MedicalIllustration } from "@/components/illustrations/MedicalIllustration";
 import { materials } from "@/data/materials";
+import BatikBackground from "@/components/ui/BatikBackground";
 
 export const metadata = {
   title: "Katalog Materi Kedaruratan — E-Art Gallery of Emergency",
@@ -34,6 +35,7 @@ export default function MateriPage() {
   return (
     <SmoothScroll>
       <div className="relative min-h-screen bg-cream text-ink">
+        <BatikBackground opacity="opacity-20 sm:opacity-25" />
         <Navbar />
 
         <main className="pt-28 pb-24">

@@ -4,11 +4,21 @@ import { artworks } from "@/data/artworks";
 import { MedicalIllustration } from "@/components/illustrations/MedicalIllustration";
 import { ScrollReveal, StaggerReveal } from "@/components/animations/ScrollReveal";
 import SectionHeading from "@/components/ui/SectionHeading";
+import BatikBackground from "@/components/ui/BatikBackground";
 
 export default function FeaturedArtwork() {
   return (
-    <section id="galeri" className="py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="galeri" className="relative py-20 sm:py-28 overflow-hidden border-b border-ink/5">
+      {/* Latar Belakang Batik Nusantara */}
+      <BatikBackground
+        pattern="kain"
+        opacity="opacity-20 sm:opacity-25"
+        withOrnaments={true}
+        withVignette={true}
+        className="z-0"
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <SectionHeading
             eyebrow="Galeri Pilihan"
@@ -22,7 +32,7 @@ export default function FeaturedArtwork() {
           {artworks.map((artwork, index) => (
             <article
               key={artwork.id}
-              className={`artwork-card group relative bg-white rounded-2xl border border-gray-200/60 overflow-hidden card-hover ${
+              className={`artwork-card group relative bg-white/95 backdrop-blur-xs rounded-2xl border border-gray-200/80 overflow-hidden card-hover shadow-xs ${
                 index === 0 ? "md:col-span-2 lg:col-span-1" : ""
               }`}
             >

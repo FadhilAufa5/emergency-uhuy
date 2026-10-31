@@ -15,7 +15,7 @@ export default function MaterialSection() {
   };
 
   return (
-    <section id="materi" className="py-20 sm:py-28 bg-white relative overflow-hidden">
+    <section id="materi" className="py-20 sm:py-28 bg-white/85 backdrop-blur-md relative overflow-hidden border-b border-ink/5">
       {/* Background subtle accents */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-light/40 rounded-full blur-3xl -z-10 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-red-light/30 rounded-full blur-3xl -z-10 pointer-events-none" />

@@ -1,6 +1,8 @@
 # 🚨 E-Art Gallery of Emergency
 > **Platform Edukasi Seni Visual Kedaruratan Medis & Pertolongan Pertama bagi Mitra Pengemudi Ojek Online di Jalan Raya**
 
+> 📖 **Dokumentasi Lengkap Skripsi**: Untuk tinjauan akademis, perancangan arsitektur, dan rincian teknis komponen untuk Bab III & Bab IV Skripsi, silakan merujuk ke berkas [**`DOKUMENTASI_KOMPONEN_SKRIPSI.md`**](./DOKUMENTASI_KOMPONEN_SKRIPSI.md).
+
 E-Art Gallery of Emergency adalah platform pembelajaran interaktif berbasis web yang memadukan **pendidikan medis pertolongan pertama**, **ilustrasi visual artistik/anatomis interaktif**, serta **sentuhan warisan budaya Nusantara (Batik)**. Platform ini dirancang khusus untuk meningkatkan literasi dan kesiapsiagaan tanggap darurat para mitra pengemudi ojol saat menghadapi kecelakaan lalu lintas atau insiden medis di jalan raya.
 
 ---

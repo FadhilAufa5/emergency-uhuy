@@ -23,7 +23,9 @@ import BackToTop from "@/components/ui/BackToTop";
 import { MedicalIllustration } from "@/components/illustrations/MedicalIllustration";
 import BleedingTypesIllustration from "@/components/illustrations/BleedingTypesIllustration";
 import FractureTypesIllustration from "@/components/illustrations/FractureTypesIllustration";
+import BleedingStepsGuide from "@/components/sections/BleedingStepsGuide";
 import { materials, MaterialDetail } from "@/data/materials";
+import BatikBackground from "@/components/ui/BatikBackground";
 
 interface PageProps {
   params: Promise<{
@@ -74,6 +76,7 @@ export default async function MaterialDetailPage({ params }: PageProps) {
   return (
     <SmoothScroll>
       <div className="relative min-h-screen bg-cream text-ink">
+        <BatikBackground opacity="opacity-20 sm:opacity-25" />
         <Navbar />
 
         <main className="pt-28 pb-24">
@@ -402,26 +405,39 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                     Lakukan tindakan secara tenang, berurutan, dan prioritaskan keselamatan penolong serta korban:
                   </p>
 
-                  <div className="space-y-4">
-                    {material.langkah.steps.map((step) => (
-                      <div
-                        key={step.number}
-                        className="flex flex-col sm:flex-row sm:items-start gap-4 p-5 rounded-2xl bg-gray-50/80 border border-ink/5 hover:border-ink/15 transition-colors"
-                      >
-                        <div className="w-10 h-10 rounded-xl bg-ink text-white font-extrabold text-base flex items-center justify-center shrink-0 shadow-sm">
-                          {step.number}
+                  {material.slug === "perdarahan" ? (
+                    <BleedingStepsGuide />
+                  ) : (
+                    <div className="space-y-4">
+                      {material.langkah.steps.map((step) => (
+                        <div
+                          key={step.number}
+                          className="flex flex-col sm:flex-row sm:items-start gap-4 p-5 rounded-2xl bg-gray-50/80 border border-ink/5 hover:border-ink/15 transition-colors"
+                        >
+                          <div className="w-10 h-10 rounded-xl bg-ink text-white font-extrabold text-base flex items-center justify-center shrink-0 shadow-sm">
+                            {step.number}
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-base sm:text-lg font-bold text-ink mb-1">
+                              {step.title}
+                            </h3>
+                            <p className="text-xs sm:text-sm text-ink-light leading-relaxed">
+                              {step.description}
+                            </p>
+                          </div>
+                          {step.image && (
+                            <div className="w-full sm:w-44 aspect-[4/3] rounded-xl overflow-hidden border border-ink/10 bg-cream/40 shrink-0">
+                              <img
+                                src={step.image}
+                                alt={step.title}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                          )}
                         </div>
-                        <div className="flex-1">
-                          <h3 className="text-base sm:text-lg font-bold text-ink mb-1">
-                            {step.title}
-                          </h3>
-                          <p className="text-xs sm:text-sm text-ink-light leading-relaxed">
-                            {step.description}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                      ))}
+                    </div>
+                  )}
 
                   {/* Critical Action Banner */}
                   {material.langkah.criticalInstruction && (

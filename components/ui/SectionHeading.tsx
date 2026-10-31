@@ -35,23 +35,25 @@ export default function SectionHeading({
   return (
     <div
       className={cn(
-        "mb-12",
+        "mb-12 relative z-10",
         align === "center" ? "text-center" : "text-left",
         className
       )}
     >
       {eyebrow && (
-        <span className="inline-block px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-red bg-red/8 rounded-full mb-4">
-          {eyebrow}
-        </span>
+        <div className={cn("mb-3.5", align === "center" ? "flex justify-center" : "")}>
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-red bg-white/95 backdrop-blur-sm border border-red/20 rounded-full shadow-2xs">
+            {eyebrow}
+          </span>
+        </div>
       )}
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-ink leading-tight tracking-tight">
+      <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold text-ink leading-[1.18] tracking-tight">
         {renderTitle()}
       </h2>
       {description && (
         <p
           className={cn(
-            "mt-4 text-base sm:text-lg text-ink-lighter leading-relaxed",
+            "mt-3.5 text-base sm:text-lg text-ink-light leading-relaxed font-normal",
             align === "center" ? "max-w-2xl mx-auto" : "max-w-xl"
           )}
         >
