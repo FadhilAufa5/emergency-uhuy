@@ -24,6 +24,8 @@ import { MedicalIllustration } from "@/components/illustrations/MedicalIllustrat
 import BleedingTypesIllustration from "@/components/illustrations/BleedingTypesIllustration";
 import FractureTypesIllustration from "@/components/illustrations/FractureTypesIllustration";
 import BleedingStepsGuide from "@/components/sections/BleedingStepsGuide";
+import SinkopeStepsGuide from "@/components/sections/SinkopeStepsGuide";
+import FractureStepsGuide from "@/components/sections/FractureStepsGuide";
 import { materials, MaterialDetail } from "@/data/materials";
 import BatikBackground from "@/components/ui/BatikBackground";
 
@@ -407,7 +409,11 @@ export default async function MaterialDetailPage({ params }: PageProps) {
 
                   {material.slug === "perdarahan" ? (
                     <BleedingStepsGuide />
-                  ) : (
+                  ) : material.slug === "pingsan" ? (
+                    <SinkopeStepsGuide />
+                  ) : material.slug === "fraktur" ? (
+                  <FractureStepsGuide />
+                  ) : ( 
                     <div className="space-y-4">
                       {material.langkah.steps.map((step) => (
                         <div

@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "Ruang edukasi visual bagi mitra pengemudi ojek online untuk memahami pertolongan pertama di jalan raya: penanganan perdarahan kecelakaan, pertolongan pingsan (sinkop), dan imobilisasi fraktur (patah tulang).",
   icons: {
     icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.svg", type: "image/svg+xmlp" },
     ],
     apple: [
       { url: "/icon.svg", type: "image/svg+xml" },

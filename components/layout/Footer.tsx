@@ -79,7 +79,7 @@ export default function Footer() {
             </h3>
             <div className="space-y-3">
               <p className="text-sm text-gray-400 leading-relaxed">
-                <strong className="text-gray-300">Pembuat:</strong> [Nama pembuat / Institusi]
+                <strong className="text-gray-300">Pembuat:</strong> xyzdto
               </p>
               <p className="text-sm text-gray-400 leading-relaxed">
                 <strong className="text-gray-300">Sumber Materi:</strong> Disusun berdasarkan
@@ -99,9 +99,9 @@ export default function Footer() {
             </p>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-gray-500">
+            {/* <p className="text-xs text-gray-500">
               © 2026 E-Art Gallery of Emergency. Media Edukasi Digital.
-            </p>
+            </p> */}
             <div className="flex items-center gap-1 text-xs text-gray-500">
               &copy; 2026 xyzdto&reg;</div>
           </div>

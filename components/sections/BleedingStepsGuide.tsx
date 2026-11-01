@@ -114,7 +114,7 @@ export default function BleedingStepsGuide() {
             className="flex flex-col sm:flex-row items-stretch sm:items-center rounded-2xl bg-gray-50/80 border border-ink/5 hover:border-ink/15 transition-colors p-4 sm:p-5 gap-4 sm:gap-6"
           >
             {/* Left: Gambar Langkah dari public/perdarahan */}
-            <div className="w-full sm:w-48 md:w-56 aspect-[4/3] rounded-xl overflow-hidden border border-ink/10 bg-white shrink-0 shadow-2xs">
+            <div className="w-full sm:w-48 md:w-56 aspect-square rounded-xl overflow-hidden border border-ink/10 bg-white shrink-0 shadow-2xs">
               <BleedingStepIllustration step={step.number} className="w-full h-full" />
             </div>
 

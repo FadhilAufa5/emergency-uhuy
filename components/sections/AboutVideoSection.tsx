@@ -53,7 +53,7 @@ export default function AboutVideoSection() {
                     // Poster / Thumbnail Preview State
                     <div className="relative w-full h-full">
                       <img
-                        src="/perdarahan.jpg"
+                        src="/pendarahan.jpg"
                         alt="Thumbnail Video Edukasi Pertolongan Pertama Driver Ojol"
                         className="w-full h-full object-cover opacity-75 transition-transform duration-700 group-hover:scale-105"
                       />

@@ -12,7 +12,7 @@ export function MedicalIllustration({ type, className = "" }: IllustrationProps)
     case "bleeding":
       return (
         <Image
-          src="/perdarahan.jpg"
+          src="/pendarahan.jpg"
           alt="Ilustrasi Pertolongan Perdarahan di Jalan Raya"
           width={480}
           height={360}
@@ -38,7 +38,7 @@ export function MedicalIllustration({ type, className = "" }: IllustrationProps)
     case "cpr":
       return (
         <Image
-          src="/patah tulang.jpg"
+          src="/patahtulang.jpg"
           alt="Ilustrasi Penanganan Fraktur (Patah Tulang)"
           width={480}
           height={360}
