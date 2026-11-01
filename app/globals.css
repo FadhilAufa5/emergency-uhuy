@@ -112,7 +112,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-/* Lenis smooth scroll */
+/* ─── Lenis smooth scroll ─────────────────────────────── */
 html.lenis, html.lenis body {
   height: auto;
 }
@@ -129,8 +129,8 @@ html.lenis, html.lenis body {
   overflow: hidden;
 }
 
-/* Base */
-* {
+/* ─── Base ────────────────────────────────────────────── */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -139,7 +139,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Typography */
+/* ─── Typography ──────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-plus-jakarta);
   font-weight: 700;
@@ -150,55 +150,47 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-caveat);
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-cream, #FFF8F0);
-}
-
+/* ─── Scrollbar ───────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-cream, #FFF8F0); }
 ::-webkit-scrollbar-thumb {
   background: var(--color-gray-300, #D1D5DB);
   border-radius: 999px;
 }
+::-webkit-scrollbar-thumb:hover { background: var(--color-gray-400, #9CA3AF); }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-gray-400, #9CA3AF);
-}
+/* ─── Selection ───────────────────────────────────────── */
+::selection { background: #F04438; color: white; }
 
-/* Selection */
-::selection {
-  background: #F04438;
-  color: white;
-}
+/* ─── GPU Performance hints ───────────────────────────── */
 
-/* ── Performance: GPU-accelerate animated SVG elements ── */
-svg animate,
-svg animateTransform,
-svg animateMotion {
-  /* hint browser that these elements will change */
-}
-
-/* Promote scroll-animated sections to compositor layer */
-section {
-  contain: layout style; /* reduce layout recalculation scope */
+/* GSAP-animated elements: promote to compositor layer so JS transforms
+   don't trigger main-thread layout or paint */
+.hero-art-bob,
+.hero-deco,
+.hero-float-1,
+.hero-float-2,
+.hero-float-3,
+.hero-float-4 {
+  will-change: transform;
 }
 
 /* Navbar backdrop blur — GPU hint */
 [class*="backdrop-blur"] {
-  will-change: backdrop-filter;
   transform: translateZ(0); /* force GPU layer */
 }
 
-/* Animated illustrations — isolate from main paint */
-.illustration-container {
-  will-change: contents;
-  isolation: isolate;
+/* Scroll-reveal elements: start invisible and let GSAP handle opacity/transform */
+.hero-eyebrow,
+.hero-title-line,
+.hero-description,
+.hero-cta,
+.hero-illustration,
+.hero-sticker-entrance {
+  will-change: transform, opacity;
 }
 
-/* Reduced motion */
+/* ─── Reduced motion ──────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -206,59 +198,33 @@ section {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+  .hero-art-bob,
+  .hero-deco,
+  .hero-float-1,
+  .hero-float-2,
+  .hero-float-3,
+  .hero-float-4,
+  .hero-eyebrow,
+  .hero-title-line,
+  .hero-description,
+  .hero-cta,
+  .hero-illustration,
+  .hero-sticker-entrance {
+    will-change: auto;
+  }
 }
 
-/* Artistic underline decoration */
-.artistic-underline {
-  position: relative;
-  display: inline-block;
-}
-
-.artistic-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: -4px;
-  right: -4px;
-  height: 8px;
-  background: #FFD166;
-  border-radius: 4px;
-  z-index: -1;
-  opacity: 0.6;
-  transform: rotate(-1deg);
-}
-
-/* Brush stroke decoration */
-.brush-stroke {
-  position: relative;
-  display: inline-block;
-}
-
-.brush-stroke::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: -6px;
-  right: -6px;
-  height: 40%;
-  background: #C7B5F5;
-  border-radius: 4px;
-  z-index: -1;
-  opacity: 0.3;
-  transform: rotate(-0.5deg);
-}
-
-/* Focus visible */
+/* ─── Focus ───────────────────────────────────────────── */
 :focus-visible {
   outline: 2px solid #3978F6;
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Card base */
+/* ─── Card hover ──────────────────────────────────────── */
 .card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform; /* promote to own compositor layer */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
 }
 
 .card-hover:hover {
@@ -266,7 +232,7 @@ section {
   box-shadow: 0 12px 40px rgba(32, 35, 44, 0.08);
 }
 
-/* Gradient text */
+/* ─── Gradient text ───────────────────────────────────── */
 .gradient-text {
   background: linear-gradient(135deg, #F04438, #3978F6);
   -webkit-background-clip: text;
@@ -274,12 +240,12 @@ section {
   background-clip: text;
 }
 
-/* Organic shapes */
+/* ─── Organic shapes ──────────────────────────────────── */
 .blob-shape {
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
 }
 
-/* Sticker style */
+/* ─── Sticker style ───────────────────────────────────── */
 .sticker {
   display: inline-flex;
   align-items: center;
@@ -293,39 +259,20 @@ section {
   white-space: nowrap;
 }
 
-/* Animations */
+/* ─── Slide / Fade animations ─────────────────────────── */
 @keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
-.animate-slideDown {
-  animation: slideDown 0.25s ease-out;
-}
+.animate-slideDown { animation: slideDown 0.25s ease-out; }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
+.animate-fadeIn { animation: fadeIn 0.2s ease-out; }
 
-.animate-fadeIn {
-  animation: fadeIn 0.2s ease-out;
-}
-
-/* ──────────────────────────────────────────────────
-   Dark mode — not used in this project (light-only)
-   Kept as minimal stub to satisfy shadcn internals
-────────────────────────────────────────────────── */
+/* ─── Dark mode stub (light-only project, kept for shadcn) */
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
