@@ -28,6 +28,7 @@ import SinkopeStepsGuide from "@/components/sections/SinkopeStepsGuide";
 import FractureStepsGuide from "@/components/sections/FractureStepsGuide";
 import { materials, MaterialDetail } from "@/data/materials";
 import BatikBackground from "@/components/ui/BatikBackground";
+import MaterialHeroVideoCard from "@/components/ui/MaterialHeroVideoCard";
 
 interface PageProps {
   params: Promise<{
@@ -138,14 +139,28 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                 </div>
 
                 <div className="lg:col-span-5 flex justify-center">
-                  <div
-                    className={`w-full max-w-md h-72 sm:h-80 rounded-3xl ${material.bgColor} p-3 sm:p-4 flex items-center justify-center shadow-inner overflow-hidden`}
-                  >
-                    <MedicalIllustration
-                      type={illuType}
-                      className="w-full h-full object-contain rounded-2xl drop-shadow-md"
-                    />
-                  </div>
+                  <MaterialHeroVideoCard
+                    slug={material.slug}
+                    title={material.title}
+                    bgColor={material.bgColor}
+                    categoryColor={material.categoryColor}
+                    videoUrl={
+                      material.videoUrl ||
+                      (material.slug === "perdarahan"
+                        ? "/perdarahan.mp4"
+                        : material.slug === "pingsan"
+                        ? "/pingsun.mp4"
+                        : "/fraktur.mp4")
+                    }
+                    thumbnailUrl={
+                      material.videoThumbnail ||
+                      (material.slug === "perdarahan"
+                        ? "/perdarahan.webp"
+                        : material.slug === "pingsan"
+                        ? "/pingsan1.jpg"
+                        : "/patahtulang1.jpg")
+                    }
+                  />
                 </div>
               </div>
             </div>

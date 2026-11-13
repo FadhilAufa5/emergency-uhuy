@@ -10,6 +10,8 @@ export interface MaterialDetail {
   bgColor: string;
   iconBg: string;
   heroImage: string;
+  videoUrl?: string;
+  videoThumbnail?: string;
   pengertian: {
     title: string;
     content: string;
@@ -57,6 +59,8 @@ export const materials: MaterialDetail[] = [
     bgColor: "bg-red-light",
     iconBg: "bg-red/10",
     heroImage: "bleeding",
+    videoUrl: "/perdarahan.mp4",
+    videoThumbnail: "/perdarahan.webp",
     pengertian: {
       title: "1. Mengenal Perdarahan",
       content:
@@ -180,6 +184,8 @@ export const materials: MaterialDetail[] = [
     bgColor: "bg-blue-light",
     iconBg: "bg-blue/10",
     heroImage: "pingsan",
+    videoUrl: "/pingsun.mp4",
+    videoThumbnail: "/pingsan1.jpg",
     pengertian: {
       title: "1. Mengenal Pingsan",
       content:
@@ -296,6 +302,8 @@ export const materials: MaterialDetail[] = [
     bgColor: "bg-yellow-light",
     iconBg: "bg-yellow/10",
     heroImage: "fraktur",
+    videoUrl: "/fraktur.mp4",
+    videoThumbnail: "/patahtulang1.jpg",
     pengertian: {
       title: "1. Mengenal Fraktur",
       content:

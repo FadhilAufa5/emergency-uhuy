@@ -13,6 +13,8 @@ import {
   GraduationCap,
   Map,
   Target,
+  Play,
+  Video,
 } from "lucide-react";
 import SmoothScroll from "@/components/animations/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
@@ -170,6 +172,11 @@ export default function MateriPage() {
                           type={illuType}
                           className="w-full h-full object-contain transition-transform duration-500 group-hover/thumb:scale-105"
                         />
+                        {/* Video Indicator Badge */}
+                        <div className="absolute top-2.5 right-2.5 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-xs text-white text-[10px] font-bold shadow-xs">
+                          <Play className="w-2.5 h-2.5 fill-white" />
+                          <span>Video Praktik</span>
+                        </div>
                       </div>
 
                       {/* Title */}
