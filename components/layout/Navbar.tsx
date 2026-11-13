@@ -9,7 +9,6 @@ import {
   Plus,
   Home,
   BookOpen,
-  FileText,
   ClipboardCheck,
   Info,
   PhoneCall,
@@ -21,7 +20,6 @@ import {
 const navLinks = [
   { href: "/", label: "Beranda", icon: Home },
   { href: "/materi", label: "Materi", icon: BookOpen },
-  { href: "/lkpd", label: "LKPD", icon: FileText },
   { href: "/evaluasi", label: "Evaluasi", icon: ClipboardCheck },
   { href: "/tentang", label: "Tentang", icon: Info },
 ];
@@ -97,7 +95,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden lg:flex items-center gap-1 bg-cream/60 p-1.5 rounded-full border border-ink/5">
+            {/* <div className="hidden lg:flex items-center gap-1 bg-cream/60 p-1.5 rounded-full border border-ink/5">
               {navLinks.map((link) => {
                 const isActive =
                   pathname === link.href ||
@@ -119,7 +117,7 @@ export default function Navbar() {
                   </Link>
                 );
               })}
-            </div>
+            </div> */}
 
             {/* Right Action: Emergency 119 + CTA + Mobile Toggle */}
             <div className="flex items-center gap-2 sm:gap-3">

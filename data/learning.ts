@@ -94,53 +94,6 @@ export const learningObjectives: LearningObjective[] = [
   },
 ];
 
-export interface LKPDItem {
-  id: string;
-  title: string;
-  description: string;
-  format: string;
-  topic: string;
-  topicColor: string;
-  bgColor: string;
-  available: boolean;
-}
-
-export const lkpdItems: LKPDItem[] = [
-  {
-    id: "lkpd-1",
-    title: "LKPD 1: Penanganan Perdarahan Kecelakaan Jalan",
-    description:
-      "Panduan studi kasus penanganan luka robek pengendara di aspal, teknik direct pressure, dan pencegahan syok hipovolemik.",
-    format: "Modul Praktik Driver",
-    topic: "Perdarahan Jalan Raya",
-    topicColor: "bg-red/10 text-red border-red/20",
-    bgColor: "bg-red-light",
-    available: true,
-  },
-  {
-    id: "lkpd-2",
-    title: "LKPD 2: Pertolongan Korban Pingsan (Sinkop)",
-    description:
-      "Studi kasus penanganan korban pingsan akibat keletihan/dehidrasi di jalan raya, elevasi tungkai 30 cm, posisi miring jika muntah, dan pantauan kesadaran.",
-    format: "Modul Praktik Driver",
-    topic: "Pingsan di Ruang Publik",
-    topicColor: "bg-blue/10 text-blue border-blue/20",
-    bgColor: "bg-blue-light",
-    available: true,
-  },
-  {
-    id: "lkpd-3",
-    title: "LKPD 3: Penanganan Fraktur & Patah Tulang Lapangan",
-    description:
-      "Simulasi penanganan fraktur terbuka dan tertutup akibat kecelakaan motor, teknik imobilisasi bidai, kompres dingin, dan pemeriksaan sirkulasi ujung jari.",
-    format: "Modul Praktik Driver",
-    topic: "Fraktur & Patah Tulang",
-    topicColor: "bg-green/10 text-green-dark border-green/30",
-    bgColor: "bg-green-light",
-    available: true,
-  },
-];
-
 export interface EvaluasiItem {
   id: string;
   title: string;

@@ -12,12 +12,12 @@ export function MedicalIllustration({ type, className = "" }: IllustrationProps)
     case "bleeding":
       return (
         <Image
-          src="/pendarahan.jpg"
+          src="/perdarahan.webp"
           alt="Ilustrasi Pertolongan Perdarahan di Jalan Raya"
           width={480}
           height={360}
-          quality={75}
-          className={`w-full h-full object-cover rounded-2xl shadow-sm ${className}`}
+          quality={85}
+          className={`w-full h-full object-contain rounded-2xl ${className}`}
           loading="lazy"
         />
       );
@@ -25,12 +25,12 @@ export function MedicalIllustration({ type, className = "" }: IllustrationProps)
     case "seizure":
       return (
         <Image
-          src="/pingsan.jpg"
+          src="/pingsan1.jpg"
           alt="Ilustrasi Pertolongan Korban Pingsan (Sinkop)"
           width={480}
           height={360}
-          quality={75}
-          className={`w-full h-full object-cover rounded-2xl shadow-sm ${className}`}
+          quality={85}
+          className={`w-full h-full object-contain rounded-2xl ${className}`}
           loading="lazy"
         />
       );
@@ -38,12 +38,12 @@ export function MedicalIllustration({ type, className = "" }: IllustrationProps)
     case "cpr":
       return (
         <Image
-          src="/patahtulang.jpg"
+          src="/patahtulang1.jpg"
           alt="Ilustrasi Penanganan Fraktur (Patah Tulang)"
           width={480}
           height={360}
-          quality={75}
-          className={`w-full h-full object-cover rounded-2xl shadow-sm ${className}`}
+          quality={85}
+          className={`w-full h-full object-contain rounded-2xl ${className}`}
           loading="lazy"
         />
       );

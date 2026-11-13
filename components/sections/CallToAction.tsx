@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Sparkles, Heart, Shield, PhoneCall, Bike } from "lucide-react";
+import { ArrowRight, Heart, Shield, PhoneCall, Bike } from "lucide-react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 
 export default function CallToAction() {
@@ -43,10 +43,10 @@ export default function CallToAction() {
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/lkpd"
+              href="/evaluasi"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 text-base font-semibold transition-all active:scale-95"
             >
-              Buka Lembar Kasus Driver (LKPD)
+              Uji Pemahaman di Evaluasi
             </Link>
           </div>
 

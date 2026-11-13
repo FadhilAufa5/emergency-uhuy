@@ -143,7 +143,7 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                   >
                     <MedicalIllustration
                       type={illuType}
-                      className="w-full h-full object-cover rounded-2xl shadow-md"
+                      className="w-full h-full object-contain rounded-2xl drop-shadow-md"
                     />
                   </div>
                 </div>
@@ -296,9 +296,9 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                       <div className="lg:col-span-5 flex flex-col items-center justify-center">
                         <div className="relative w-full h-64 sm:h-72 rounded-2xl overflow-hidden border border-ink/10 shadow-md group bg-white">
                           <img
-                            src="/pingsan.jpg"
+                            src="/pingsan1.jpg"
                             alt="Ilustrasi Kasus Korban Pingsan Jalan Raya"
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
                             <span className="text-[11px] font-bold text-blue-light uppercase tracking-wider">
@@ -432,11 +432,11 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                             </p>
                           </div>
                           {step.image && (
-                            <div className="w-full sm:w-44 aspect-[4/3] rounded-xl overflow-hidden border border-ink/10 bg-cream/40 shrink-0">
+                            <div className="w-full sm:w-48 aspect-[4/3] rounded-xl overflow-hidden border border-ink/10 bg-white p-1 flex items-center justify-center shrink-0">
                               <img
                                 src={step.image}
                                 alt={step.title}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-contain"
                               />
                             </div>
                           )}

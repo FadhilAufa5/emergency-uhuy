@@ -10,6 +10,9 @@ import {
   Bike,
   Sparkles,
   ClipboardCheck,
+  GraduationCap,
+  Map,
+  Target,
 } from "lucide-react";
 import SmoothScroll from "@/components/animations/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
@@ -18,6 +21,9 @@ import BackToTop from "@/components/ui/BackToTop";
 import { MedicalIllustration } from "@/components/illustrations/MedicalIllustration";
 import { materials } from "@/data/materials";
 import BatikBackground from "@/components/ui/BatikBackground";
+import CapaianPembelajaran from "@/components/sections/CapaianPembelajaran";
+import LearningTimeline from "@/components/sections/LearningTimeline";
+import LearningObjectives from "@/components/sections/LearningObjectives";
 
 export const metadata = {
   title: "Katalog Materi Kedaruratan — E-Art Gallery of Emergency",
@@ -50,7 +56,7 @@ export default function MateriPage() {
             </nav>
 
             {/* Header */}
-            <div className="text-center max-w-3xl mx-auto mb-14">
+            <div className="text-center max-w-3xl mx-auto mb-10">
               <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-red/10 text-red border border-red/20 mb-4">
                 <Bike className="w-3.5 h-3.5" />
                 Materi Pelatihan Inti Driver Siaga
@@ -64,6 +70,38 @@ export default function MateriPage() {
               <p className="text-base sm:text-lg text-ink-light leading-relaxed">
                 Pelajari 3 modul pertolongan pertama esensial: Manajemen Perdarahan (Arteri, Vena, Kapiler), Pertolongan Pingsan (Sinkop), dan Penanganan Fraktur (Patah Tulang).
               </p>
+
+              {/* Quick Jump Bar */}
+              <div className="flex flex-wrap items-center justify-center gap-2 mt-6">
+                <a
+                  href="#modul-materi"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/90 border border-ink/10 text-xs font-semibold text-ink hover:bg-ink hover:text-white transition-all shadow-2xs"
+                >
+                  <BookOpen className="w-3.5 h-3.5 text-red" />
+                  <span>3 Modul Materi</span>
+                </a>
+                <Link
+                  href="/cp"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/90 border border-ink/10 text-xs font-semibold text-ink hover:bg-green-600 hover:text-white transition-all shadow-2xs"
+                >
+                  <GraduationCap className="w-3.5 h-3.5 text-green-600" />
+                  <span>Capaian Pembelajaran (CP)</span>
+                </Link>
+                <Link
+                  href="/atp"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/90 border border-ink/10 text-xs font-semibold text-ink hover:bg-purple-600 hover:text-white transition-all shadow-2xs"
+                >
+                  <Map className="w-3.5 h-3.5 text-purple-600" />
+                  <span>Alur Pembelajaran (ATP)</span>
+                </Link>
+                <Link
+                  href="/tujuan"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/90 border border-ink/10 text-xs font-semibold text-ink hover:bg-rose-600 hover:text-white transition-all shadow-2xs"
+                >
+                  <Target className="w-3.5 h-3.5 text-rose-600" />
+                  <span>Tujuan Pembelajaran</span>
+                </Link>
+              </div>
             </div>
 
             {/* Emergency Hotline Banner */}
@@ -95,85 +133,87 @@ export default function MateriPage() {
             </div>
 
             {/* Materials Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-              {materials.map((item) => {
-                const Icon = iconMap[item.slug] || AlertCircle;
-                const illuType =
-                  item.slug === "perdarahan"
-                    ? "bleeding"
-                    : item.slug === "pingsan"
-                    ? "pingsan"
-                    : "fraktur";
+            <div id="modul-materi" className="scroll-mt-28">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                {materials.map((item) => {
+                  const Icon = iconMap[item.slug] || AlertCircle;
+                  const illuType =
+                    item.slug === "perdarahan"
+                      ? "bleeding"
+                      : item.slug === "pingsan"
+                      ? "pingsan"
+                      : "fraktur";
 
-                return (
-                  <div
-                    key={item.slug}
-                    className="flex flex-col rounded-3xl border border-ink/8 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-ink/20"
-                  >
-                    {/* Badge */}
-                    <div className="flex items-center justify-between mb-5">
-                      <span
-                        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border ${item.categoryColor}`}
-                      >
-                        <Icon className="w-3.5 h-3.5" />
-                        {item.category}
-                      </span>
-                      <span className="text-xs font-mono font-bold text-ink-lighter">
-                        Materi 0{item.orderNumber}
-                      </span>
-                    </div>
-
-                    {/* Illustration container */}
+                  return (
                     <div
-                      className={`w-full h-48 rounded-2xl ${item.bgColor} p-4 flex items-center justify-center mb-6 overflow-hidden`}
+                      key={item.slug}
+                      className="flex flex-col rounded-3xl border border-ink/8 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-ink/20"
                     >
-                      <MedicalIllustration
-                        type={illuType}
-                        className="w-full h-full max-h-40 drop-shadow-sm transition-transform duration-300 hover:scale-105"
-                      />
+                      {/* Badge */}
+                      <div className="flex items-center justify-between mb-5">
+                        <span
+                          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border ${item.categoryColor}`}
+                        >
+                          <Icon className="w-3.5 h-3.5" />
+                          {item.category}
+                        </span>
+                        <span className="text-xs font-mono font-bold text-ink-lighter">
+                          Materi 0{item.orderNumber}
+                        </span>
+                      </div>
+
+                      {/* Illustration container */}
+                      <div
+                        className={`relative w-full h-48 rounded-2xl ${item.bgColor} overflow-hidden mb-6 border border-ink/8 shadow-2xs group/thumb flex items-center justify-center p-2`}
+                      >
+                        <MedicalIllustration
+                          type={illuType}
+                          className="w-full h-full object-contain transition-transform duration-500 group-hover/thumb:scale-105"
+                        />
+                      </div>
+
+                      {/* Title */}
+                      <h2 className="text-xl sm:text-2xl font-bold text-ink mb-1.5 min-h-[3.75rem] flex items-center leading-tight">
+                        {item.title}
+                      </h2>
+                      <p className="text-xs font-semibold text-red mb-3 min-h-[1.25rem] flex items-center">
+                        {item.subtitle}
+                      </p>
+                      <p className="text-sm text-ink-light leading-relaxed mb-6 min-h-[4.5rem] line-clamp-3">
+                        {item.description}
+                      </p>
+
+                      {/* Key Highlights */}
+                      <div className="mt-auto space-y-2.5 mb-6 pt-5 border-t border-ink/5">
+                        <div className="text-xs font-bold text-ink-light uppercase tracking-wider">
+                          Poin Kunci Pembelajaran:
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-ink/80">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-green-dark shrink-0" />
+                          <span>{item.tanda.items.length} tanda kondisi yang perlu dikenali</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-ink/80">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-green-dark shrink-0" />
+                          <span>{item.langkah.steps.length} langkah aman pertolongan awal</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-ink/80">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-green-dark shrink-0" />
+                          <span>Tindakan berbahaya yang wajib dihindari</span>
+                        </div>
+                      </div>
+
+                      {/* Action link */}
+                      <Link
+                        href={`/materi/${item.slug}`}
+                        className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-2xl bg-ink text-white font-semibold text-sm hover:bg-red transition-all shadow-sm active:scale-95"
+                      >
+                        <span>Buka Modul Materi Lengkap</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
                     </div>
-
-                    {/* Title */}
-                    <h2 className="text-2xl font-bold text-ink mb-1.5">
-                      {item.title}
-                    </h2>
-                    <p className="text-xs font-semibold text-red mb-3">
-                      {item.subtitle}
-                    </p>
-                    <p className="text-sm text-ink-light leading-relaxed mb-6 flex-1">
-                      {item.description}
-                    </p>
-
-                    {/* Key Highlights */}
-                    <div className="space-y-2.5 mb-6 pt-4 border-t border-ink/5">
-                      <div className="text-xs font-bold text-ink-light uppercase tracking-wider">
-                        Poin Kunci Pembelajaran:
-                      </div>
-                      <div className="flex items-center gap-2 text-xs text-ink/80">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-green-dark shrink-0" />
-                        <span>{item.tanda.items.length} tanda kondisi yang perlu dikenali</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-xs text-ink/80">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-green-dark shrink-0" />
-                        <span>{item.langkah.steps.length} langkah aman pertolongan awal</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-xs text-ink/80">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-green-dark shrink-0" />
-                        <span>Tindakan berbahaya yang wajib dihindari</span>
-                      </div>
-                    </div>
-
-                    {/* Action link */}
-                    <Link
-                      href={`/materi/${item.slug}`}
-                      className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-2xl bg-ink text-white font-semibold text-sm hover:bg-red transition-all shadow-sm active:scale-95"
-                    >
-                      <span>Buka Modul Materi Lengkap</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
 
             {/* Evaluasi Quiz Link Banner */}
@@ -190,7 +230,7 @@ export default function MateriPage() {
                     Sudah Mempelajari Seluruh Materi?
                   </h3>
                   <p className="text-xs sm:text-sm text-ink-light mt-1 max-w-xl">
-                    Uji pemahaman Anda melalui 5 kuis pilihan ganda evaluasi kesiapsiagaan darurat dengan penilaian otomatis dan pembahasan medis lengkap.
+                    Uji pemahaman Anda melalui kuis pilihan ganda evaluasi kesiapsiagaan darurat dengan penilaian otomatis dan pembahasan medis lengkap.
                   </p>
                 </div>
               </div>
@@ -205,7 +245,7 @@ export default function MateriPage() {
             </div>
 
             {/* Quick Learning Philosophy Card */}
-            <div className="rounded-3xl border border-ink/10 bg-white p-8 sm:p-10 flex flex-col md:flex-row items-center gap-8">
+            {/* <div className="rounded-3xl border border-ink/10 bg-white p-8 sm:p-10 flex flex-col md:flex-row items-center gap-8 mb-16">
               <div className="md:w-2/3">
                 <span className="text-xs font-bold text-blue uppercase tracking-wider">
                   Etika & Prinsip Keselamatan di Jalan Raya
@@ -236,7 +276,59 @@ export default function MateriPage() {
                   Kembali ke Beranda
                 </Link>
               </div>
-            </div>
+            </div> */}
+
+            {/* Section Capaian Pembelajaran (id="capaian") */}
+            {/* <div id="capaian" className="scroll-mt-24 mb-16">
+              <div className="flex items-center justify-between mb-4">
+                <div className="text-xs font-bold uppercase tracking-wider text-green-700">
+                  Standar Kompetensi Driver
+                </div>
+                <Link
+                  href="/cp"
+                  className="text-xs font-semibold text-green-700 hover:underline flex items-center gap-1"
+                >
+                  <span>Buka Halaman Penuh CP</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+              <CapaianPembelajaran />
+            </div> */}
+
+            {/* Section Alur Tujuan Pembelajaran (id="alur") */}
+            {/* <div id="alur" className="scroll-mt-24 mb-16">
+              <div className="flex items-center justify-between mb-4">
+                <div className="text-xs font-bold uppercase tracking-wider text-purple-700">
+                  Tahapan Sistematis Belajar
+                </div>
+                <Link
+                  href="/atp"
+                  className="text-xs font-semibold text-purple-700 hover:underline flex items-center gap-1"
+                >
+                  <span>Buka Halaman Penuh ATP</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+              <LearningTimeline />
+            </div> */}
+
+            {/* Section Tujuan Pembelajaran (id="tujuan") */}
+            {/* <div id="tujuan" className="scroll-mt-24 mb-16">
+              <div className="flex items-center justify-between mb-4">
+                <div className="text-xs font-bold uppercase tracking-wider text-rose-700">
+                  Sasaran Kompetensi Inti
+                </div>
+                <Link
+                  href="/tujuan"
+                  className="text-xs font-semibold text-rose-700 hover:underline flex items-center gap-1"
+                >
+                  <span>Buka Halaman Penuh Tujuan</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+              <LearningObjectives />
+            </div> */}
+
           </div>
         </main>
 

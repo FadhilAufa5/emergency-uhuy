@@ -48,7 +48,7 @@ export default function FeaturedArtwork() {
                         | "pingsan"
                         | "fraktur"
                     }
-                    className="w-full h-full object-cover rounded-xl shadow-sm"
+                    className="w-full h-full object-contain drop-shadow-sm"
                   />
                 </div>
                 {/* Category badge */}
@@ -60,16 +60,18 @@ export default function FeaturedArtwork() {
               </div>
 
               {/* Content */}
-              <div className="p-5 sm:p-6">
-                <h3 className="text-lg font-bold text-ink group-hover:text-red transition-colors duration-300 leading-snug">
-                  {artwork.title}
-                </h3>
-                <p className="mt-2 text-sm text-ink-lighter leading-relaxed line-clamp-2">
-                  {artwork.description}
-                </p>
+              <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-lg font-bold text-ink group-hover:text-red transition-colors duration-300 leading-snug min-h-[3rem] flex items-center">
+                    {artwork.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-ink-lighter leading-relaxed line-clamp-2 min-h-[2.5rem]">
+                    {artwork.description}
+                  </p>
+                </div>
                 <Link
                   href={`/materi/${artwork.slug}`}
-                  className="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold text-red hover:text-red-dark transition-colors group/link"
+                  className="inline-flex items-center gap-1.5 mt-4 pt-3 border-t border-ink/5 text-sm font-semibold text-red hover:text-red-dark transition-colors group/link"
                 >
                   Lihat Karya
                   <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />

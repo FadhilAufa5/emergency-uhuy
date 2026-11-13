@@ -80,63 +80,63 @@ export const materials: MaterialDetail[] = [
           title: "Langkah 1: Tenang & Proteksi Diri",
           description:
             "Tetap tenang dan pastikan lokasi aman bagi penolong dan korban. Jika ada, gunakan sarung tangan atau plastik bersih sebagai pelindung dari darah.",
-          image: "/perdarahan/1_Langkah_1_Tenang_dan_Proteksi_Diri.jpg",
+          image: "/ilustrasi_perdarahan/ilustrasi_01.png",
         },
         {
           number: 2,
           title: "Langkah 2: Hubungi Layanan Darurat",
           description:
             "Minta orang sekitar menghubungi layanan darurat (112 atau 119), terutama jika darah memancar, perdarahan banyak, atau korban tampak lemas dan pucat.",
-          image: "/perdarahan/2_Langkah_2_Hubungi_Layanan_Darurat.jpg",
+          image: "/ilustrasi_perdarahan/ilustrasi_02.png",
         },
         {
           number: 3,
           title: "Langkah 3: Posisikan Korban",
           description:
             "Baringkan atau dudukkan korban agar nyaman dan tidak terjatuh.",
-          image: "/perdarahan/3_Langkah_3_Posisikan_Korban.jpg",
+          image: "/ilustrasi_perdarahan/ilustrasi_03.png",
         },
         {
           number: 4,
           title: "Langkah 4: Tekan Langsung (Direct Pressure)",
           description:
             "Tekan langsung luka menggunakan kain bersih, kassa, atau handuk dengan tekanan kuat dan terus-menerus.",
-          image: "/perdarahan/4_Langkah_4_Tekan_Langsung.jpg",
+          image: "/ilustrasi_perdarahan/ilustrasi_04.png",
         },
         {
           number: 5,
           title: "Langkah 5: Tambahkan Lapisan Baru",
           description:
             "Jika kain basah oleh darah, jangan dilepas. Tambahkan lapisan kain baru di atasnya dan tetap tekan.",
-          image: "/perdarahan/5_Langkah_5_Tambahkan_Lapisan_Baru.jpg",
+          image: "/ilustrasi_perdarahan/ilustrasi_05.png",
         },
         {
           number: 6,
           title: "Langkah 6: Tinggikan Bagian Cedera",
           description:
             "Jika luka berada di lengan atau tungkai dan tidak dicurigai patah tulang, tinggikan bagian tubuh yang terluka lebih tinggi dari jantung.",
-          image: "/perdarahan/6_Langkah_6_Tinggikan_Bagian_Cedera.jpg",
+          image: "/ilustrasi_perdarahan/ilustrasi_06.png",
         },
         {
           number: 7,
           title: "Langkah 7: Balut Luka Rapi & Pas",
           description:
             "Setelah perdarahan berkurang, balut luka dengan perban atau kain yang cukup kencang, tetapi tidak sampai menghambat aliran darah (jari tetap hangat dan berwarna merah muda).",
-          image: "/perdarahan/7_Langkah_7_Balut_Luka_Rapi_dan_Pas.jpg",
+          image: "/ilustrasi_perdarahan/ilustrasi_07.png",
         },
         {
           number: 8,
           title: "Langkah 8: Jaga Benda Menancap",
           description:
             "Jangan mencabut benda yang tertancap pada luka. Tekan di sekitar benda tersebut dan stabilkan agar tidak bergerak.",
-          image: "/perdarahan/8_Langkah_8_Jaga_Benda_Menancap.jpg",
+          image: "/ilustrasi_perdarahan/ilustrasi_08.png",
         },
         {
           number: 9,
           title: "Langkah 9: Jaga Kehangatan & Pantau",
           description:
             "Jaga korban tetap hangat dengan selimut atau jaket, dan pantau kesadaran serta napasnya sampai bantuan medis datang.",
-          image: "/perdarahan/9_Langkah_9_Jaga_Kehangatan_dan_Pantau.jpg",
+          image: "/ilustrasi_perdarahan/ilustrasi_09.png",
         },
       ],
       criticalInstruction:

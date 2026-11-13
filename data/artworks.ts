@@ -102,16 +102,6 @@ export const categories: Category[] = [
     href: "#materi",
   },
   {
-    id: "lkpd",
-    name: "LKPD Driver",
-    description: "Lembar studi kasus lapangan interaktif untuk driver ojol.",
-    icon: "FileText",
-    color: "text-lavender",
-    bgColor: "bg-lavender-light",
-    borderColor: "border-lavender/30",
-    href: "/lkpd",
-  },
-  {
     id: "evaluasi",
     name: "Evaluasi Kesiapsiagaan",
     description: "Uji penalaran respon cepat menghadapi insiden jalan.",

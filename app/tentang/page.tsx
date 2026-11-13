@@ -187,7 +187,7 @@ export default function TentangPage() {
                     Pemberitahuan Hukum & Medis (Medical Disclaimer)
                   </h3>
                   <p className="text-xs sm:text-sm text-ink-light leading-relaxed">
-                    Seluruh konten visual, ringkasan materi, LKPD, dan evaluasi di website ini semata-mata ditujukan untuk <strong>edukasi umum dan panduan respon pertama bagi pengemudi ojek online</strong>. Informasi ini <strong>bukan pengganti sertifikasi resmi medis profesional atau penanganan medis definitif di rumah sakit</strong>.
+                    Seluruh konten visual, ringkasan materi, dan evaluasi di website ini semata-mata ditujukan untuk <strong>edukasi umum dan panduan respon pertama bagi pengemudi ojek online</strong>. Informasi ini <strong>bukan pengganti sertifikasi resmi medis profesional atau penanganan medis definitif di rumah sakit</strong>.
                   </p>
                   <p className="text-xs sm:text-sm text-ink-light leading-relaxed">
                     Saat menghadapi kecelakaan parah di jalan raya, pastikan keselamatan Anda terlindungi, jangan memindahkan korban cedera leher sembarangan, dan segera hubungi <strong>Pusat Panggilan Darurat Medis 119 / 112</strong>.

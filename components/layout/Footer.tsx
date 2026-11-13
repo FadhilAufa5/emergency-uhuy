@@ -33,7 +33,6 @@ export default function Footer() {
               {[
                 { href: "/", label: "Beranda" },
                 { href: "/materi/perdarahan", label: "Materi" },
-                { href: "/lkpd", label: "LKPD" },
                 { href: "/evaluasi", label: "Evaluasi" },
                 { href: "/tentang", label: "Tentang" },
               ].map((link) => (

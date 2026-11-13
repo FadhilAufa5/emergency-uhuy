@@ -691,10 +691,10 @@ export default function EvaluasiPage() {
                 <span>Pelajari Materi Lengkap</span>
               </Link>
               <Link
-                href="/lkpd"
+                href="/"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white border border-ink/15 text-ink font-semibold text-sm hover:bg-cream transition-all shadow-sm active:scale-95"
               >
-                <span>Buka Lembar Kasus LKPD</span>
+                <span>Kembali ke Beranda</span>
                 <ChevronRight className="w-4 h-4" />
               </Link>
             </div>

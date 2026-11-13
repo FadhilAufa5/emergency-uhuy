@@ -8,7 +8,7 @@ import {
   ArrowRight,
   Bike,
   Sparkles,
-  BookOpen,
+  ClipboardCheck,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -199,11 +199,11 @@ export default function HeroSection() {
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
               <Link
-                href="/lkpd"
+                href="/evaluasi"
                 className="hero-cta inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-ink bg-white/95 backdrop-blur-sm rounded-full border border-ink/10 hover:border-ink/20 hover:bg-white transition-all duration-200 shadow-xs active:scale-[0.97]"
               >
-                <BookOpen className="w-4 h-4 text-ink-lighter" />
-                <span>Kasus Lapangan (LKPD)</span>
+                <ClipboardCheck className="w-4 h-4 text-ink-lighter" />
+                <span>Evaluasi &amp; Kuis</span>
               </Link>
             </div>
           </div>
