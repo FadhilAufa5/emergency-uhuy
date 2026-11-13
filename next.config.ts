@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 86400, // 24 h browser cache for images
+    qualities: [75, 85],
   },
 
   // Compress responses

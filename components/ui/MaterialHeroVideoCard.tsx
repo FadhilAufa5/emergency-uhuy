@@ -69,6 +69,7 @@ export default function MaterialHeroVideoCard({
             <img
               src={thumbnailUrl}
               alt={`Thumbnail Video ${title}`}
+              loading="eager"
               className="w-full h-full object-contain transition-transform duration-700 group-hover/video:scale-105"
             />
 

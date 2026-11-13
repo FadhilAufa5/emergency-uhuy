@@ -3,9 +3,14 @@ import Image from "next/image";
 interface IllustrationProps {
   type: "bleeding" | "seizure" | "cpr" | "hero" | "pingsan" | "fraktur";
   className?: string;
+  priority?: boolean;
 }
 
-export function MedicalIllustration({ type, className = "" }: IllustrationProps) {
+export function MedicalIllustration({
+  type,
+  className = "",
+  priority = false,
+}: IllustrationProps) {
   switch (type) {
     case "hero":
       return <HeroIllustration className={className} />;
@@ -18,7 +23,8 @@ export function MedicalIllustration({ type, className = "" }: IllustrationProps)
           height={360}
           quality={85}
           className={`w-full h-full object-contain rounded-2xl ${className}`}
-          loading="lazy"
+          priority={priority}
+          loading={priority ? "eager" : "lazy"}
         />
       );
     case "pingsan":
@@ -31,7 +37,8 @@ export function MedicalIllustration({ type, className = "" }: IllustrationProps)
           height={360}
           quality={85}
           className={`w-full h-full object-contain rounded-2xl ${className}`}
-          loading="lazy"
+          priority={priority}
+          loading={priority ? "eager" : "lazy"}
         />
       );
     case "fraktur":
@@ -44,7 +51,8 @@ export function MedicalIllustration({ type, className = "" }: IllustrationProps)
           height={360}
           quality={85}
           className={`w-full h-full object-contain rounded-2xl ${className}`}
-          loading="lazy"
+          priority={priority}
+          loading={priority ? "eager" : "lazy"}
         />
       );
     default:
