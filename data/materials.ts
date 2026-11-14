@@ -302,7 +302,7 @@ export const materials: MaterialDetail[] = [
     bgColor: "bg-yellow-light",
     iconBg: "bg-yellow/10",
     heroImage: "fraktur",
-    videoUrl: "/fraktur.mp4",
+    videoUrl: "/patahtulang.mp4",
     videoThumbnail: "/patahtulang1.jpg",
     pengertian: {
       title: "1. Mengenal Fraktur",

@@ -150,7 +150,7 @@ export default async function MaterialDetailPage({ params }: PageProps) {
                         ? "/perdarahan.mp4"
                         : material.slug === "pingsan"
                         ? "/pingsun.mp4"
-                        : "/fraktur.mp4")
+                        : "/patahtulang.mp4")
                     }
                     thumbnailUrl={
                       material.videoThumbnail ||

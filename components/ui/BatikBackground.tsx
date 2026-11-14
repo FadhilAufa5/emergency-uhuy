@@ -46,7 +46,7 @@ export default function BatikBackground({
     >
       {/* ── 1. Tekstur Kain Batik Nusantara Utama (Jelas, Halus, & Elegan) ── */}
       <div
-        className={`absolute inset-0 bg-repeat mix-blend-multiply ${opacity} transition-opacity duration-500`}
+        className={`absolute inset-0 bg-repeat mix-blend-multiply transform-gpu ${opacity} transition-opacity duration-500`}
         style={{
           backgroundImage: `url('${patternUrl}')`,
           backgroundSize: "460px auto",

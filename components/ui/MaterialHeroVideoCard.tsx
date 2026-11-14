@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Image from "next/image";
 import { Play, X, Video, AlertCircle, Sparkles } from "lucide-react";
 
 interface MaterialHeroVideoCardProps {
@@ -65,13 +66,18 @@ export default function MaterialHeroVideoCard({
             }}
             aria-label={`Putar Video Peragaan ${title}`}
           >
-            {/* Foto Thumbnail yang Sudah Ada */}
-            <img
-              src={thumbnailUrl}
-              alt={`Thumbnail Video ${title}`}
-              loading="eager"
-              className="w-full h-full object-contain transition-transform duration-700 group-hover/video:scale-105"
-            />
+            {/* Foto Thumbnail Teroptimasi (Next/Image) */}
+            <div className="relative w-full h-full">
+              <Image
+                src={thumbnailUrl}
+                alt={`Thumbnail Video ${title}`}
+                fill
+                sizes="(max-width: 768px) 100vw, 480px"
+                priority
+                quality={85}
+                className="object-contain transition-transform duration-700 group-hover/video:scale-105"
+              />
+            </div>
 
             {/* Gradient Overlay for Contrast */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/30 transition-opacity duration-300 group-hover/video:from-black/75" />
@@ -132,6 +138,7 @@ export default function MaterialHeroVideoCard({
                   controls
                   autoPlay
                   playsInline
+                  preload="metadata"
                   className="w-full h-full object-contain"
                   onError={() => setHasError(true)}
                 >

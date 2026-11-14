@@ -69,6 +69,7 @@ export default function SinkopeStepIllustration({
         alt={imageInfo.alt}
         className="w-full h-full object-contain transition-transform duration-500 hover:scale-105"
         loading={priority ? "eager" : "lazy"}
+        decoding="async"
       />
     </div>
   );

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Play,
   Sparkles,
@@ -52,12 +53,15 @@ export default function AboutVideoSection() {
                   {!isPlaying ? (
                     // Poster / Thumbnail Preview State
                     <div className="relative w-full h-full">
-                      <img
+                      <Image
                         src="/perdarahan.webp"
                         alt="Thumbnail Video Edukasi Pertolongan Pertama Driver Ojol"
-                        className="w-full h-full object-cover opacity-75 transition-transform duration-700 group-hover:scale-105"
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 800px"
+                        quality={85}
+                        className="object-cover opacity-75 transition-transform duration-700 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent pointer-events-none" />
 
                       {/* Play Button Overlay with Pulse */}
                       <button
